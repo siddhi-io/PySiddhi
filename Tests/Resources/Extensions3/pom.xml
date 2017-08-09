@@ -112,7 +112,6 @@
             </snapshots>
         </repository>
 
-        <!--todo is this necessary ?-->
         <repository>
             <id>sonatype.releases</id>
             <url>https://oss.sonatype.org/content/repositories/releases/</url>

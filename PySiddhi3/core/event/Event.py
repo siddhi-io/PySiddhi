@@ -36,21 +36,48 @@ class Event(object):
             raise NotImplementedError("Unknown constructor parameter combination")
 
     def __str__(self):
+        '''
+        Overrides toString
+        :return: 
+        '''
         return self._event_proxy.toString()
 
     def getId(self):
+        '''
+        Return event Id
+        :return: 
+        '''
         return self._event_proxy.getId()
 
     def setId(self, value):
+        '''
+        Assigns event Id
+        :param value: 
+        :return: 
+        '''
         self._event_proxy.setId(value)
 
     def getTimestamp(self):
+        '''
+        Returns event timeStamp
+        :return: 
+        '''
         return self._event_proxy.getTimestamp()
 
     def setTimestamp(self,value):
+        '''
+        Assigns event timeStamp
+        :param value: 
+        :return: 
+        '''
         self._event_proxy.setTimestamp(value)
 
     def getData(self, index=None):
+        '''
+        Returns event Data as list (if index not provided) or at index (if index provided)
+        :param index: 
+        :return: 
+        '''
         if index is None:
             return DataWrapper.unwrapDataList(_event_proxy_class_inst.getData(self._event_proxy))
         else:
@@ -60,31 +87,64 @@ class Event(object):
             return DataWrapper.unwrapDataItem(data)
 
     def setData(self, data):
-         _event_proxy_class_inst.setData(self._event_proxy, DataWrapper.wrapDataList(data))
+        '''
+        Assigns event data
+        :param data: Data as a list
+        :return: 
+        '''
+        _event_proxy_class_inst.setData(self._event_proxy, DataWrapper.wrapDataList(data))
 
     def isExpired(self):
+        '''
+        Retrieves whether event has expired
+        :return: 
+        '''
         return self._event_proxy.isExpired()
 
     def setExpired(self,value):
+        '''
+        Sets whether event has expired
+        :param value: 
+        :return: 
+        '''
         if value:
             _event_proxy_class_inst.makeExpired(self._event_proxy)
         else:
             _event_proxy_class_inst.makeUnExpired(self._event_proxy)
 
-    def copyFrom(self, event): #TODO: Need a test for this
+    def copyFrom(self, event):
+        '''
+        Copy from event or complexEvent
+        :param event: 
+        :return: 
+        '''
         if isinstance(event,Event):
             self._event_proxy.copyFrom(event._event_proxy)
         elif isinstance(event,ComplexEvent.ComplexEvent):
             self._event_proxy.copyFrom(event._complex_event_proxy)
 
     def __eq__(self, other):
+        '''
+        Test for equality
+        :param other: 
+        :return: 
+        '''
         if isinstance(other,Event):
             return self._event_proxy.equals(other._event_proxy)
         else:
             return False
 
     def equals(self,other):
+        '''
+        Test for equality
+        :param other: 
+        :return: 
+        '''
         return self == other
 
     def __hash__(self):
+        '''
+        Hashes event
+        :return: 
+        '''
         return self._event_proxy.hashCode()

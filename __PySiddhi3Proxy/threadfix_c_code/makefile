@@ -29,7 +29,7 @@ $(TARGET_OUTPUT_NAME).so: $(TARGET_SOURCE_NAME).c $(TARGET_SOURCE_NAME).h
 
 install: $(TARGET_OUTPUT_NAME).so
 	@echo "Copying Target to Root..."
-	$(CP) $(TARGET_OUTPUT_NAME).so ../../../$(TARGET_INSTALL_NAME).so
+	$(CP) $(TARGET_OUTPUT_NAME).so ../../$(TARGET_INSTALL_NAME).so
 	@echo
 
 clean:
