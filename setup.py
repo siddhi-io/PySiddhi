@@ -1,7 +1,8 @@
 from subprocess import check_call
 
-from setuptools import setup, find_packages
+from setuptools import setup, find_packages, Extension
 from setuptools.command.install import install
+
 
 
 class PostInstallCommand(install):
@@ -26,7 +27,6 @@ setup(
     version="0.1.dev",
     packages=filtered_packages,
     install_requires=["pyjnius","future"],
-
     package_data={
                   "PySiddhi4": ["../__PySiddhi4Proxy/target/lib/*.jar",
                                  "../__PySiddhi4Proxy/target/*.jar",
