@@ -33,8 +33,8 @@ setup(
                   },
 
     # metadata for upload to PyPI
-    author="WSO2",
-    author_email="madhawavidanapathirana@gmail.com",
+    author="wso2",
+    author_email="dev@wso2.org",
     description="Distribution of Siddhi CEP Python Wrapper",
     license="Apache2",
     cmdclass={
