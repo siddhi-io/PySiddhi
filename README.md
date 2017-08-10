@@ -42,7 +42,7 @@ Installing the Library from Source
 3. Use the Library using Python.
     - For Siddhi CEP 3.1
     ```python
-    from SiddhiCEP3.core.SiddhiManager import SiddhiManager
+    from PySiddhi3.core.SiddhiManager import SiddhiManager
     sm = SiddhiManager()
     ....
     sm.shutdown()
@@ -50,7 +50,7 @@ Installing the Library from Source
 
     - For Siddhi CEP 4.0.0-M33
     ```python
-    from SiddhiCEP4.core.SiddhiManager import SiddhiManager
+    from PySiddhi3.core.SiddhiManager import SiddhiManager
     sm = SiddhiManager()
     ....
     sm.shutdown()
@@ -61,11 +61,9 @@ Running the Tests
 -----
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Compile Java Libraries.
-    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP3/ProxyClasses/SiddhiCEP3Proxy` and run `mvn install`
-    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP4/ProxyClasses/SiddhiCEP4Proxy` and run `mvn install`
-    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP4/ProxyClasses/SiddhiCEP3Proxy/threadfix_c_code` and run `build.sh`*
-    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP4/ProxyClasses/SiddhiCEP4Proxy/threadfix_c_code` and run `build.sh`*
-    - Run the tests cases in `SiddhiCEPPythonAPI/Tests` directory
+    - Navigate to `PySiddhi/__PySiddhi3Proxy` and run `mvn install`
+    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP4/ProxyClasses/SiddhiCEP4Proxy` and run `mvn clean install`
+    - Run the tests cases in `PySiddhi/Tests/PySiddhi3Tests` directory
 
 *If build.sh throws errors, check the paths provided for imports of Python3 Developer Headers
 
