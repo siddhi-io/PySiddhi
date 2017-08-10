@@ -1,6 +1,6 @@
 # PySiddhi
 
-*You are currently in branch for PySiddhi 3.1*
+*You are currently in branch for PySiddhi 3.x*
 
 The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. Additionally, the Python API would support Siddhi Configuration on WSO2 Data Analytics Server (DAS). The Python wrapper would support Siddhi 3.1, Siddhi 4.0, WSO2 DAS 3.1 and WSO2 DAS 4.0.
 
