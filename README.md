@@ -67,6 +67,11 @@ Running the Tests
 
 *If build.sh throws errors, check the paths provided for imports of Python3 Developer Headers
 
+Creating deployment wheel (for Linux)
+-----
+1. Install pre-requisites mentioned in `Installing the Library from Source` section.
+2. Goto source root and run `python setup.py bdist_wheel`
+
 Background
 -----
 Siddhi is a Query Language and a Library for Realtime Streaming Complex Event Processing developed by WSO2 Inc. Siddhi CEP is currently used in WSO2 Data Analytics Server, an Enterprise Level Open Source Data Analytics Solution.
