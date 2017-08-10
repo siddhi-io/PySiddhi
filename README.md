@@ -1,12 +1,9 @@
-# PySiddhi
-
-*You are currently in master branch. Switch to branch 3.1 or 4.0 for relevant versions code.*
-
+# Siddhi CEP Python API
 The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. Additionally, the Python API would support Siddhi Configuration on WSO2 Data Analytics Server (DAS). The Python wrapper would support Siddhi 3.1, Siddhi 4.0, WSO2 DAS 3.1 and WSO2 DAS 4.0.
 
 This is currently a work in progress, as a project for Google Summer of Code 2017 Program.
 
-*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.1) and __Siddhi CEP 4.0.0-M33__  (in branch 4.0) for __Python 2.7.x__ and __Python 3.x__*
+*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ and __Siddhi CEP 4.0.0-M33__ for __Python 2.7.x__ and __Python 3.x__*
 
 Project Goals
 -----
@@ -18,7 +15,7 @@ Current Progress
 -----
 Currently, the project is in very early stage with discussions on the scope.
 - [x] Basic features of Siddhi CEP Core 3.1 and 4.0
-- [x] Wrapper on Siddhi Debugger (for Siddhi 4.0 only)
+- [x] Wrapper on Siddhi Debugger
 - [x] Support to Siddhi Extensions Loading
 - [x] Unit Tests
 
@@ -32,11 +29,10 @@ Installing the Library from Source
     - Python Developer Package (`sudo apt-get install python-dev python3-dev python-dev`)
     - libboost for Python (`sudo apt-get install libboost-python-dev`)
     - Maven and Java 8
-    - g++ and other development tools
+    - g++ and other development tools 
       - `sudo apt-get install build-essential g++ autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev`
-
+      
 2. Install using Setup.py.
-    - Clone the relevant branch (3.1 or 4.0) from GitHub Repository.
     - Navigate to project root and run `sudo pip3 install .`
 
 3. Use the Library using Python.

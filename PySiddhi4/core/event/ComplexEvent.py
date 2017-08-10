@@ -5,6 +5,9 @@ from PySiddhi4.DataTypes.DataWrapper import unwrapData, wrapData
 
 
 class ComplexEvent(object):
+    '''
+    Wrapper on @org.wso2.siddhi.core.event.ComplexEvent
+    '''
     class Type(Enum):
         CURRENT = SiddhiLoader._loadType("org.wso2.siddhi.pythonapi.proxy.core.event.complex_event.TypeProxy")().CURRENT(),
         EXPIRED = SiddhiLoader._loadType("org.wso2.siddhi.pythonapi.proxy.core.event.complex_event.TypeProxy")().EXPIRED(),
@@ -61,7 +64,6 @@ class ComplexEvent(object):
         return output_data
 
     def setOutputData(self, datum, index):
-        #TODO: Improve logic here by adding support to long. Will need to make a java wrapping for handling long
         complex_event_static_proxy = SiddhiLoader._loadType(
             "org.wso2.siddhi.pythonapi.proxy.core.event.complex_event.ComplexEventProxy")()
         complex_event_static_proxy.setOutputData(self._complex_event_proxy,wrapData(datum),index)
