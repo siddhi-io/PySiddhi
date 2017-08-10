@@ -30,18 +30,16 @@ setup(
     package_data={
                   "PySiddhi4": ["../__PySiddhi4Proxy/target/lib/*.jar",
                                  "../__PySiddhi4Proxy/target/*.jar",
-                                 "../*.so"]
+                                 "../__PySiddhi4Proxy/*.so"]
                   },
 
     # metadata for upload to PyPI
     author="WSO2",
-    author_email="madhawavidanapathirana@gmail.com",
+    author_email="dev@wso2.org",
     description="Distribution of Siddhi CEP Python Wrapper",
     license="Apache2",
     cmdclass={
         'install': PostInstallCommand,
     },
-    url="https://github.com/wso2/PySiddhi",  # project home page, if any
-
-    # could also include long_description, download_url, classifiers, etc.
+    url="https://github.com/wso2/PySiddhi",
 )

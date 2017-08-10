@@ -1,4 +1,7 @@
-# Siddhi CEP Python API
+# PySiddhi
+
+*You are currently in branch for PySiddhi 4.x*
+
 The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. Additionally, the Python API would support Siddhi Configuration on WSO2 Data Analytics Server (DAS). The Python wrapper would support Siddhi 3.1, Siddhi 4.0, WSO2 DAS 3.1 and WSO2 DAS 4.0.
 
 This is currently a work in progress, as a project for Google Summer of Code 2017 Program.
@@ -33,12 +36,13 @@ Installing the Library from Source
       - `sudo apt-get install build-essential g++ autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev`
       
 2. Install using Setup.py.
+    - Clone the relevant branch (3.1 or 4.0) from GitHub Repository.
     - Navigate to project root and run `sudo pip3 install .`
 
 3. Use the Library using Python.
     - For Siddhi CEP 3.1
     ```python
-    from SiddhiCEP3.core.SiddhiManager import SiddhiManager
+    from PySiddhi3.core.SiddhiManager import SiddhiManager
     sm = SiddhiManager()
     ....
     sm.shutdown()
@@ -46,7 +50,7 @@ Installing the Library from Source
 
     - For Siddhi CEP 4.0.0-M33
     ```python
-    from SiddhiCEP4.core.SiddhiManager import SiddhiManager
+    from PySiddhi4.core.SiddhiManager import SiddhiManager
     sm = SiddhiManager()
     ....
     sm.shutdown()
@@ -57,13 +61,10 @@ Running the Tests
 -----
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Compile Java Libraries.
-    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP3/ProxyClasses/SiddhiCEP3Proxy` and run `mvn install`
-    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP4/ProxyClasses/SiddhiCEP4Proxy` and run `mvn install`
-    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP4/ProxyClasses/SiddhiCEP3Proxy/threadfix_c_code` and run `build.sh`*
-    - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP4/ProxyClasses/SiddhiCEP4Proxy/threadfix_c_code` and run `build.sh`*
-    - Run the tests cases in `SiddhiCEPPythonAPI/Tests` directory
+    - Navigate to `PySiddhi/PySiddhi4Proxy` and run `mvn clean install`
+    - Run the tests cases in `PySiddhi/Tests/PySiddhi4Tests` directory
 
-*If build.sh throws errors, check the paths provided for imports of Python3 Developer Headers
+*If mvn clean install throws errors, check the paths provided for imports of Python3 Developer Headers
 
 Background
 -----
