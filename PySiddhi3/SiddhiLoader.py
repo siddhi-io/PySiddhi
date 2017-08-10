@@ -70,7 +70,7 @@ def loadLibrary():
     # initialization of pyjnius
     jnius_config.add_options('-Xss1280k')
 
-    jnius_config.add_options('-Djava.library.path=' + PySiddhi3.root_path + "/")
+    jnius_config.add_options('-Djava.library.path=' + PySiddhi3.root_path + "/__PySiddhi3Proxy")
 
     # Determine library class path
     class_paths = ['.', PySiddhi3.root_path + '/__PySiddhi3Proxy/target/lib/*', PySiddhi3.root_path + '/__PySiddhi3Proxy/target/*']
