@@ -71,6 +71,12 @@ Creating deployment wheel (for Linux)
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Goto source root and run `python setup.py bdist_wheel`
 
+Creating deployment wheel (for Windows)
+-----
+1. Install pre-requisites mentioned in `Installing the Library from Source` section.
+2. Goto source root and run `python setup.py bdist_wheel --plat-name win-amd64`
+
+
 Background
 -----
 Siddhi is a Query Language and a Library for Realtime Streaming Complex Event Processing developed by WSO2 Inc. Siddhi CEP is currently used in WSO2 Data Analytics Server, an Enterprise Level Open Source Data Analytics Solution.
