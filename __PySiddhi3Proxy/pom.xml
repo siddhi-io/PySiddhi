@@ -40,7 +40,7 @@
                                 <phase>compile</phase>
                                 <goals><goal>exec</goal></goals>
                                 <configuration>
-                                    <executable>>${make.location}</executable>
+                                    <executable>${make.location}</executable>
                                     <workingDirectory>${basedir}/threadfix_c_code</workingDirectory>
                                     <arguments>
                                         <argument>all</argument>
@@ -52,7 +52,7 @@
                                 <phase>clean</phase>
                                 <goals><goal>exec</goal></goals>
                                 <configuration>
-                                    <executable>>${make.location}</executable>
+                                    <executable>${make.location}</executable>
                                     <workingDirectory>${basedir}/threadfix_c_code</workingDirectory>
                                     <arguments>
                                         <argument>clean</argument>
