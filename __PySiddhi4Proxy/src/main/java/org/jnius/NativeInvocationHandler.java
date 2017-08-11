@@ -13,6 +13,7 @@ public class NativeInvocationHandler implements InvocationHandler {
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) {
+
         if ( DEBUG ) {
             Logger log = Logger.getLogger(NativeInvocationHandler.class);
             log.info("+ java:invoke(<proxy>, ");
@@ -24,7 +25,6 @@ public class NativeInvocationHandler implements InvocationHandler {
             log.info(args);
             log.info(")");
         }
-
         Object ret = invoke0(proxy, method, args);
 
         if ( DEBUG ) {

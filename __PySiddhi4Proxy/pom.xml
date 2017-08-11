@@ -17,40 +17,59 @@
 
 
     </dependencies>
+    <profiles>
+        <profile>
+            <id>platform-windows</id>
+            <activation>
+                <os>
+                    <family>!windows</family>
+                </os>
+            </activation>
+            <properties>
+                <make.location>/usr/bin/make</make.location>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <id>compile-native-code</id>
+                                <phase>compile</phase>
+                                <goals><goal>exec</goal></goals>
+                                <configuration>
+                                    <executable>${make.location}</executable>
+                                    <workingDirectory>${basedir}/threadfix_c_code</workingDirectory>
+                                    <arguments>
+                                        <argument>all</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>clean-native-code</id>
+                                <phase>clean</phase>
+                                <goals><goal>exec</goal></goals>
+                                <configuration>
+                                    <executable>${make.location}</executable>
+                                    <workingDirectory>${basedir}/threadfix_c_code</workingDirectory>
+                                    <arguments>
+                                        <argument>clean</argument>
+                                    </arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+
+        </profile>
+    </profiles>
+
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
-                <executions>
-                    <execution>
-                        <id>compile-native-code</id>
-                        <phase>compile</phase>
-                        <goals><goal>exec</goal></goals>
-                        <configuration>
-                            <executable>/usr/bin/make</executable>
-                            <workingDirectory>${basedir}/threadfix_c_code</workingDirectory>
-                            <arguments>
-                                <argument>all</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>clean-native-code</id>
-                        <phase>clean</phase>
-                        <goals><goal>exec</goal></goals>
-                        <configuration>
-                            <executable>/usr/bin/make</executable>
-                            <workingDirectory>${basedir}/threadfix_c_code</workingDirectory>
-                            <arguments>
-                                <argument>clean</argument>
-                            </arguments>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>

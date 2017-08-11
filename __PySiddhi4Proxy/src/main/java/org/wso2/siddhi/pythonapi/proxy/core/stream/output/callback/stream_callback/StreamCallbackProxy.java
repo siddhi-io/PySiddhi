@@ -4,6 +4,7 @@ import org.apache.log4j.Logger;
 import org.wso2.siddhi.core.event.Event;
 import org.wso2.siddhi.core.stream.output.StreamCallback;
 import org.wso2.siddhi.pythonapi.threadfix.PyThreadFix;
+import org.wso2.siddhi.pythonapi.threadfix.PyThreadFixCaller;
 
 /**
  * Created by madhawa on 5/26/17.
@@ -16,7 +17,7 @@ public class StreamCallbackProxy extends StreamCallback {
     private static final Logger log = Logger.getLogger(StreamCallbackProxy.class);
 
     public void receive(Event[] events) {
-        new PyThreadFix().fix();
+        PyThreadFixCaller.fix();
 
         this.receiveCallback.receive(events);
         //log.info("Event Received - Java");

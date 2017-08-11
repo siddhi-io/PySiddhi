@@ -9,6 +9,7 @@ import org.wso2.siddhi.pythonapi.proxy.core.debugger.siddhi_debugger_callback.ev
 import org.wso2.siddhi.pythonapi.proxy.core.debugger.siddhi_debugger.QueryTerminalProxy;
 import org.wso2.siddhi.pythonapi.proxy.core.stream.output.callback.stream_callback.StreamCallbackProxy;
 import org.wso2.siddhi.pythonapi.threadfix.PyThreadFix;
+import org.wso2.siddhi.pythonapi.threadfix.PyThreadFixCaller;
 
 
 /**
@@ -24,7 +25,7 @@ public class SiddhiDebuggerCallbackProxy implements SiddhiDebuggerCallback {
     }
 
     public void debugEvent(ComplexEvent complexEvent, String queryName, SiddhiDebugger.QueryTerminal queryTerminal, SiddhiDebugger siddhiDebugger) {
-        new PyThreadFix().fix();
+        PyThreadFixCaller.fix();
 
         log.info("Debug Event Called");
         debuggerEventQueue.addEvent(QueuedEvent.createDebugEvent(complexEvent,queryName,new QueryTerminalProxy(queryTerminal),siddhiDebugger));

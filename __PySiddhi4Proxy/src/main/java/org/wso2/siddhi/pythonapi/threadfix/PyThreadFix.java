@@ -22,11 +22,13 @@ public class PyThreadFix {
     // The native fixThread method which has necessary C code to fix the threading issue
     private native void fixThread();
 
+    /**
+     * Invoke fixThread
+     */
     public void fix(){
-        //Do a version check. The fix is needed in Python 3.4+
-        if(SiddhiAPICoreProxy.getPythonVersionMajor() == 3 && SiddhiAPICoreProxy.getPythonVersionMinor() >= 4)
-            fixThread();
+        this.fixThread();
     }
+
     // Test Driver
     public static void main(String[] args) {
         new PyThreadFix().fixThread();  // invoke the native method

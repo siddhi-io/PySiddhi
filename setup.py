@@ -4,13 +4,13 @@ from setuptools import setup, find_packages, Extension
 from setuptools.command.install import install
 
 
-
 class PostInstallCommand(install):
     """Post-installation for installation mode."""
 
     def run(self):
         # Compile JAVA Code here
-        check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy/")
+        check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy",
+                   shell=True)  # shell=True is necessary for windows
 
         install.run(self)
 
@@ -26,12 +26,12 @@ setup(
     name="PySiddhi4",
     version="0.1.dev",
     packages=filtered_packages,
-    install_requires=["pyjnius","future"],
+    install_requires=["pyjnius", "future"],
     package_data={
-                  "PySiddhi4": ["../__PySiddhi4Proxy/target/lib/*.jar",
-                                 "../__PySiddhi4Proxy/target/*.jar",
-                                 "../__PySiddhi4Proxy/*.so"]
-                  },
+        "PySiddhi4": ["../__PySiddhi4Proxy/target/lib/*.jar",
+                      "../__PySiddhi4Proxy/target/*.jar",
+                      "../__PySiddhi4Proxy/*.so"]
+    },
 
     # metadata for upload to PyPI
     author="WSO2",
