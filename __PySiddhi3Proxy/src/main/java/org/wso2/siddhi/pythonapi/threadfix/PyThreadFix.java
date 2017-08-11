@@ -18,8 +18,7 @@ public class PyThreadFix {
     private native void fixThread();
 
     public void fix(){
-        if(SiddhiAPICoreProxy.getPythonVersionMajor() == 3 && SiddhiAPICoreProxy.getPythonVersionMinor() >= 4)
-            fixThread();
+        fixThread();
     }
     // Test Driver
     public static void main(String[] args) {

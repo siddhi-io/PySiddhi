@@ -9,7 +9,7 @@ class PostInstallCommand(install):
 
     def run(self):
         # Compile JAVA Code here
-        check_call("mvn clean install".split(),cwd="__PySiddhi3Proxy/")
+        check_call("mvn clean install".split(),cwd="__PySiddhi3Proxy", shell=True)
 
         install.run(self)
 
