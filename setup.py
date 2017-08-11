@@ -1,3 +1,4 @@
+import os
 from subprocess import check_call
 
 from setuptools import setup, find_packages, Extension
@@ -9,8 +10,11 @@ class PostInstallCommand(install):
 
     def run(self):
         # Compile JAVA Code here
-        check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy",
-                   shell=True)  # shell=True is necessary for windows
+        if os.name == "nt":
+            check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy",
+                       shell=True)  # shell=True is necessary for windows
+        else:
+            check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy")  # shell=True should be skipped for linux
 
         install.run(self)
 

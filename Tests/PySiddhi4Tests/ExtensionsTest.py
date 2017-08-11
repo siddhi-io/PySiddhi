@@ -4,9 +4,12 @@ import os
 from PySiddhi4 import SiddhiLoader
 
 # Download extension jars
-
-call(["mvn", "install"],shell=True, cwd=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) ,os.path.join("Resources","Extensions4")))
-
+path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) ,os.path.join("Resources","Extensions4"))
+if os.name == "nt": # For windows, shell=True is required
+    call(["mvn", "install"],shell=True, cwd=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) ,os.path.join("Resources","Extensions4")))
+else: # For linux, shell=True causes cwd to not function properly
+    call(["mvn", "install"], cwd=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                                          os.path.join("Resources", "Extensions4")))
 # Add extensions
 extensions_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/Resources/Extensions4/jars/*"
 SiddhiLoader.addExtensionPath(extensions_path)
