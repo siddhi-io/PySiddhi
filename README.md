@@ -69,12 +69,14 @@ Running the Tests
 Creating deployment wheel (for Linux)
 -----
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
-2. Goto source root and run `python setup.py bdist_wheel --plat-name linux-x86_64`
+2. Delete directory `build` if exist. 
+3. Goto source root and run `python setup.py bdist_wheel --plat-name linux-x86_64`
 
 Creating deployment wheel (for Windows)
 -----
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
-2. Goto source root and run `python setup.py bdist_wheel --plat-name win-amd64`
+2. Delete directory `build` if exist. 
+3. Goto source root and run `python setup.py bdist_wheel --plat-name win-amd64`
 
 
 Background
