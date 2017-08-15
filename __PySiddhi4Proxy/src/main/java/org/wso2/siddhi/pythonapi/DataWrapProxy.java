@@ -1,12 +1,26 @@
+/*
+ * Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ *
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
 package org.wso2.siddhi.pythonapi;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.logging.Logger;
 
-/**
- * Created by madhawa on 6/1/17.
- */
 public class DataWrapProxy {
     /**
      * Wrapper on Data sent between Python and Java. This wrapper is needed due to following reasons
@@ -17,104 +31,203 @@ public class DataWrapProxy {
      * Note: The approach taken here causes loss of precision in Double and Loss of range in Long.
      * TODO: Look for a better implementation of Double and Long, without loss of precision and range
      */
+
     private Object data;
-    public DataWrapProxy(int data)
-    {
+
+    /**
+     * Constructor for integer wrapping
+     *
+     * @param data
+     */
+    public DataWrapProxy(int data) {
         this.data = data;
-    }
-    public DataWrapProxy(boolean data)
-    {
-        this.data = data;
-    }
-    public DataWrapProxy(float data)
-    {
-        this.data = data;
-    }
-    public DataWrapProxy(String data)
-    {
-        this.data = data;
-    }
-    public DataWrapProxy(int data, boolean isLong)
-    {
-        this.data = (long)data;
     }
 
-    public DataWrapProxy(int data, boolean isLong, boolean isNull)
-    {
-        if(isNull)
-        {
+    /**
+     * Constructor for boolean wrapping
+     *
+     * @param data
+     */
+    public DataWrapProxy(boolean data) {
+        this.data = data;
+    }
+
+    /**
+     * Constructor for float wrapping
+     *
+     * @param data
+     */
+    public DataWrapProxy(float data) {
+        this.data = data;
+    }
+
+    /**
+     * Constructor for String wrapping
+     *
+     * @param data
+     */
+    public DataWrapProxy(String data) {
+        this.data = data;
+    }
+
+    /**
+     * Constructor for long wrapping
+     *
+     * @param data
+     * @param isLong
+     */
+    public DataWrapProxy(int data, boolean isLong) {
+        this.data = (long) data;
+    }
+
+    /**
+     * Constructor for null wrapping
+     *
+     * @param data
+     * @param isLong
+     * @param isNull
+     */
+    public DataWrapProxy(int data, boolean isLong, boolean isNull) {
+        if (isNull) {
             this.data = null;
         }
     }
 
-    public DataWrapProxy(float data, boolean isLong, boolean isNull, boolean isDouble)
-    {
-        if(isDouble)
-        {
-            this.data = (double)data;
+    /**
+     * Constructor for double wrapping
+     *
+     * @param data
+     * @param isLong
+     * @param isNull
+     * @param isDouble
+     */
+    public DataWrapProxy(float data, boolean isLong, boolean isNull, boolean isDouble) {
+        if (isDouble) {
+            this.data = (double) data;
         }
     }
 
-    public boolean isNull(){
+    /**
+     * Retrieve whether wrapped data is null
+     *
+     * @return
+     */
+    public boolean isNull() {
         return this.data == null;
     }
-    public boolean isLong(){
+
+    /**
+     * Retrieve whether wrapped data is long
+     *
+     * @return
+     */
+    public boolean isLong() {
         return this.data instanceof Long;
     }
-    public boolean isDouble(){
+
+    /**
+     * Retrieve whether wrapped data is Double
+     *
+     * @return
+     */
+    public boolean isDouble() {
         return this.data instanceof Double;
     }
-    public boolean isInt(){
+
+    /**
+     * Retrieve whether wrapped data is Int
+     *
+     * @return
+     */
+    public boolean isInt() {
         return this.data instanceof Integer;
     }
-    public boolean isFloat(){
+
+    /**
+     * Retrieve whether wrapped data is Float
+     *
+     * @return
+     */
+    public boolean isFloat() {
         return this.data instanceof Float;
     }
-    public boolean isBoolean(){
+
+    /**
+     * Retrieve whether wrapped data is boolean
+     *
+     * @return
+     */
+    public boolean isBoolean() {
         return this.data instanceof Boolean;
     }
-    public boolean isString(){
+
+    /**
+     * Retrieve whether wrapped data is String
+     *
+     * @return
+     */
+    public boolean isString() {
         return this.data instanceof String;
     }
 
-    public Object getData()
-    {
+    /**
+     * Retrieve wrapped data
+     *
+     * @return
+     */
+    public Object getData() {
         return data;
     }
 
-    public static DataWrapProxy[] wrapArray(Object[] data)
-    {
+    /**
+     * Wrap data array
+     *
+     * @param data
+     * @return
+     */
+    public static DataWrapProxy[] wrapArray(Object[] data) {
         DataWrapProxy[] results = new DataWrapProxy[data.length];
-        for(int i = 0;i < data.length; i++)
+        for (int i = 0; i < data.length; i++)
             results[i] = DataWrapProxy.wrap(data[i]);
         return results;
     }
 
+    /**
+     * Wraps data item
+     *
+     * @param data data to be wrapped
+     * @return
+     */
     public static DataWrapProxy wrap(Object data) {
-        if(data == null)
+        if (data == null)
             return new DataWrapProxy(null);
-        if(data instanceof Integer)
-            return new DataWrapProxy((Integer)data);
-        else if(data instanceof Long)
+        if (data instanceof Integer)
+            return new DataWrapProxy((Integer) data);
+        else if (data instanceof Long)
             //TODO: Check removal of Integer casting here
-            return new DataWrapProxy((int)(long)(Long) data,true);
-        else if(data instanceof String)
-            return new DataWrapProxy((String)data);
-        else if(data instanceof Float)
-            return new DataWrapProxy((Float)data);
-        else if(data instanceof Boolean)
-            return new DataWrapProxy((Boolean)data);
-        else if(data instanceof Double)
-            return new DataWrapProxy((float)(double)(Double)data,false,false,true);
+            return new DataWrapProxy((int) (long) (Long) data, true);
+        else if (data instanceof String)
+            return new DataWrapProxy((String) data);
+        else if (data instanceof Float)
+            return new DataWrapProxy((Float) data);
+        else if (data instanceof Boolean)
+            return new DataWrapProxy((Boolean) data);
+        else if (data instanceof Double)
+            return new DataWrapProxy((float) (double) (Double) data, false, false, true);
 
-        Logger.getLogger(DataWrapProxy.class.getName()).info("Unsupported Data Type: " +  data.getClass().toString());
+        Logger.getLogger(DataWrapProxy.class.getName()).info("Unsupported Data Type: " + data.getClass().toString());
         throw new RuntimeException("Unsupported Data Type");
     }
 
-    public static Object[] unwrapArray(DataWrapProxy[] data)
-    {
+    /**
+     * Unwraps wrapped data item.
+     *
+     * @param data wrappedData
+     * @return
+     */
+    public static Object[] unwrapArray(DataWrapProxy[] data) {
         Object[] results = new Object[data.length];
-        for(int i = 0;i < data.length; i++)
+        for (int i = 0; i < data.length; i++)
             results[i] = data[i].getData();
         return results;
     }
