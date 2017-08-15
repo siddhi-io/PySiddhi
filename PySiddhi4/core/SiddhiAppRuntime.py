@@ -1,3 +1,19 @@
+# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# WSO2 Inc. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 from PySiddhi4 import SiddhiLoader
 from PySiddhi4.core.debugger.SiddhiDebugger import SiddhiDebugger
 from PySiddhi4.core.query.output.callback.QueryCallback import QueryCallback
@@ -6,7 +22,14 @@ from PySiddhi4.core.stream.output.StreamCallback import StreamCallback
 
 
 class SiddhiAppRuntime(object):
-    def __init__(self,):
+    '''
+    Wrapper on org.wso2.core.SiddhiAppRuntime
+    '''
+
+    def __init__(self):
+        '''
+        Use SiddhiManager to instantiate SiddhiAppEngine
+        '''
         raise NotImplementedError("Initialize SiddhiAppRuntime using Siddhi Manager")
 
     def __new__(cls):
@@ -22,12 +45,15 @@ class SiddhiAppRuntime(object):
         :return:
         '''
         if isinstance(queryCallback, QueryCallback):
-            SiddhiLoader.siddhi_api_core_inst.addSiddhiAppRuntimeQueryCallback(self.siddhi_app_runtime_proxy,queryName,queryCallback._query_callback_proxy_inst)
+            SiddhiLoader.siddhi_api_core_inst.addSiddhiAppRuntimeQueryCallback(self.siddhi_app_runtime_proxy, queryName,
+                                                                               queryCallback._query_callback_proxy_inst)
         elif isinstance(queryCallback, StreamCallback):
-            SiddhiLoader.siddhi_api_core_inst.addSiddhiAppRuntimeStreamCallback(self.siddhi_app_runtime_proxy, queryName,
-                                                                 queryCallback._stream_callback_proxy)
+            SiddhiLoader.siddhi_api_core_inst.addSiddhiAppRuntimeStreamCallback(self.siddhi_app_runtime_proxy,
+                                                                                queryName,
+                                                                                queryCallback._stream_callback_proxy)
         else:
             raise NotImplementedError("Unknown type of callback")
+
     def start(self):
         '''
         Start SiddhiAppRuntime
@@ -57,10 +83,9 @@ class SiddhiAppRuntime(object):
         Retrieve the Siddhi Debugger used to debug the Siddhi app
         :return: SiddhiDebugger
         '''
-        #Obtain debugger proxy class
+        # Obtain debugger proxy class
         siddhi_debugger_proxy = self.siddhi_app_runtime_proxy.debug()
         return SiddhiDebugger._fromSiddhiDebuggerProxy(siddhi_debugger_proxy)
-
 
     @classmethod
     def _fromSiddhiAppRuntimeProxy(cls, siddhi_app_runtime_proxy):
@@ -108,5 +133,3 @@ class SiddhiAppRuntime(object):
         :return: byteArray
         '''
         return self.siddhi_app_runtime_proxy.snapshot()
-
-

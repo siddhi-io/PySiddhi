@@ -1,23 +1,44 @@
+# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# WSO2 Inc. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
+
 import threading
-
-from logging import log, info
 from time import sleep
-
-import logging
-
 from PySiddhi4 import SiddhiLoader
-
 from PySiddhi4.DataTypes.DataWrapper import unwrapHashMap
 from enum import Enum
-
 from PySiddhi4.core.event.ComplexEvent import ComplexEvent
 
 
 class SiddhiDebugger(object):
+    '''
+    SiddhiDebugger adds checkpoints, remove checkpoints and provide traversal functions like next and play.
+    The given operations are:
+    - next: Debug the next checkpoint
+    - play: Return to the same
+    '''
 
     class QueryTerminal(Enum):
-        IN = SiddhiLoader._loadType("org.wso2.siddhi.pythonapi.proxy.core.debugger.siddhi_debugger.QueryTerminalProxy")().IN()
-        OUT = SiddhiLoader._loadType("org.wso2.siddhi.pythonapi.proxy.core.debugger.siddhi_debugger.QueryTerminalProxy")().OUT()
+        '''
+        SiddhiDebugger allows to add breakpoints at the beginning and the end of a query.
+        '''
+        IN = SiddhiLoader._loadType(
+            "org.wso2.siddhi.pythonapi.proxy.core.debugger.siddhi_debugger.QueryTerminalProxy")().IN()
+        OUT = SiddhiLoader._loadType(
+            "org.wso2.siddhi.pythonapi.proxy.core.debugger.siddhi_debugger.QueryTerminalProxy")().OUT()
 
         @classmethod
         def _map_value(cls, queryTerminalProxy):
@@ -34,12 +55,13 @@ class SiddhiDebugger(object):
         '''
         Polls Events from SiddhiDebuggerCallback
         '''
+
         def __init__(self):
-            self.pollLock = threading.RLock() #Lock used to access class resources from polling thread
+            self.pollLock = threading.RLock()  # Lock used to access class resources from polling thread
             self.pollThread = None
-            self.debugCallback = None #Callback registered to receive events from debugger
+            self.debugCallback = None  # Callback registered to receive events from debugger
             self.event_polling_started = False
-            self.event_queue = None # EventQueue proxy class from Java which contains event queue
+            self.event_queue = None  # EventQueue proxy class from Java which contains event queue
 
         def setDebugCallbackEvent(self, debug_callback, event_queue):
             '''
@@ -100,10 +122,10 @@ class SiddhiDebugger(object):
                                 elif event.isGCEvent():
                                     self.debugCallback = None  # Release reference held with callback since it has been destroyed from Java Side
 
-                    sleep(0.005) #NOTE: Removing this sleep causes changing of Debug Callback to fail
-                    #TODO: Investigate why removal of above sleep causes condition in above note
+                    sleep(0.005)  # NOTE: Removing this sleep causes changing of Debug Callback to fail
+                    # TODO: Investigate why removal of above sleep causes condition in above note
 
-                #Requirement of Pyjnius to call detach before destruction of a thread
+                # Requirement of Pyjnius to call detach before destruction of a thread
                 SiddhiLoader._detachThread()
 
             if self.pollThread is not None:
@@ -112,7 +134,6 @@ class SiddhiDebugger(object):
             self.pollThread.setDaemon(True)
             self.event_polling_started = True
             self.pollThread.start()
-
 
     def __init__(self):
         raise NotImplementedError("Not Implemented. Use SiddhiApp.debug() to obtain SiddhiDebugger.")
@@ -127,10 +148,8 @@ class SiddhiDebugger(object):
         instance = cls.__new__(cls)
         instance.siddhi_debugger_proxy = siddhi_debugger_proxy
         instance.event_poller = SiddhiDebugger._EventPoller()
-        instance.callback = None #The callback currently listening for debug callbacks
+        instance.callback = None  # The callback currently listening for debug callbacks
         return instance
-
-
 
     def releaseBreakPoint(self, queryName, queryTerminal):
         '''
@@ -151,7 +170,7 @@ class SiddhiDebugger(object):
         :param complexEvent the complexEvent which is waiting at the endpoint
         :return: 
         '''
-        self.siddhi_debugger_proxy.checkBreakPoint(queryName,queryTerminal.value,complexEvent._complex_event_proxy)
+        self.siddhi_debugger_proxy.checkBreakPoint(queryName, queryTerminal.value, complexEvent._complex_event_proxy)
 
     def releaseAllBreakPoints(self):
         '''
@@ -159,8 +178,6 @@ class SiddhiDebugger(object):
         :return: 
         '''
         self.siddhi_debugger_proxy.releaseAllBreakPoints()
-
-
 
     def getQueryState(self, queryName):
         '''
@@ -178,14 +195,16 @@ class SiddhiDebugger(object):
         :return: 
         '''
 
-        self.siddhi_debugger_proxy.acquireBreakPoint(queryName,queryTerminal.value)
+        self.siddhi_debugger_proxy.acquireBreakPoint(queryName, queryTerminal.value)
 
     def setDebuggerCallback(self, siddhi_debugger_callback):
         if siddhi_debugger_callback is not None:
-            self.siddhi_debugger_proxy.setDebuggerCallback(siddhi_debugger_callback._siddhi_debugger_callback_proxy_inst)
-            self.event_poller.setDebugCallbackEvent(siddhi_debugger_callback,siddhi_debugger_callback._siddhi_debugger_callback_proxy_inst.getEventQueue())
+            self.siddhi_debugger_proxy.setDebuggerCallback(
+                siddhi_debugger_callback._siddhi_debugger_callback_proxy_inst)
+            self.event_poller.setDebugCallbackEvent(siddhi_debugger_callback,
+                                                    siddhi_debugger_callback._siddhi_debugger_callback_proxy_inst.getEventQueue())
         else:
-            self.event_poller.setDebugCallbackEvent(None,None)
+            self.event_poller.setDebugCallbackEvent(None, None)
             self.siddhi_debugger_proxy.setDebuggerCallback(None)
 
     def play(self):

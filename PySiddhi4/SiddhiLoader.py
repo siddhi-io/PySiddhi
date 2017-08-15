@@ -1,3 +1,19 @@
+# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# WSO2 Inc. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 import logging
 
 import sys
@@ -12,6 +28,7 @@ _java_method = None
 _PythonJavaClass = None
 _JavaClass = None
 
+
 def addExtensionPath(class_path):
     '''
     Adds an Extension to Siddhi. Should be called prior to importing any Siddhi Libraries.
@@ -25,6 +42,7 @@ def addExtensionPath(class_path):
         globals()["extensions"] = []
 
     globals()["extensions"].append(class_path)
+
 
 def _resumeLibrary():
     '''
@@ -45,8 +63,10 @@ def _resumeLibrary():
     _PythonJavaClass = t_PythonJavaClass
     _JavaClass = t_JavaClass
 
+
 # Resume global variables values from backup
 _resumeLibrary()
+
 
 def loadLibrary():
     '''
@@ -58,10 +78,9 @@ def loadLibrary():
     if "siddhi_api_configured" in globals():
         if globals()["siddhi_api_configured"] != 4:
             raise Exception("Unable to use multiple versions of Siddhi CEP Library")
-        #Resume global variables if already loaded
+        # Resume global variables if already loaded
         _resumeLibrary()
         return
-
 
     # Add Java library to class path of jvm
     import jnius_config
@@ -73,7 +92,8 @@ def loadLibrary():
     jnius_config.add_options('-Djava.library.path=' + PySiddhi4.root_path + "/__PySiddhi4Proxy")
 
     # Determine library class path
-    class_paths = ['.', PySiddhi4.root_path + '/__PySiddhi4Proxy/target/lib/*', PySiddhi4.root_path + '/__PySiddhi4Proxy/target/*']
+    class_paths = ['.', PySiddhi4.root_path + '/__PySiddhi4Proxy/target/lib/*',
+                   PySiddhi4.root_path + '/__PySiddhi4Proxy/target/*']
 
     # Add Extensions
     if not "extensions" in globals():
@@ -102,8 +122,9 @@ def loadLibrary():
     t_PythonJavaClass = PythonJavaClass
     t_JavaClass = JavaClass
 
-    #Resume references stored in backup
+    # Resume references stored in backup
     _resumeLibrary()
+
 
 def _loadType(type_name):
     loadLibrary()

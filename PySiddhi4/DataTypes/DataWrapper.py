@@ -1,14 +1,28 @@
+# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# WSO2 Inc. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
 
-
-import PySiddhi4
 
 from PySiddhi4 import SiddhiLoader
 from PySiddhi4.DataTypes.DoubleType import DoubleType
 from PySiddhi4.DataTypes.LongType import LongType
 
 '''
-Data Wrapping is used because python 3 doesnt support long data type
+Data Wrapping is used because python 3 doesn't distinctly support long and double data types
 '''
+
 
 def unwrapDataItem(d):
     '''
@@ -24,6 +38,7 @@ def unwrapDataItem(d):
         return DoubleType(d.getData())
     return d.getData()
 
+
 def unwrapDataList(d):
     '''
     Unwraps a list of data sent from Java Proxy Classes
@@ -35,16 +50,18 @@ def unwrapDataList(d):
         results.append(unwrapDataItem(r))
     return results
 
+
 def unwrapData(data):
     '''
     Unwraps a data object sent from Java Proxy Classes
     :param data: 
     :return: 
     '''
-    if isinstance(data,list):
+    if isinstance(data, list):
         return unwrapDataList(data)
     else:
         return unwrapDataItem(data)
+
 
 def wrapDataItem(d):
     '''
@@ -55,13 +72,13 @@ def wrapDataItem(d):
     wrapped_data_proxy = SiddhiLoader._loadType("org.wso2.siddhi.pythonapi.DataWrapProxy")
     wrapped_data = None
     if d is None:
-        #Constructor for null type
-        wrapped_data = wrapped_data_proxy(0,False,True)
+        # Constructor for null type
+        wrapped_data = wrapped_data_proxy(0, False, True)
     elif type(d) is LongType:
-        #Consutrctor for Long Type
+        # Consutrctor for Long Type
         wrapped_data = wrapped_data_proxy(d, True)
     elif type(d) is DoubleType:
-        wrapped_data = wrapped_data_proxy(d, False,False,True)
+        wrapped_data = wrapped_data_proxy(d, False, False, True)
     else:
         wrapped_data = wrapped_data_proxy(d)
     return wrapped_data
@@ -78,16 +95,18 @@ def wrapDataList(data):
         results.append(wrapData(d))
     return results
 
+
 def wrapData(data):
     '''
     Wraps a data object (List or item) to suite transmission to Java proxy classes
     :param data: 
     :return: 
     '''
-    if isinstance(data,list):
+    if isinstance(data, list):
         return wrapDataList(data)
     else:
         return wrapDataItem(data)
+
 
 def unwrapHashMap(map):
     '''
@@ -95,7 +114,8 @@ def unwrapHashMap(map):
     :param map: 
     :return: 
     '''
-    if (not isinstance(map,SiddhiLoader._JavaClass)) or (map.__javaclass__ != "java/util/Map" and map.__javaclass__ != "java/util/HashMap"):
+    if (not isinstance(map, SiddhiLoader._JavaClass)) or (
+            map.__javaclass__ != "java/util/Map" and map.__javaclass__ != "java/util/HashMap"):
         return map
         # TODO: Should prevent exposure of subtypes of ComplexEvent
     results = {}
