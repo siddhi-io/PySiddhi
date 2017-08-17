@@ -30,7 +30,9 @@ class BasicTests(unittest.TestCase):
     def setUp(self):
         # Creating SiddhiManager
         self.siddhiManager = SiddhiManager()
-        self.siddhiApp = "" + "define stream cseEventStream (symbol string, price float, volume long); " + "" + "@info(name = 'query1') " + "from cseEventStream[volume < 150] " + "select symbol,price " + "insert into outputStream ;"
+        self.siddhiApp = "define stream cseEventStream (symbol string, price float, volume long); " +\
+                             "@info(name = 'query1') " + "from cseEventStream[volume < 150] " +\
+                             "select symbol,price " + "insert into outputStream ;"
         # Generating runtime
         # print(self.siddhiApp)
         self.siddhiAppRuntime = self.siddhiManager.createSiddhiAppRuntime(self.siddhiApp)
