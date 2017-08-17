@@ -6,7 +6,7 @@ The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. 
 
 This is currently a work in progress, as a project for Google Summer of Code 2017 Program.
 
-*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ and __Siddhi CEP 4.0.0-M33__ for __Python 2.7.x__ and __Python 3.x__*
+*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ and __Siddhi CEP 4.0.0-M43-SNAPSHOT__ for __Python 2.7.x__ and __Python 3.x__*
 
 Project Goals
 -----
@@ -48,7 +48,7 @@ Installing the Library from Source
     sm.shutdown()
     ```
 
-    - For Siddhi CEP 4.0.0-M33
+    - For Siddhi CEP 4.0.0-M43-SNAPSHOT
     ```python
     from PySiddhi4.core.SiddhiManager import SiddhiManager
     sm = SiddhiManager()
