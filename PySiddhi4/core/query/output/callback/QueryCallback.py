@@ -1,4 +1,4 @@
-# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 #
 # WSO2 Inc. licenses this file to you under the Apache License,
 # Version 2.0 (the "License"); you may not use this file except
@@ -63,7 +63,7 @@ class QueryCallback(with_metaclass(ABCMeta, object)):
                 _created_instances.remove(query_callback_self)
                 logging.info("Java Reported GC Collected Query Callback")
 
-        self._receive_callback_ref = ReceiveCallback()  # Hold reference to prevent python from GC callback before java does
+        self._receive_callback_ref = ReceiveCallback()  # Hold reference to prevent python from GC before java does
         self._query_callback_proxy_inst.setReceiveCallback(self._receive_callback_ref)
         _created_instances.append(self)
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 #
 # WSO2 Inc. licenses this file to you under the Apache License,
 # Version 2.0 (the "License"); you may not use this file except
@@ -44,7 +44,8 @@ class TestOutputStream(TestCase):
     def test_outputstram(self):
         logging.info("OutputStream Test 1: Test reception of events")
         siddhiManager = SiddhiManager()
-        cseEventStream = "@config(async = 'true') define stream cseEventStream (symbol string, price float, volume int);"
+        cseEventStream = "@config(async = 'true') " \
+                         "define stream cseEventStream (symbol string, price float, volume int);"
 
         query = "@info(name = 'query 1') from cseEventStream select symbol, price, volume insert into OutputStream; "
 

@@ -1,4 +1,4 @@
-# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 #
 # WSO2 Inc. licenses this file to you under the Apache License,
 # Version 2.0 (the "License"); you may not use this file except
@@ -49,7 +49,8 @@ class TestDebugger(TestCase):
         logging.info("Siddi Debugger Test 1: Test next traversal in a simple query")
 
         siddhiManager = SiddhiManager()
-        cseEventStream = "@config(async = 'true') define stream cseEventStream (symbol string, price float, volume int);"
+        cseEventStream = "@config(async = 'true') " \
+                         "define stream cseEventStream (symbol string, price float, volume int);"
 
         query = "@info(name = 'query 1') from cseEventStream select symbol, price, volume insert into OutputStream; "
 
@@ -113,8 +114,10 @@ class TestDebugger(TestCase):
 
         siddhiManager = SiddhiManager()
 
-        cseEventStream = "@config(async = 'true') define stream cseEventStream (symbol string, price float, volume int);"
-        query = "@info(name = 'query1') from cseEventStream#window.lengthBatch(3) select symbol, price, volume insert into OutputStream; "
+        cseEventStream = "@config(async = 'true') " \
+                         "define stream cseEventStream (symbol string, price float, volume int);"
+        query = "@info(name = 'query1') " \
+                "from cseEventStream#window.lengthBatch(3) select symbol, price, volume insert into OutputStream; "
 
         siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(cseEventStream + query)
 
@@ -177,7 +180,9 @@ class TestDebugger(TestCase):
         siddhiManager = SiddhiManager()
 
         cseEventStream = "define stream cseEventStream (symbol string, price float, volume int);"
-        query = "@info(name = 'query1')" + "from cseEventStream#window.timeBatch(3 sec) " + "select symbol, price, volume " + "insert into OutputStream; "
+        query = "@info(name = 'query1')" \
+                + "from cseEventStream#window.timeBatch(3 sec) " \
+                + "select symbol, price, volume " + "insert into OutputStream; "
 
         siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(cseEventStream + query)
 
@@ -904,7 +909,8 @@ class TestDebugger(TestCase):
         logging.info("Siddi Debugger Wrapper Test 2: Acquire and Release Break Point")
 
         siddhiManager = SiddhiManager()
-        cseEventStream = "@config(async = 'true') define stream cseEventStream (symbol string, price float, volume int);"
+        cseEventStream = "@config(async = 'true') " \
+                         "define stream cseEventStream (symbol string, price float, volume int);"
 
         query = "@info(name = 'query 1') from cseEventStream select symbol, price, volume insert into OutputStream; "
 

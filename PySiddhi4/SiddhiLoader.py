@@ -1,4 +1,4 @@
-# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 #
 # WSO2 Inc. licenses this file to you under the Apache License,
 # Version 2.0 (the "License"); you may not use this file except
@@ -85,8 +85,8 @@ def loadLibrary():
     # Add Java library to class path of jvm
     import jnius_config
 
-    # NOTE: The following code-line is required on Linux Kernel 4.4.0-81-generic and above to avoid segmentation fault at
-    # initialization of pyjnius
+    # NOTE: The following code-line is required on Linux Kernel 4.4.0-81-generic and above to avoid segmentation fault
+    # at initialization of pyjnius
     jnius_config.add_options('-Xss1280k')
 
     jnius_config.add_options('-Djava.library.path=' + PySiddhi4.root_path + "/__PySiddhi4Proxy")

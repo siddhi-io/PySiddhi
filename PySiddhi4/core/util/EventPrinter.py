@@ -1,4 +1,4 @@
-# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 #
 # WSO2 Inc. licenses this file to you under the Apache License,
 # Version 2.0 (the "License"); you may not use this file except
@@ -34,4 +34,5 @@ def PrintEvent(timestamp, inEvents, outEvents):
         outEvents = [event._event_proxy for event in outEvents]
     _event_printer_proxy.printEvent(timestamp, inEvents, outEvents)
 
-    # NOTE: We are unable to call org.wso2.siddhi.core.util.EventPrinter.print directly because print is a keyword of python
+    # NOTE: We are unable to call org.wso2.siddhi.core.util.EventPrinter.print directly
+    # because print is a keyword of python

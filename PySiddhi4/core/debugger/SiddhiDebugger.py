@@ -1,4 +1,4 @@
-# Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
 #
 # WSO2 Inc. licenses this file to you under the Apache License,
 # Version 2.0 (the "License"); you may not use this file except
@@ -120,7 +120,8 @@ class SiddhiDebugger(object):
 
                                     debug_callback.debugEvent(complexEvent, queryName, queryTerminal, debugger)
                                 elif event.isGCEvent():
-                                    self.debugCallback = None  # Release reference held with callback since it has been destroyed from Java Side
+                                    self.debugCallback = None  # Release reference held with callback since it has been
+                                    # destroyed from Java Side
 
                     sleep(0.005)  # NOTE: Removing this sleep causes changing of Debug Callback to fail
                     # TODO: Investigate why removal of above sleep causes condition in above note
@@ -202,7 +203,7 @@ class SiddhiDebugger(object):
             self.siddhi_debugger_proxy.setDebuggerCallback(
                 siddhi_debugger_callback._siddhi_debugger_callback_proxy_inst)
             self.event_poller.setDebugCallbackEvent(siddhi_debugger_callback,
-                                                    siddhi_debugger_callback._siddhi_debugger_callback_proxy_inst.getEventQueue())
+                siddhi_debugger_callback._siddhi_debugger_callback_proxy_inst.getEventQueue())
         else:
             self.event_poller.setDebugCallbackEvent(None, None)
             self.siddhi_debugger_proxy.setDebuggerCallback(None)
