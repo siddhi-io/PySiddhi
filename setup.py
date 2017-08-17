@@ -1,3 +1,19 @@
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# WSO2 Inc. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 import os
 from subprocess import check_call
 
@@ -10,9 +26,9 @@ class PostInstallCommand(install):
 
     def run(self):
         # Compile JAVA Code here
-        if os.name == "nt": # Shell=True necessary for Windows
-            check_call("mvn clean install".split(),cwd="__PySiddhi3Proxy", shell=True)
-        else: # shell=True causes cwd to be ignored in Linux
+        if os.name == "nt":  # Shell=True necessary for Windows
+            check_call("mvn clean install".split(), cwd="__PySiddhi3Proxy", shell=True)
+        else:  # shell=True causes cwd to be ignored in Linux
             check_call("mvn clean install".split(), cwd="__PySiddhi3Proxy")
 
         install.run(self)
@@ -29,11 +45,11 @@ setup(
     name="PySiddhi3",
     version="0.1.dev",
     packages=filtered_packages,
-    install_requires=["pyjnius","future"],
+    install_requires=["pyjnius", "future"],
 
     package_data={"PySiddhi3": ["../__PySiddhi3Proxy/target/lib/*.jar",
-                                 "../__PySiddhi3Proxy/target/*.jar",
-                                 "../__PySiddhi3Proxy/*.so"]
+                                "../__PySiddhi3Proxy/target/*.jar",
+                                "../__PySiddhi3Proxy/*.so"]
                   },
 
     # metadata for upload to PyPI

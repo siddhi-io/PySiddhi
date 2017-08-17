@@ -1,14 +1,30 @@
-#!/usr/bin/python3
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# WSO2 Inc. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 from subprocess import call
 import os
 from PySiddhi3 import SiddhiLoader
 
 # Download extension jars
-if os.name == "nt": # Shell=True necessary for Windows
-    call(["mvn", "install"],shell=True, cwd=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))) ,os.path.join("Resources","Extensions3")))
-else: # shell=True causes cwd to be ignored in Linux
-    call(["mvn", "install"], cwd=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+if os.name == "nt":  # Shell=True necessary for Windows
+    call(["mvn", "install"], shell=True, cwd=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
                                                           os.path.join("Resources", "Extensions3")))
+else:  # shell=True causes cwd to be ignored in Linux
+    call(["mvn", "install"], cwd=os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                                              os.path.join("Resources", "Extensions3")))
 # Add extensions
 extensions_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/Resources/Extensions3/jars/*"
 SiddhiLoader.addExtensionPath(extensions_path)
@@ -17,14 +33,12 @@ import unittest
 import logging
 from time import sleep
 
-
 from PySiddhi3.DataTypes.LongType import LongType
 from PySiddhi3.core.SiddhiManager import SiddhiManager
 from PySiddhi3.core.query.output.callback.QueryCallback import QueryCallback
 from PySiddhi3.core.util.EventPrinter import PrintEvent
 
 logging.basicConfig(level=logging.INFO)
-
 
 from unittest.case import TestCase
 
@@ -41,23 +55,25 @@ class TestExtensions(TestCase):
 
         siddhiManager = SiddhiManager()
 
-        siddhiManager.setExtension("timeseries:regress", "org.wso2.extension.siddhi.execution.timeseries.LinearRegressionStreamProcessor")
+        siddhiManager.setExtension("timeseries:regress",
+                                   "org.wso2.extension.siddhi.execution.timeseries.LinearRegressionStreamProcessor")
 
         inputStream = "define stream InputStream (y int, x int);"
         siddhiApp = "@info(name = 'query1') from InputStream#timeseries:regress(1, 100, 0.95, y, x) " + \
-                     "select * " + \
-                     "insert into OutputStream;"
+                    "select * " + \
+                    "insert into OutputStream;"
         siddhiAppRuntime = siddhiManager.createExecutionPlanRuntime(inputStream + siddhiApp)
         self.betaZero = 0
         _self_shaddow = self
+
         class QueryCallbackImpl(QueryCallback):
             def receive(self, timestamp, inEvents, outEvents):
-                PrintEvent(timestamp,inEvents,outEvents)
+                PrintEvent(timestamp, inEvents, outEvents)
                 _self_shaddow.count.addAndGet(len(inEvents))
-                _self_shaddow.betaZero = inEvents[len(inEvents)-1].getData(3)
-                
+                _self_shaddow.betaZero = inEvents[len(inEvents) - 1].getData(3)
+
         siddhiAppRuntime.addCallback("query1", QueryCallbackImpl())
-       
+
         inputHandler = siddhiAppRuntime.getInputHandler("InputStream")
         siddhiAppRuntime.start()
 
@@ -114,12 +130,12 @@ class TestExtensions(TestCase):
 
         sleep(1)
 
-        self.assertEqual(50, self.count.get(),"No of events: ")
+        self.assertEqual(50, self.count.get(), "No of events: ")
         # Condition Loosened from equality due to floating point error
-        self.assertTrue(573.1418421169493-0.001<self.betaZero<573.1418421169493+0.001,"Beta0: " + str(573.1418421169493 - self.betaZero))
+        self.assertTrue(573.1418421169493 - 0.001 < self.betaZero < 573.1418421169493 + 0.001,
+                        "Beta0: " + str(573.1418421169493 - self.betaZero))
 
         siddhiAppRuntime.shutdown()
-
 
     def testMathRandomFunctionWithSeed(self):
         logging.info("RandomFunctionExtension TestCase, with seed")
@@ -132,9 +148,8 @@ class TestExtensions(TestCase):
 
         # Creating Query
         streamDefinition = "define stream inputStream (symbol string, price long, volume long);"
-        query ="@info(name = 'query1') from inputStream select symbol , math:rand(12) as randNumber " + \
-            "insert into outputStream;"
-
+        query = "@info(name = 'query1') from inputStream select symbol , math:rand(12) as randNumber " + \
+                "insert into outputStream;"
 
         # Setting up ExecutionPlan
         executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(streamDefinition + query)
@@ -148,7 +163,7 @@ class TestExtensions(TestCase):
                 _self_shaddow.count.addAndGet(len(inEvents))
                 _self_shaddow.eventArrived = True
                 if len(inEvents) == 3:
-                    randNumbers = [0,0,0]
+                    randNumbers = [0, 0, 0]
                     randNumbers[0] = inEvents[0].getData(1)
                     randNumbers[1] = inEvents[1].getData(1)
                     randNumbers[2] = inEvents[2].getData(1)
@@ -156,12 +171,11 @@ class TestExtensions(TestCase):
 
                     logging.info(randNumbers[0] + ", " + randNumbers[1])
 
-                    if randNumbers[0] == randNumbers[1] or randNumbers[0] == randNumbers[2] or randNumbers[1] == randNumbers[2]:
+                    if randNumbers[0] == randNumbers[1] or randNumbers[0] == randNumbers[2] or randNumbers[1] == \
+                            randNumbers[2]:
                         isDuplicatePresent = True
 
                     _self_shaddow.assertEquals(False, isDuplicatePresent)
-
-
 
         executionPlanRuntime.addCallback("query1", ConcreteQueryCallback())
 
@@ -189,9 +203,8 @@ class TestExtensions(TestCase):
 
         # Creating Query
         streamDefinition = "define stream inputStream (symbol string, price long, volume long);"
-        query ="@info(name = 'query1') from inputStream select symbol , math:rand() as randNumber " + \
-            "insert into outputStream;"
-
+        query = "@info(name = 'query1') from inputStream select symbol , math:rand() as randNumber " + \
+                "insert into outputStream;"
 
         # Setting up ExecutionPlan
         executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(streamDefinition + query)
@@ -205,17 +218,16 @@ class TestExtensions(TestCase):
                 _self_shaddow.count.addAndGet(len(inEvents))
                 _self_shaddow.eventArrived = True
                 if len(inEvents) == 3:
-                    randNumbers = [0,0,0]
+                    randNumbers = [0, 0, 0]
                     randNumbers[0] = inEvents[0].getData(1)
                     randNumbers[1] = inEvents[1].getData(1)
                     randNumbers[2] = inEvents[2].getData(1)
                     isDuplicatePresent = False
-                    if randNumbers[0] == randNumbers[1] or randNumbers[0] == randNumbers[2] or randNumbers[1] == randNumbers[2]:
+                    if randNumbers[0] == randNumbers[1] or randNumbers[0] == randNumbers[2] or randNumbers[1] == \
+                            randNumbers[2]:
                         isDuplicatePresent = True
 
                     _self_shaddow.assertEquals(False, isDuplicatePresent)
-
-
 
         executionPlanRuntime.addCallback("query1", ConcreteQueryCallback())
 
@@ -246,7 +258,6 @@ class TestExtensions(TestCase):
         query = "@info(name = 'query1') from inputStream select symbol , " + \
                 "str:regexp(symbol, regex) as beginsWithWSO2 " + \
                 "insert into outputStream"
-
 
         # Setting up ExecutionPlan
         executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(streamDefinition + query)
@@ -297,15 +308,16 @@ class TestExtensions(TestCase):
         # Creating Query
         streamDefinition = "define stream inputStream (symbol string, price long, volume long);"
         query = "@info(name = 'query1') " + \
-                 "from inputStream " + \
-                 "select symbol , str:contains(symbol, 'WSO2') as isContains " + \
-                 "insert into outputStream;"
+                "from inputStream " + \
+                "select symbol , str:contains(symbol, 'WSO2') as isContains " + \
+                "insert into outputStream;"
 
         # Setting up Execution Plan
         executionPlanRuntime = siddhiManager.createExecutionPlanRuntime(streamDefinition + query)
 
         # Setting up callback
         _self_shaddow = self
+
         class ConcreteQueryCallback(QueryCallback):
             def receive(self, timestamp, inEvents, outEvents):
                 PrintEvent(timestamp, inEvents, outEvents)
@@ -322,7 +334,6 @@ class TestExtensions(TestCase):
 
                 _self_shaddow.eventArrived = True
 
-
         executionPlanRuntime.addCallback("query1", ConcreteQueryCallback())
 
         # Retrieving input handler to push events into Siddhi
@@ -336,9 +347,7 @@ class TestExtensions(TestCase):
         inputHandler.send(["One of the best middleware is from WSO2.", 60.5, LongType(200)])
         sleep(0.5)
 
-        self.assertEqual(self.count.get(),3)
+        self.assertEqual(self.count.get(), 3)
         self.assertTrue(self.eventArrived)
 
         siddhiManager.shutdown()
-
-
