@@ -96,8 +96,8 @@ Further information on above products are available in the links below.
     - GitHub - https://github.com/wso2/product-das/tree/release-3.1.0-RC3
     - Documentation - https://docs.wso2.com/display/DAS310/WSO2+Data+Analytics+Server+Documentation
 
-Contact
+Contributors
 -----
-Madhawa - madhawavidanapathirana@gmail.com
-
-#GSoC2017 #WSO2
+* __Madhawa Vidanapathirana__
+   - Email: madhawavidanapathirana@gmail.com
+   - Organization: University of Moratuwa
