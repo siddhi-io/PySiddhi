@@ -45,7 +45,8 @@ setup(
     name="PySiddhi3",
     version="0.1.dev",
     packages=filtered_packages,
-    install_requires=["pyjnius", "future"],
+    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
+    install_requires=["pyjnius", "future", "enum34 ; python_version<'3.4'"],
 
     package_data={"PySiddhi3": ["../__PySiddhi3Proxy/target/lib/*.jar",
                                 "../__PySiddhi3Proxy/target/*.jar",

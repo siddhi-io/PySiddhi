@@ -72,12 +72,20 @@ Creating deployment wheel (for Linux)
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Delete directory `build` if exist. 
 3. Goto source root and run `python setup.py bdist_wheel --plat-name linux-x86_64`
+4. Wheel file will be generated in `dist` directory.
 
 Creating deployment wheel (for Windows)
 -----
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Delete directory `build` if exist. 
 3. Goto source root and run `python setup.py bdist_wheel --plat-name win-amd64`
+4. Wheel file will be generated in `dist` directory.
+
+Installing deployment wheel 
+-----
+1. Make sure all pre-requisites are met. 
+(You may have to separately install cython using `pip install cython` if you use _virtual environments_)
+2. Install python wheel using `pip install [path_to_wheel_file]`.
 
 Background
 -----
