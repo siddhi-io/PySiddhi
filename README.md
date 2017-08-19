@@ -111,3 +111,5 @@ Contributors
 * __Madhawa Vidanapathirana__
    - Email: madhawavidanapathirana@gmail.com
    - Organization: University of Moratuwa
+
+__Developer Mail Group__: dev@wso2.org
