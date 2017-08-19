@@ -78,6 +78,11 @@ Creating deployment wheel (for Windows)
 2. Delete directory `build` if exist. 
 3. Goto source root and run `python setup.py bdist_wheel --plat-name win-amd64`
 
+Installing deployment wheel 
+-----
+1. Make sure all pre-requisites are met. 
+(You may have to separately install cython using `pip install cython` if you use _virtual environments_)
+2. Install python wheel using `pip install [path_to_wheel_file]`.
 
 Background
 -----
