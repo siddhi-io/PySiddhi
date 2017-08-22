@@ -6,7 +6,7 @@ The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. 
 
 This is currently a work in progress, as a project for Google Summer of Code 2017 Program.
 
-*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.1) and __Siddhi CEP 4.0.0-M43-SNAPSHOT__  (in branch 4.0) for __Python 2.7.x__ and __Python 3.x__*
+*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.x) and __Siddhi CEP 4.0.0-M43-SNAPSHOT__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
 
 Project Goals
 -----
@@ -16,7 +16,7 @@ Project Goals
 Current Progress
 -----
 - [x] Basic features of Siddhi CEP Core 3.1 and 4.0
-- [x] Wrapper on Siddhi Debugger (for Siddhi 4.0 only)
+- [x] Wrapper on Siddhi Debugger (for PySiddhi4 only)
 - [x] Support to Siddhi Extensions Loading
 - [x] Unit Tests
 - [x] Wiki
