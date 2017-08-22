@@ -11,16 +11,16 @@ This is currently a work in progress, as a project for Google Summer of Code 201
 Project Goals
 -----
 1) Develop a Python Wrapper on Siddhi Java Library 3.1 and 4.0.
-2) Extend Python API in (1) to support interactions with WSO2 Data Analytics Server 3.1 and 4.0.
-3) Testing, Documentation and Deployment
+2) Testing, Documentation and Deployment
 
 Current Progress
 -----
-Currently, the project is in very early stage with discussions on the scope.
 - [x] Basic features of Siddhi CEP Core 3.1 and 4.0
 - [x] Wrapper on Siddhi Debugger
 - [x] Support to Siddhi Extensions Loading
 - [x] Unit Tests
+- [x] Wiki
+- [x] Deployment wheels
 
 Installing the Library from Source
 -----
@@ -72,11 +72,15 @@ Creating deployment wheel (for Linux)
 2. Delete directory `build` if exist. 
 3. Goto source root and run `python setup.py bdist_wheel --plat-name linux-x86_64`
 
+_Note: You need to use linux operating system to build linux wheels._
+
 Creating deployment wheel (for Windows)
 -----
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Delete directory `build` if exist. 
 3. Goto source root and run `python setup.py bdist_wheel --plat-name win-amd64`
+
+_Note: You need to use Windows operating system to build Windows wheels._
 
 Installing deployment wheel 
 -----
@@ -86,7 +90,7 @@ Installing deployment wheel
 
 Background
 -----
-Siddhi is a Query Language and a Library for Realtime Streaming Complex Event Processing developed by WSO2 Inc. Siddhi CEP is currently used in WSO2 Data Analytics Server, an Enterprise Level Open Source Data Analytics Solution.
+Siddhi is a Query Language and a Library for Realtime Complex Event Processing developed by WSO2 Inc. Siddhi CEP is currently used in WSO2 Data Analytics Server, an Enterprise Level Open Source Data Analytics Solution.
 
 Further information on above products are available in the links below.
 
