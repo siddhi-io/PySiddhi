@@ -11,13 +11,16 @@ This is currently a work in progress, as a project for Google Summer of Code 201
 Project Goals
 -----
 1) Develop a Python Wrapper on Siddhi Java Library 3.1 and 4.0.
-2) Testing, Documentation and Deployment
+2) Extend the wrapper to support interactions with WSO2 DAS 4.0.
+3) Testing, Documentation and Deployment
 
 Current Progress
 -----
 - [x] Basic features of Siddhi CEP Core 3.1 and 4.0
 - [x] Wrapper on Siddhi Debugger (for PySiddhi4 only)
 - [x] Support to Siddhi Extensions Loading
+- [x] Rest Client on WSO2 DAS 4.0 - Siddhi App Management
+- [x] Rest Client on WSO2 DAS 4.0 Event Simulator
 - [x] Unit Tests
 - [x] Wiki
 - [x] Deployment wheels
@@ -26,6 +29,7 @@ Installing the Library from Source
 -----
 1. Install following pre-requisites.
     - Python 2.7 or 3.x
+    - Requests (`sudo apt-get install requests`)
     - Cython (`sudo apt-get install cython`)
     - Pyjnius (`sudo pip install pyjnius`)
     - Future (`sudo pip install future`)
@@ -34,7 +38,8 @@ Installing the Library from Source
     - Maven and Java 8
     - g++ and other development tools 
       - `sudo apt-get install build-essential g++ autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev`
-      
+    - For use of WSO2 DAS 4.0 Client functionality, it is required to have WSO2 DAS 4.0 installed and running.
+    (Refer _Running the Tests_ section for installation details)
 2. Install using Setup.py.
     - Clone the relevant branch (3.1 or 4.0) from GitHub Repository.
     - Navigate to project root and run `sudo pip3 install .`
@@ -62,7 +67,11 @@ Running the Tests
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Compile Java Libraries.
     - Navigate to `PySiddhi/PySiddhi4Proxy` and run `mvn clean install`
-    - Run the tests cases in `PySiddhi/Tests/PySiddhi4Tests` directory
+3. For running tests on WSO2 DAS 4.0 Client, it is required to have WSO2 DAS 4.0 installed and running. 
+    - Obtain WSO2 DAS 4.0-M6 binary distribution from https://github.com/wso2/product-das/releases/tag/v4.0.0-M6.
+    - Extract `wso2das-4.0.0-SNAPSHOT.zip` to a suitable location (say `DAS_HOME`).
+    - Navigate to `DAS_Home/bin/` and run `sh worker.sh`.
+4. Run the tests cases in `PySiddhi/Tests` directory
 
 *If mvn clean install throws errors, check the paths provided for imports of Python3 Developer Headers
 
