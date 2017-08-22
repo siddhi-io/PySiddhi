@@ -68,7 +68,7 @@ class EventSimulatorTests(unittest.TestCase):
         sleep(5)
 
         apps = siddhiAppManagementClient.listSiddhiApps()
-        print(apps)
+        logging.info(apps)
         self.assertTrue("TestSiddhiApp1" in apps)
         logging.info(apps)
 
