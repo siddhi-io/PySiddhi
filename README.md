@@ -38,6 +38,7 @@ Installing the Library from Source
     - g++ and other development tools
       - `sudo apt-get install build-essential g++ autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev`
     - For use of WSO2 DAS 4.0 Client functionality, it is required to have WSO2 DAS 4.0 installed and running. (Refer _Running the Tests_ section of README.md in master branch)
+    - Requests (`sudo apt-get install requests` for PySiddhi4 only)
 
 2. Install using Setup.py.
     - Clone the relevant branch (3.1 or 4.0) from GitHub Repository.
