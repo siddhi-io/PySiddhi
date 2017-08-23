@@ -2,22 +2,25 @@
 
 *You are currently in branch for PySiddhi 3.x*
 
-The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. The Python wrapper would support Siddhi 3.1 and Siddhi 4.0.
+The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. The Python wrapper would support Siddhi 3.1 and Siddhi 4.0. A REST Client is also developed to interact with WSO2 Data Analytics Server (DAS) 4.0.
 
 This is currently a work in progress, as a project for Google Summer of Code 2017 Program.
 
-*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.x) and __Siddhi CEP 4.0.0-M43-SNAPSHOT__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
+*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.x), __Siddhi CEP 4.0.0-M43-SNAPSHOT__ (in branch master) and __WSO2 Data Analytics Server (DAS) 4.0.0-M6-SNAPSHOT__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
 
 Project Goals
 -----
 1) Develop a Python Wrapper on Siddhi Java Library 3.1 and 4.0.
-2) Testing, Documentation and Deployment
+2) Extend the wrapper to support interactions with WSO2 DAS 4.0.
+3) Testing, Documentation and Deployment
 
 Current Progress
 -----
 - [x] Basic features of Siddhi CEP Core 3.1 and 4.0
 - [x] Wrapper on Siddhi Debugger (for PySiddhi4 only)
 - [x] Support to Siddhi Extensions Loading
+- [x] Rest Client on WSO2 DAS 4.0 - Siddhi App Management (for PySiddhi4 only)
+- [x] Rest Client on WSO2 DAS 4.0 Event Simulator (for PySiddhi4 only)
 - [x] Unit Tests
 - [x] Wiki
 - [x] Deployment wheels
@@ -34,10 +37,11 @@ Installing the Library from Source
     - Maven and Java 8
     - g++ and other development tools
       - `sudo apt-get install build-essential g++ autotools-dev libicu-dev build-essential libbz2-dev libboost-all-dev`
+    - For use of WSO2 DAS 4.0 Client functionality, it is required to have WSO2 DAS 4.0 installed and running. (Refer _Running the Tests_ section of README.md in master branch)
 
 2. Install using Setup.py.
     - Clone the relevant branch (3.1 or 4.0) from GitHub Repository.
-    - Navigate to project root and run `sudo pip3 install .`
+    - Navigate to project root and run `sudo pip install .`
 
 3. Use the Library using Python.
     - For Siddhi CEP 3.1
@@ -63,7 +67,7 @@ Running the Tests
 2. Compile Java Libraries.
     - Navigate to `PySiddhi/__PySiddhi3Proxy` and run `mvn install`
     - Navigate to `SiddhiCEPPythonAPI/SiddhiCEP4/ProxyClasses/SiddhiCEP4Proxy` and run `mvn clean install`
-    - Run the tests cases in `PySiddhi/Tests/PySiddhi3Tests` directory
+3. Run the tests cases in `PySiddhi/Tests/PySiddhi3Tests` directory
 
 *If mvn clean install throws errors, check the paths provided for imports of Python3 Developer Headers
 
