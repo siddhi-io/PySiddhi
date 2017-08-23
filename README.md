@@ -19,8 +19,8 @@ Current Progress
 - [x] Basic features of Siddhi CEP Core 3.1 and 4.0
 - [x] Wrapper on Siddhi Debugger (for PySiddhi4 only)
 - [x] Support to Siddhi Extensions Loading
-- [x] Rest Client on WSO2 DAS 4.0 - Siddhi App Management
-- [x] Rest Client on WSO2 DAS 4.0 Event Simulator
+- [x] Rest Client on WSO2 DAS 4.0 - Siddhi App Management (for PySiddhi4 only)
+- [x] Rest Client on WSO2 DAS 4.0 Event Simulator (for PySiddhi4 only)
 - [x] Unit Tests
 - [x] Wiki
 - [x] Deployment wheels
