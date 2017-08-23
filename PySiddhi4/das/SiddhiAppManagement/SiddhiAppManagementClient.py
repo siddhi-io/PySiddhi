@@ -1,24 +1,43 @@
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# WSO2 Inc. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 from enum import Enum
 
 from PySiddhi4.das.__Communication.RestClient import RestClient
+
 
 class UpdateAppStatusResponse(Enum):
     '''
     Response from WSO2 DAS on updateSidhdiApp call of SiddhiAppManagementClient.
     '''
-    savedNew=201,
-    updated=200
+    savedNew = 201,
+    updated = 200
+
 
 class SiddhiAppManagementClient(RestClient):
     '''
     Client for Siddhi App Management (publish, edit, list, retrieve etc.) in WSO2 DAS.
     '''
+
     def __init__(self, siddhi_apps_url):
         '''
         Instantiates SiddhiAppMangementClient. 
         :param siddhi_apps_url: url to siddhi_apps endpoint (e.g. root_url + '/siddhi-apps')
         '''
-        RestClient.__init__(self,siddhi_apps_url)
+        RestClient.__init__(self, siddhi_apps_url)
 
     def retrieveSiddhiApp(self, siddhiAppName):
         '''
@@ -37,8 +56,7 @@ class SiddhiAppManagementClient(RestClient):
         elif r.status_code == 404:
             raise Exception("Siddhi App with specified name does not exist.")
         else:
-            raise Exception(str(r.status_code)  + ": " + r.text)
-
+            raise Exception(str(r.status_code) + ": " + r.text)
 
     def deleteSiddhiApp(self, siddhiAppName):
         '''
@@ -54,10 +72,9 @@ class SiddhiAppManagementClient(RestClient):
         elif r.status_code == 404:
             raise Exception("Siddhi App with specified name does not exist.")
         elif r.status_code == 500:
-            raise Exception(str(r.status_code)  + ": " + r.text)
+            raise Exception(str(r.status_code) + ": " + r.text)
         else:
-            raise Exception(str(r.status_code)  + ": " + r.text)
-
+            raise Exception(str(r.status_code) + ": " + r.text)
 
     def retrieveStatusSiddhiApp(self, siddhiAppName):
         '''
@@ -76,7 +93,7 @@ class SiddhiAppManagementClient(RestClient):
         elif r.status_code == 404:
             raise Exception("Siddhi App with specified name does not exist.")
         else:
-            raise Exception(str(r.status_code)  + ": " + r.text)
+            raise Exception(str(r.status_code) + ": " + r.text)
 
     def listSiddhiApps(self, isActive=None):
         '''
@@ -86,8 +103,8 @@ class SiddhiAppManagementClient(RestClient):
         '''
         params = None
         if isActive is not None:
-            params = {"isActive":isActive}
-        r = self._sendGetRequest("/",params=params)
+            params = {"isActive": isActive}
+        r = self._sendGetRequest("/", params=params)
         if r.status_code == 200:
             result = r.json()
             return result
@@ -123,7 +140,7 @@ class SiddhiAppManagementClient(RestClient):
         :param siddhiApp: 
         :return: 
         '''
-        r = self._sendPostRequest("/",data=siddhiApp)
+        r = self._sendPostRequest("/", data=siddhiApp)
         if r.status_code == 201:
             result = r.json()
             if result["type"] == "success":

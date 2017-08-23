@@ -1,3 +1,19 @@
+# Copyright (c) 2017, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+#
+# WSO2 Inc. licenses this file to you under the Apache License,
+# Version 2.0 (the "License"); you may not use this file except
+# in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+
 import os
 import unittest
 
@@ -9,7 +25,6 @@ from PySiddhi4.das.SiddhiAppManagement.SiddhiAppManagementClient import UpdateAp
 
 logging.basicConfig(level=logging.INFO)
 
-
 resources_path = os.path.join(os.path.dirname(__file__), "Resources")
 
 
@@ -19,7 +34,7 @@ class EventSimulatorTests(unittest.TestCase):
         logging.info("Prior to launching tests, make sure DAS 4 is running at " + self.hostUrl)
 
     def tearDown(self):
-        sleep(5) # Sleep to provide sufficient time for DAS 4.0 to update status
+        sleep(5)  # Sleep to provide sufficient time for DAS 4.0 to update status
 
     def testRetrieveSiddhiAppStatus(self):
         logging.info("Test1: Retrieving a Siddhi App Status")
@@ -28,7 +43,7 @@ class EventSimulatorTests(unittest.TestCase):
 
         status = siddhiAppManagementClient.retrieveStatusSiddhiApp("TestSiddhiApp")
 
-        self.assertEqual(status,"active")
+        self.assertEqual(status, "active")
 
     def testRetrieveSiddhiApp(self):
         logging.info("Test1: Retrieving a Siddhi App")
@@ -39,7 +54,7 @@ class EventSimulatorTests(unittest.TestCase):
         app = siddhiAppManagementClient.retrieveSiddhiApp("TestSiddhiApp")
 
         lines = []
-        with open(resources_path + "/TestSiddhiApp.siddhi","rb") as f:
+        with open(resources_path + "/TestSiddhiApp.siddhi", "rb") as f:
             lines = [line.decode() for line in f.readlines()]
 
         target_app = "".join(lines)
@@ -47,8 +62,7 @@ class EventSimulatorTests(unittest.TestCase):
         logging.info(target_app)
 
         logging.info(app)
-        self.assertEqual(app,target_app)
-
+        self.assertEqual(app, target_app)
 
     def testListSiddhiApps(self):
         logging.info("Test1: List Siddhi Apps")
@@ -83,9 +97,6 @@ class EventSimulatorTests(unittest.TestCase):
         result = siddhiAppManagementClient.deleteSiddhiApp("TestSiddhiApp1")
         self.assertTrue(result)
 
-
-
-
     def testSaveAndDeleteSiddhiApp(self):
         logging.info("Test1: Save and Delete Siddhi App")
 
@@ -101,12 +112,10 @@ class EventSimulatorTests(unittest.TestCase):
         result = siddhiAppManagerClient.saveSiddhiApp(siddhiApp)
         self.assertTrue(result)
 
-
         sleep(5)
 
         result = siddhiAppManagerClient.deleteSiddhiApp("TestSiddhiApp1")
         self.assertTrue(result)
-
 
     def testUpdateAndDeleteSiddhiApp(self):
         logging.info("Test: Update and Delete Siddhi App")
