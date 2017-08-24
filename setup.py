@@ -43,10 +43,10 @@ for package in packages:
 
 setup(
     name="PySiddhi4",
-    version="0.1.dev",
+    version="1.0.dev",
     packages=filtered_packages,
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
-    install_requires=["pyjnius", "future", "enum34 ; python_version<'3.4'"],
+    install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'3.4'"],
     package_data={
         "PySiddhi4": ["../__PySiddhi4Proxy/target/lib/*.jar",
                       "../__PySiddhi4Proxy/target/*.jar",

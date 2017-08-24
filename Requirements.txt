@@ -1,3 +1,4 @@
 pyjnius
 enum34
 future
+requests
