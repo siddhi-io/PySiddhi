@@ -43,7 +43,7 @@ for package in packages:
 
 setup(
     name="PySiddhi3",
-    version="1.0.dev",
+    version="1.0.0",
     packages=filtered_packages,
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
     install_requires=["pyjnius", "future", "enum34 ; python_version<'3.4'"],
@@ -56,10 +56,23 @@ setup(
     # metadata for upload to PyPI
     author="wso2",
     author_email="dev@wso2.org",
-    description="Distribution of Siddhi CEP Python Wrapper",
+    description="Python wrapper on `Siddhi CEP 3.1.0`.",
     license="Apache2",
     cmdclass={
         'install': PostInstallCommand,
     },
     url="https://github.com/wso2/PySiddhi",
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: Apache Software License',
+        'Natural Language :: English',
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.3',
+        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Topic :: Software Development :: Libraries :: Java Libraries'
+    ]
 )
