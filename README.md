@@ -79,7 +79,7 @@ Creating deployment wheel (for Linux)
 -----
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Delete directory `build` if exist. 
-3. Goto source root and run `python setup.py bdist_wheel --plat-name linux-x86_64`
+3. Goto source root and run `python setup.py bdist_wheel --plat-name manylinux1_x86_64`
 
 _Note: You need to use linux operating system to build linux wheels._
 
