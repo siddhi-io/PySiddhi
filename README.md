@@ -6,7 +6,7 @@ The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. 
 
 This is currently a work in progress, as a project for Google Summer of Code 2017 Program.
 
-*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.x), __Siddhi CEP 4.0.0-M53__ (in branch master) and __WSO2 Data Analytics Server 4.0.0-M6-SNAPSHOT__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
+*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.x), __Siddhi CEP 4.0.0-M53__ (in branch master) and __WSO2 Data Analytics Server 4.0.0-M6__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
 
 Project Goals
 -----
