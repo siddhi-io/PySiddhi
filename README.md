@@ -6,7 +6,7 @@ The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. 
 
 This is currently a work in progress, as a project for Google Summer of Code 2017 Program.
 
-*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.x), __Siddhi CEP 4.0.0-M43-SNAPSHOT__ (in branch master) and __WSO2 Data Analytics Server (DAS) 4.0.0-M6-SNAPSHOT__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
+*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.x), __Siddhi CEP 4.0.0-M53__ (in branch master) and __WSO2 Data Analytics Server (DAS) 4.0.0-M6__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
 
 Project Goals
 -----
@@ -53,7 +53,7 @@ Installing the Library from Source
     sm.shutdown()
     ```
 
-    - For Siddhi CEP 4.0.0-M43-SNAPSHOT
+    - For Siddhi CEP 4.0.0-M53
     ```python
     from PySiddhi3.core.SiddhiManager import SiddhiManager
     sm = SiddhiManager()
@@ -76,7 +76,7 @@ Creating deployment wheel (for Linux)
 -----
 1. Install pre-requisites mentioned in `Installing the Library from Source` section.
 2. Delete directory `build` if exist. 
-3. Goto source root and run `python setup.py bdist_wheel --plat-name linux-x86_64`
+3. Goto source root and run `python setup.py bdist_wheel --plat-name manylinux1_x86_64`
 4. Wheel file will be generated in `dist` directory.
 
 _Note: You need to use linux operating system to build linux wheels._
