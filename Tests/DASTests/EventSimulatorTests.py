@@ -48,7 +48,8 @@ class EventSimulatorTests(unittest.TestCase):
 
         singleSimulationConfiguration = SingleSimulationConfiguration("TestSiddhiApp", "FooStream", [None, 9, 45])
 
-        self.assertTrue(eventSimulatorClient.simulateSingleEvent(singleSimulationConfiguration))
+        self.assertTrue(eventSimulatorClient.simulateSingleEvent(singleSimulationConfiguration, username="admin",
+                                                                 password="admin"))
         logging.info("Successfully Simulated Single Event")
 
     def testCSVUploadAndDelete(self):
@@ -57,12 +58,15 @@ class EventSimulatorTests(unittest.TestCase):
         dasPythonClient = DASClient(self.hostUrl)
         eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
 
-        self.assertTrue(eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv"))
+        self.assertTrue(
+            eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv", username="admin",
+                                           password="admin"))
         logging.info("Successfully Uploaded CSV")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteCSV("sample.csv"))
+        self.assertTrue(eventSimulatorClient.deleteCSV("sample.csv", username="admin",
+                                                       password="admin"))
         logging.info("Successfully Deleted CSV")
 
     def testCSVUpdate(self):
@@ -71,17 +75,22 @@ class EventSimulatorTests(unittest.TestCase):
         dasPythonClient = DASClient(self.hostUrl)
         eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
 
-        self.assertTrue(eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv"))
+        self.assertTrue(
+            eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv", username="admin",
+                                           password="admin"))
         logging.info("Successfully Uploaded CSV")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.updateCSV("sample.csv", "sample2.csv", path=resources_path + "sample.csv"))
+        self.assertTrue(eventSimulatorClient.updateCSV("sample.csv", "sample2.csv", path=resources_path + "sample.csv",
+                                                       username="admin",
+                                                       password="admin"))
         logging.info("Successfully Uploaded CSV")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteCSV("sample2.csv"))
+        self.assertTrue(eventSimulatorClient.deleteCSV("sample2.csv", username="admin",
+                                                       password="admin"))
         logging.info("Successfully Deleted CSV")
 
     def testSaveDeleteSimulationFeedConfiguration(self):
@@ -108,9 +117,11 @@ class EventSimulatorTests(unittest.TestCase):
 
         svr.sources.append(sm1)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration("simulationPrimitive"))
+        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration("simulationPrimitive", username="admin",
+                                                                               password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testEditSimulationFeedConfiguration(self):
@@ -137,16 +148,20 @@ class EventSimulatorTests(unittest.TestCase):
 
         svr.sources.append(sm1)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
         sleep(5)
 
         svr.properties.simulationName = "simulationNewName"
-        self.assertTrue(eventSimulatorClient.editSimulationFeedConfiguration("simulationPrimitive", svr))
+        self.assertTrue(
+            eventSimulatorClient.editSimulationFeedConfiguration("simulationPrimitive", svr, username="admin",
+                                                                 password="admin"))
         logging.info("Successfully Editted Simulation Feed Configuration")
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration("simulationNewName"))
+        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration("simulationNewName", username="admin",
+                                                                               password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testRetrieveSimulationFeedConfiguration(self):
@@ -173,15 +188,19 @@ class EventSimulatorTests(unittest.TestCase):
 
         svr.sources.append(sm1)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr), "Unable to Save "
-                                                                                   "SimulationConfiguration")
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"), "Unable to Save "
+                                                                                                "SimulationConfiguration")
 
         sleep(5)
-        retrieveObject = eventSimulatorClient.retrieveSimulationFeedConfiguration("simulationPrimitive")
+        retrieveObject = eventSimulatorClient.retrieveSimulationFeedConfiguration("simulationPrimitive",
+                                                                                  username="admin",
+                                                                                  password="admin")
         self.assertTrue(retrieveObject == svr, "Retrieved SimulationConfigurations does not match")
 
         sleep(5)
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration("simulationPrimitive"),
+        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration("simulationPrimitive", username="admin",
+                                                                               password="admin"),
                         "Unable to delete"
                         "SimulationConfiguration")
 
@@ -210,12 +229,15 @@ class EventSimulatorTests(unittest.TestCase):
         s1.attributeConfiguration.append(
             AttributeConfiguration(type=AttributeConfiguration.Type.CUSTOM_DATA_BASED, list=[10, 20, 30]))
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testCSVSimulationSingleSource(self):
@@ -237,20 +259,26 @@ class EventSimulatorTests(unittest.TestCase):
         s1.delimiter = ","
         svr.sources.append(s1)
 
-        self.assertTrue(eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv"))
+        self.assertTrue(
+            eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv", username="admin",
+                                           password="admin"))
         logging.info("Successfully Uploaded CSV")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
-        self.assertTrue(eventSimulatorClient.deleteCSV("sample.csv"))
+        self.assertTrue(eventSimulatorClient.deleteCSV("sample.csv", username="admin",
+                                                       password="admin"))
         logging.info("Successfully Deleted CSV")
 
     def testCSVSimulationTwoSource(self):
@@ -283,20 +311,26 @@ class EventSimulatorTests(unittest.TestCase):
         s2.delimiter = ","
         svr.sources.append(s2)
 
-        self.assertTrue(eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv"))
+        self.assertTrue(
+            eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv", username="admin",
+                                           password="admin"))
         logging.info("Successfully Uploaded CSV")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
-        self.assertTrue(eventSimulatorClient.deleteCSV("sample.csv"))
+        self.assertTrue(eventSimulatorClient.deleteCSV("sample.csv", username="admin",
+                                                       password="admin"))
         logging.info("Successfully Deleted CSV")
 
     def testDBSimulationOneSource(self):
@@ -351,12 +385,15 @@ class EventSimulatorTests(unittest.TestCase):
 
         self.assertDictEqual(target, match)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testDBSimulationTwoSource(self):
@@ -383,7 +420,8 @@ class EventSimulatorTests(unittest.TestCase):
         s1.columnNamesList = None
         svr.sources.append(s1)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
@@ -456,12 +494,15 @@ class EventSimulatorTests(unittest.TestCase):
 
         self.assertDictEqual(target, match)
 
-        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr, username="admin",
+                                                                            password="admin"))
         logging.info("Successfully Started Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testDBSimulationOneSourceWOColumnNames(self):
@@ -514,17 +555,21 @@ class EventSimulatorTests(unittest.TestCase):
 
         self.assertDictEqual(target, match)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr, username="admin",
+                                                                            password="admin"))
         logging.info("Successfully Started Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testPrimitiveRandomSimulation(self):
@@ -593,17 +638,21 @@ class EventSimulatorTests(unittest.TestCase):
 
         self.assertDictEqual(target, match)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr, username="admin",
+                                                                            password="admin"))
         logging.info("Successfully Started Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testRandomSimulationRegexAndPrimitive(self):
@@ -671,17 +720,21 @@ class EventSimulatorTests(unittest.TestCase):
 
         self.assertDictEqual(target, match)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr, username="admin",
+                                                                            password="admin"))
         logging.info("Successfully Started Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testDBandCSVSimulation(self):
@@ -754,25 +807,32 @@ class EventSimulatorTests(unittest.TestCase):
 
         self.assertDictEqual(target["sources"][1], match["sources"][1])
 
-        self.assertTrue(eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv"))
+        self.assertTrue(
+            eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv", username="admin",
+                                           password="admin"))
         logging.info("Successfully Uploaded CSV")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr, username="admin",
+                                                                            password="admin"))
         logging.info("Successfully Started Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
-        self.assertTrue(eventSimulatorClient.deleteCSV("sample.csv"))
+        self.assertTrue(eventSimulatorClient.deleteCSV("sample.csv", username="admin",
+                                                       password="admin"))
         logging.info("Successfully Deleted CSV")
 
     def testRunPausePrimitiveRandom(self):
@@ -799,32 +859,42 @@ class EventSimulatorTests(unittest.TestCase):
             AttributeConfiguration(type=AttributeConfiguration.Type.PRIMITIVE_BASED, min=150, max=300)
         )
 
-        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin",
+                                                                             password="admin"))
         logging.info("Successfully Saved Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr))
+        self.assertTrue(eventSimulatorClient.runSimulationFeedConfiguration(svr, username="admin",
+                                                                            password="admin"))
         logging.info("Successfully Started Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.pauseSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.pauseSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                  password="admin"))
         logging.info("Successfully Paused Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.resumeSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.resumeSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Resumed Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.stopSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.stopSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                 password="admin"))
         logging.info("Successfully Stopped Simulation Feed Configuration")
 
         sleep(5)
 
-        self.assertTrue(eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName))
+        self.assertTrue(
+            eventSimulatorClient.deleteSimulationFeedConfiguration(svr.properties.simulationName, username="admin",
+                                                                   password="admin"))
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
 

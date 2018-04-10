@@ -12,7 +12,7 @@
         <dependency>
             <groupId>org.wso2.siddhi</groupId>
             <artifactId>siddhi-core</artifactId>
-            <version>4.0.0-M53</version>
+            <version>4.1.17</version>
         </dependency>
 
 

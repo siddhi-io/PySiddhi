@@ -52,6 +52,7 @@ class TestExtensions(TestCase):
 
     def testTimeSeriesSimpleLinearRegression(self):
         logging.info("Simple Regression TestCase")
+        SiddhiLoader.loadLibrary("/Users/anusha/wso2/packs/siddhi-sdk/siddhi-sdk-1.0.2/lib")
 
         siddhiManager = SiddhiManager()
 

@@ -29,7 +29,7 @@ class RestClient(object):
         '''
         self.base_url = base_url
 
-    def _sendGetRequest(self, sub_url, params=None):
+    def _sendGetRequest(self, sub_url, params=None, auth=None):
         '''
         Sends a GET Request to Server 
         :param sub_url: endpoint url which is to be appended to base url
@@ -37,10 +37,10 @@ class RestClient(object):
         :return: 
         '''
         headers = {'content-type': 'text/plain'}
-        resp = requests.get(self.base_url + sub_url, params=params, headers=headers)
+        resp = requests.get(self.base_url + sub_url, params=params, headers=headers, auth=auth)
         return resp
 
-    def _sendPostRequest(self, sub_url, data=None, params=None, files=None, headers=None):
+    def _sendPostRequest(self, sub_url, data=None, params=None, files=None, headers=None, auth=None):
         '''
         Sends a POST Request to server
         :param sub_url: endpoint url which is to be appended to base url
@@ -48,12 +48,14 @@ class RestClient(object):
         :param params: URL Parameters
         :param files: File Uploads
         :param headers: Custom headers
+        :param username: auth user name
         :return: 
         '''
-        resp = requests.post(self.base_url + sub_url, params=params, data=data, headers=headers, files=files)
+        resp = requests.post(self.base_url + sub_url, params=params, data=data, headers=headers, files=files,
+                             auth=auth)
         return resp
 
-    def _sendPutRequest(self, sub_url, data=None, params=None, files=None, headers=None):
+    def _sendPutRequest(self, sub_url, data=None, params=None, files=None, headers=None, auth=None):
         '''
         Sends a PUT Request to server
         :param sub_url: endpoint url which is to be appended to base url
@@ -63,10 +65,10 @@ class RestClient(object):
         :param headers: Custom headers
         :return: 
         '''
-        resp = requests.put(self.base_url + sub_url, params=params, files=files, data=data, headers=headers)
+        resp = requests.put(self.base_url + sub_url, params=params, files=files, data=data, headers=headers, auth=auth)
         return resp
 
-    def _sendDeleteRequest(self, sub_url, params=None):
+    def _sendDeleteRequest(self, sub_url, params=None, auth=None):
         '''
         Sends a DELETE Request to server
         :param sub_url: endpoint url which is to be appended to base url
@@ -74,5 +76,5 @@ class RestClient(object):
         :return: 
         '''
         headers = {'content-type': 'text/plain'}
-        resp = requests.delete(self.base_url + sub_url, params=params, headers=headers)
+        resp = requests.delete(self.base_url + sub_url, params=params, headers=headers, auth=auth)
         return resp

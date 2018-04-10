@@ -39,13 +39,13 @@ class SiddhiAppManagementClient(RestClient):
         '''
         RestClient.__init__(self, siddhi_apps_url)
 
-    def retrieveSiddhiApp(self, siddhiAppName):
+    def retrieveSiddhiApp(self, siddhiAppName, auth=None):
         '''
         Retrieve siddhiApp stored in WSO2 DAS.
         :param siddhiAppName: 
         :return: 
         '''
-        r = self._sendGetRequest("/" + siddhiAppName)
+        r = self._sendGetRequest("/" + siddhiAppName, auth=auth)
         if r.status_code == 200:
             result = r.json()
             if "content" in result.keys():
@@ -58,13 +58,13 @@ class SiddhiAppManagementClient(RestClient):
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def deleteSiddhiApp(self, siddhiAppName):
+    def deleteSiddhiApp(self, siddhiAppName, auth=None):
         '''
         Deletes a SiddhiApp stored in WSO2 DAS.
         :param siddhiAppName: 
         :return: 
         '''
-        r = self._sendDeleteRequest("/" + siddhiAppName)
+        r = self._sendDeleteRequest("/" + siddhiAppName, auth=auth)
         if r.status_code == 200:
             return True
         elif r.status_code == 400:
@@ -76,13 +76,13 @@ class SiddhiAppManagementClient(RestClient):
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def retrieveStatusSiddhiApp(self, siddhiAppName):
+    def retrieveStatusSiddhiApp(self, siddhiAppName, auth=None):
         '''
         Retrieve the status of a SiddhiApp in WSO2 DAS.
         :param siddhiAppName: 
         :return: 
         '''
-        r = self._sendGetRequest("/" + siddhiAppName + "/status")
+        r = self._sendGetRequest("/" + siddhiAppName + "/status", auth=auth)
         if r.status_code == 200:
             result = r.json()
             if "status" in result.keys():
@@ -95,7 +95,7 @@ class SiddhiAppManagementClient(RestClient):
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def listSiddhiApps(self, isActive=None):
+    def listSiddhiApps(self, isActive=None, auth=None):
         '''
         Obtains the list of Siddhi Apps in WSO2 DAS.
         :param isActive: 
@@ -104,20 +104,20 @@ class SiddhiAppManagementClient(RestClient):
         params = None
         if isActive is not None:
             params = {"isActive": isActive}
-        r = self._sendGetRequest("/", params=params)
+        r = self._sendGetRequest("/", params=params, auth=auth)
         if r.status_code == 200:
             result = r.json()
             return result
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def updateSiddhiApp(self, siddhiApp):
+    def updateSiddhiApp(self, siddhiApp, auth=None):
         '''
         Updates a Siddhi App in WSO2 DAS.
         :param siddhiApp: 
         :return: 
         '''
-        r = self._sendPutRequest("/", data=siddhiApp)
+        r = self._sendPutRequest("/", data=siddhiApp, auth=auth)
         if r.status_code == 200 or r.status_code == 201:
             result = r.json()
             if result["type"] == "success":
@@ -134,13 +134,13 @@ class SiddhiAppManagementClient(RestClient):
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def saveSiddhiApp(self, siddhiApp):
+    def saveSiddhiApp(self, siddhiApp, auth=None):
         '''
         Saves a Siddhi App to WSO2 DAS.
         :param siddhiApp: 
         :return: 
         '''
-        r = self._sendPostRequest("/", data=siddhiApp)
+        r = self._sendPostRequest("/", data=siddhiApp, auth=auth)
         if r.status_code == 201:
             result = r.json()
             if result["type"] == "success":

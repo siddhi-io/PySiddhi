@@ -2,11 +2,11 @@
 
 *You are currently in branch for PySiddhi 4.x*
 
-The scope of this project is to develop a Python Wrapper on Siddhi CEP Library. The Python wrapper would support Siddhi 3.1 and Siddhi 4.0. A REST Client is also developed to interact with WSO2 Data Analytics Server (DAS) 4.0.
+The scope of this project is to develop a Python Wrapper on Siddhi Library. The Python wrapper would support Siddhi 4. A REST Client is also developed to interact with WSO2 Stream Processor 4.x.x.
 
 This is currently a work in progress, as a project for Google Summer of Code 2017 Program.
 
-*Note: Currently the API is configured with __Siddhi CEP 3.1.0__ (in branch 3.x), __Siddhi CEP 4.0.0-M53__ (in branch master) and __WSO2 Data Analytics Server 4.0.0-M6__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
+*Note: Currently the API is configured with __Siddhi CEP 4.0.0-M53__ (in branch master) and __WSO2 Data Analytics Server 4.0.0-M6__ (in branch master) for __Python 2.7.x__ and __Python 3.x__*
 
 Project Goals
 -----

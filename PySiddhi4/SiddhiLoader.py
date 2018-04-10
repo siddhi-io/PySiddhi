@@ -27,7 +27,7 @@ siddhi_api_core_inst = None
 _java_method = None
 _PythonJavaClass = None
 _JavaClass = None
-
+path = str
 
 def addExtensionPath(class_path):
     '''
@@ -68,12 +68,12 @@ def _resumeLibrary():
 _resumeLibrary()
 
 
-def loadLibrary():
+def loadLibrary(ab_path):
     '''
-    Loads Siddi CEP Library
+    Loads Siddi Library
     :return: 
     '''
-
+    path = ab_path
     # Test whether Java Library is already loaded
     if "siddhi_api_configured" in globals():
         if globals()["siddhi_api_configured"] != 4:
@@ -92,8 +92,9 @@ def loadLibrary():
     jnius_config.add_options('-Djava.library.path=' + PySiddhi4.root_path + "/__PySiddhi4Proxy")
 
     # Determine library class path
-    class_paths = ['.', PySiddhi4.root_path + '/__PySiddhi4Proxy/target/lib/*',
-                   PySiddhi4.root_path + '/__PySiddhi4Proxy/target/*']
+    # class_paths = ['.', PySiddhi4.root_path + '/__PySiddhi4Proxy/target/lib/*',
+    #                PySiddhi4.root_path + '/__PySiddhi4Proxy/target/*']
+    class_paths = ['.', str(path) + '/*']
 
     # Add Extensions
     if not "extensions" in globals():
@@ -127,12 +128,12 @@ def loadLibrary():
 
 
 def _loadType(type_name):
-    loadLibrary()
+    loadLibrary(path)
     from jnius import autoclass
     return autoclass(type_name)
 
 
 def _detachThread():
-    loadLibrary()
+    loadLibrary(path)
     import jnius
     jnius.detach()

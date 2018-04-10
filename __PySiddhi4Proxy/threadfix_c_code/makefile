@@ -7,12 +7,12 @@ CFLAGS = -shared -fPIC
 JAVAHOME = ${JAVA_HOME}
 
 #define python interpreter home here
-PYTHONHOME = /usr/include/python3.5
+PYTHON_HOME = /usr/local/var/homebrew/linked/python/Frameworks/Python.framework/Versions/3.6/include/python3.6m
 
 CP = cp
 
 #Find include files
-INCLUDES = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/linux" -I "$(PYTHONHOME)"
+INCLUDES = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/darwin" -I "$(PYTHON_HOME)"
 
 # build target details
 TARGET_SOURCE_NAME = org_wso2_siddhi_pythonapi_threadfix_PyThreadFix
