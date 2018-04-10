@@ -14,8 +14,8 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from PySiddhi4.das.ObjectMapping.APIObject import NotSet
-from PySiddhi4.das.__Util import encodeField, decodeField
+from PySiddhi4.sp.ObjectMapping.APIObject import NotSet
+from PySiddhi4.sp.__Util import encodeField, decodeField
 
 
 def strOrInt(v):

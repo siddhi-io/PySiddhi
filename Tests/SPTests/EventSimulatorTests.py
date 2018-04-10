@@ -20,11 +20,11 @@ import logging
 import os
 from time import sleep
 
-from PySiddhi4.das.DASClient import DASClient
-from PySiddhi4.das.EventSimulator.AttributeConfiguration import AttributeConfiguration
-from PySiddhi4.das.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
-from PySiddhi4.das.EventSimulator.SimulationSource import SimulationSource
-from PySiddhi4.das.EventSimulator.SingleSimulationConfiguration import SingleSimulationConfiguration
+from PySiddhi4.sp.SPClient import SPClient
+from PySiddhi4.sp.EventSimulator.AttributeConfiguration import AttributeConfiguration
+from PySiddhi4.sp.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
+from PySiddhi4.sp.EventSimulator.SimulationSource import SimulationSource
+from PySiddhi4.sp.EventSimulator.SingleSimulationConfiguration import SingleSimulationConfiguration
 
 logging.basicConfig(level=logging.INFO)
 
@@ -35,16 +35,16 @@ class EventSimulatorTests(unittest.TestCase):
     def setUp(self):
         self.hostUrl = "http://localhost:9090"
         # self.simulationUrl = self.hostUrl + "/simulation"
-        logging.info("Prior to launching tests, make sure DAS 4 is running at " + self.hostUrl)
+        logging.info("Prior to launching tests, make sure WSO2 SP is running at " + self.hostUrl)
 
     def tearDown(self):
-        sleep(5)  # Sleep to provide sufficient time for DAS 4.0 to update status
+        sleep(5)  # Sleep to provide sufficient time for SP  to update status
 
     def testSingleSimulation(self):
         logging.info("Test: Simulating a Single Event")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         singleSimulationConfiguration = SingleSimulationConfiguration("TestSiddhiApp", "FooStream", [None, 9, 45])
 
@@ -55,8 +55,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testCSVUploadAndDelete(self):
         logging.info("Test: Uploading and Deleting a CSV.")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         self.assertTrue(
             eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv", username="admin",
@@ -72,8 +72,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testCSVUpdate(self):
         logging.info("Test: Uploading, Updating and Deleting a CSV.")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         self.assertTrue(
             eventSimulatorClient.uploadCSV("sample.csv", path=resources_path + "sample.csv", username="admin",
@@ -96,8 +96,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testSaveDeleteSimulationFeedConfiguration(self):
         logging.info("Test1: Saving and Deleting simulation feed configuration")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simulationPrimitive")
         svr.properties.timestampStartTime = 1488615136958
@@ -127,8 +127,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testEditSimulationFeedConfiguration(self):
         logging.info("Test1: Saving, Editing and Deleting simulation feed configuration")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simulationPrimitive")
         svr.properties.timestampStartTime = 1488615136958
@@ -167,8 +167,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testRetrieveSimulationFeedConfiguration(self):
         logging.info("Test1: Saving, Retrieving and Deleting simulation feed configuration")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simulationPrimitive")
         svr.properties.timestampStartTime = 1488615136958
@@ -207,8 +207,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testRandomSimulationCustomList(self):
         logging.info("Test: Random Simulation using Custom List")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("sim")
         svr.properties.timestampStartTime = 1488615136958
@@ -243,8 +243,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testCSVSimulationSingleSource(self):
         logging.info("Test: CSV Simulation - One Source")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simulation1")
         svr.properties.timestampStartTime = None
@@ -284,8 +284,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testCSVSimulationTwoSource(self):
         logging.info("Test: CSV Simulation - Two Source")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simCSV2")
         svr.properties.timestampStartTime = 1488615136957
@@ -349,7 +349,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -360,8 +360,8 @@ class EventSimulatorTests(unittest.TestCase):
             ]
         }
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simDb")
         svr.properties.timestampStartTime = 1488615136958
@@ -372,7 +372,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -399,8 +399,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testDBSimulationTwoSource(self):
         logging.info("Test: DB Simulation - Two Sources")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simDb")
         svr.properties.timestampStartTime = 1488615136958
@@ -411,7 +411,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -438,7 +438,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -450,7 +450,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql:\/\/localhost:3306\/Simulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/Simulation",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -469,7 +469,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -481,7 +481,7 @@ class EventSimulatorTests(unittest.TestCase):
         s2 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s2.streamName = "FooStream"
         s2.siddhiAppName = "TestSiddhiApp"
-        s2.dataSourceLocation = "jdbc:mysql:\/\/localhost:3306\/Simulation"
+        s2.dataSourceLocation = "jdbc:mysql://localhost:3306/Simulation"
         s2.driver = "com.mysql.jdbc.Driver"
         s2.username = "root"
         s2.password = "root"
@@ -506,7 +506,7 @@ class EventSimulatorTests(unittest.TestCase):
         logging.info("Successfully Deleted Simulation Feed Configuration")
 
     def testDBSimulationOneSourceWOColumnNames(self):
-        logging.info("Test: DB Simulation - One Source w\o column names")
+        logging.info("Test: DB Simulation - One Source w/o column names")
 
         target = {
             "properties": {
@@ -520,7 +520,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -531,8 +531,8 @@ class EventSimulatorTests(unittest.TestCase):
             ]
         }
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simDbNoColumnsList")
         svr.properties.timestampStartTime = 1488615136958
@@ -542,7 +542,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -610,8 +610,8 @@ class EventSimulatorTests(unittest.TestCase):
             ]
         }
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simulationPrimitive")
         svr.properties.timestampStartTime = 1488615136958
@@ -692,8 +692,8 @@ class EventSimulatorTests(unittest.TestCase):
             ]
         }
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simRndm")
         svr.properties.timestampStartTime = 1488615136958
@@ -752,7 +752,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -772,8 +772,8 @@ class EventSimulatorTests(unittest.TestCase):
             ]
         }
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simulationCSV")
         svr.properties.timestampStartTime = 1488615136958
@@ -783,7 +783,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql:\/\/localhost:3306\/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -838,8 +838,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testRunPausePrimitiveRandom(self):
         logging.info("Test: Random Simulation - Primitive. Save, Run, Pause, Resume, Stop and Delete.")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        eventSimulatorClient = dasPythonClient.getEventSimulatorClient()
+        spPythonClient = SPClient(self.hostUrl)
+        eventSimulatorClient = spPythonClient.getEventSimulatorClient()
 
         svr = FeedSimulationConfiguration("simulationPrimitive")
         svr.properties.noOfEvents = 8

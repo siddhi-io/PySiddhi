@@ -16,9 +16,9 @@
 
 from enum import Enum
 
-from PySiddhi4.das.EventSimulator.AttributeConfiguration import AttributeConfiguration
-from PySiddhi4.das.ObjectMapping.APIObject import APIObject, NotSet
-from PySiddhi4.das.ObjectMapping.FieldMapping import FieldMapping, ListFieldMapping, strOrInt
+from PySiddhi4.sp.EventSimulator.AttributeConfiguration import AttributeConfiguration
+from PySiddhi4.sp.ObjectMapping.APIObject import APIObject, NotSet
+from PySiddhi4.sp.ObjectMapping.FieldMapping import FieldMapping, ListFieldMapping, strOrInt
 
 
 class SimulationSource(APIObject):
@@ -48,7 +48,7 @@ class SimulationSource(APIObject):
                  dataSourceLocation=NotSet(), driver=NotSet(),
                  username=NotSet(), password=NotSet(), tableName=NotSet(), columnNamesList=NotSet()):
         '''
-        Instantiates Simulation Source. Refer DAS4 Documentation for details on parameters
+        Instantiates Simulation Source. Refer SP4 Documentation for details on parameters
         :param simulationType: Type of SimulationSource
         :param streamName: 
         :param siddhiAppName: 

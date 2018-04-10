@@ -14,11 +14,11 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from PySiddhi4.das.EventSimulator.EventSimulatorClient import EventSimulatorClient
-from PySiddhi4.das.SiddhiAppManagement.SiddhiAppManagementClient import SiddhiAppManagementClient
+from PySiddhi4.sp.EventSimulator.EventSimulatorClient import EventSimulatorClient
+from PySiddhi4.sp.SiddhiAppManagement.SiddhiAppManagementClient import SiddhiAppManagementClient
 
 
-class DASClient(object):
+class SPClient(object):
     '''
     REST Client to work with WSO2 Data Analytics Server 4.0
     '''
@@ -26,7 +26,7 @@ class DASClient(object):
     def __init__(self, host_url):
         '''
         Instantiate REST Client
-        :param host_url: host url of DAS4. E.g. http://localhost:9090
+        :param host_url: host url of SP. E.g. http://localhost:9090
         '''
         self.host_url = host_url
 

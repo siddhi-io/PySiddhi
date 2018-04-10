@@ -16,12 +16,12 @@
 
 from enum import Enum
 
-from PySiddhi4.das.__Communication.RestClient import RestClient
+from PySiddhi4.sp.__Communication.RestClient import RestClient
 
 
 class UpdateAppStatusResponse(Enum):
     '''
-    Response from WSO2 DAS on updateSidhdiApp call of SiddhiAppManagementClient.
+    Response from WSO2 SP on updateSidhdiApp call of SiddhiAppManagementClient.
     '''
     savedNew = 201,
     updated = 200
@@ -29,7 +29,7 @@ class UpdateAppStatusResponse(Enum):
 
 class SiddhiAppManagementClient(RestClient):
     '''
-    Client for Siddhi App Management (publish, edit, list, retrieve etc.) in WSO2 DAS.
+    Client for Siddhi App Management (publish, edit, list, retrieve etc.) in WSO2 SP.
     '''
 
     def __init__(self, siddhi_apps_url):
@@ -41,7 +41,7 @@ class SiddhiAppManagementClient(RestClient):
 
     def retrieveSiddhiApp(self, siddhiAppName, auth=None):
         '''
-        Retrieve siddhiApp stored in WSO2 DAS.
+        Retrieve siddhiApp stored in WSO2 SP.
         :param siddhiAppName: 
         :return: 
         '''
@@ -60,7 +60,7 @@ class SiddhiAppManagementClient(RestClient):
 
     def deleteSiddhiApp(self, siddhiAppName, auth=None):
         '''
-        Deletes a SiddhiApp stored in WSO2 DAS.
+        Deletes a SiddhiApp stored in WSO2 SP.
         :param siddhiAppName: 
         :return: 
         '''
@@ -78,7 +78,7 @@ class SiddhiAppManagementClient(RestClient):
 
     def retrieveStatusSiddhiApp(self, siddhiAppName, auth=None):
         '''
-        Retrieve the status of a SiddhiApp in WSO2 DAS.
+        Retrieve the status of a SiddhiApp in WSO2 SP.
         :param siddhiAppName: 
         :return: 
         '''
@@ -97,7 +97,7 @@ class SiddhiAppManagementClient(RestClient):
 
     def listSiddhiApps(self, isActive=None, auth=None):
         '''
-        Obtains the list of Siddhi Apps in WSO2 DAS.
+        Obtains the list of Siddhi Apps in WSO2 SP.
         :param isActive: 
         :return: 
         '''
@@ -113,7 +113,7 @@ class SiddhiAppManagementClient(RestClient):
 
     def updateSiddhiApp(self, siddhiApp, auth=None):
         '''
-        Updates a Siddhi App in WSO2 DAS.
+        Updates a Siddhi App in WSO2 SP.
         :param siddhiApp: 
         :return: 
         '''
@@ -136,7 +136,7 @@ class SiddhiAppManagementClient(RestClient):
 
     def saveSiddhiApp(self, siddhiApp, auth=None):
         '''
-        Saves a Siddhi App to WSO2 DAS.
+        Saves a Siddhi App to WSO2 SP.
         :param siddhiApp: 
         :return: 
         '''

@@ -14,13 +14,13 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from PySiddhi4.das.ObjectMapping.APIObject import APIObject
-from PySiddhi4.das.ObjectMapping.FieldMapping import FieldMapping, ListFieldMapping
+from PySiddhi4.sp.ObjectMapping.APIObject import APIObject
+from PySiddhi4.sp.ObjectMapping.FieldMapping import FieldMapping, ListFieldMapping
 
 
 class SingleSimulationConfiguration(APIObject):
     '''
-    SingleSimulationConfiguration APIObject which may be passed to WSO2 DAS Event Simulator via EventSimulatorClient.
+    SingleSimulationConfiguration APIObject which may be passed to WSO2 SP Event Simulator via EventSimulatorClient.
     '''
 
     def __init__(self, siddhiAppName, streamName, data):

@@ -20,8 +20,8 @@ import unittest
 import logging
 from time import sleep
 
-from PySiddhi4.das.DASClient import DASClient
-from PySiddhi4.das.SiddhiAppManagement.SiddhiAppManagementClient import UpdateAppStatusResponse
+from PySiddhi4.sp.SPClient import SPClient
+from PySiddhi4.sp.SiddhiAppManagement.SiddhiAppManagementClient import UpdateAppStatusResponse
 
 logging.basicConfig(level=logging.INFO)
 
@@ -31,15 +31,15 @@ resources_path = os.path.join(os.path.dirname(__file__), "Resources")
 class EventSimulatorTests(unittest.TestCase):
     def setUp(self):
         self.hostUrl = "http://localhost:9090"
-        logging.info("Prior to launching tests, make sure DAS 4 is running at " + self.hostUrl)
+        logging.info("Prior to launching tests, make sure SP 4 is running at " + self.hostUrl)
 
     def tearDown(self):
-        sleep(5)  # Sleep to provide sufficient time for DAS 4.0 to update status
+        sleep(5)  # Sleep to provide sufficient time for SP 4.0 to update status
 
     def testRetrieveSiddhiAppStatus(self):
         logging.info("Test1: Retrieving a Siddhi App Status")
-        dasPythonClient = DASClient(self.hostUrl)
-        siddhiAppManagementClient = dasPythonClient.getSiddhiAppManagementClient()
+        spPythonClient = SPClient(self.hostUrl)
+        siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
 
         status = siddhiAppManagementClient.retrieveStatusSiddhiApp("TestSiddhiApp")
 
@@ -48,8 +48,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testRetrieveSiddhiApp(self):
         logging.info("Test1: Retrieving a Siddhi App")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        siddhiAppManagementClient = dasPythonClient.getSiddhiAppManagementClient()
+        spPythonClient = SPClient(self.hostUrl)
+        siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
 
         app = siddhiAppManagementClient.retrieveSiddhiApp("TestSiddhiApp")
 
@@ -67,8 +67,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testListSiddhiApps(self):
         logging.info("Test1: List Siddhi Apps")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        siddhiAppManagementClient = dasPythonClient.getSiddhiAppManagementClient()
+        spPythonClient = SPClient(self.hostUrl)
+        siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
 
         lines = []
         with open(resources_path + "/TestSiddhiApp1.siddhi", "rb") as f:
@@ -100,8 +100,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testSaveAndDeleteSiddhiApp(self):
         logging.info("Test1: Save and Delete Siddhi App")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        siddhiAppManagerClient = dasPythonClient.getSiddhiAppManagementClient()
+        spPythonClient = SPClient(self.hostUrl)
+        siddhiAppManagerClient = spPythonClient.getSiddhiAppManagementClient()
 
         lines = []
         with open(resources_path + "/TestSiddhiApp1.siddhi", "rb") as f:
@@ -120,8 +120,8 @@ class EventSimulatorTests(unittest.TestCase):
     def testUpdateAndDeleteSiddhiApp(self):
         logging.info("Test: Update and Delete Siddhi App")
 
-        dasPythonClient = DASClient(self.hostUrl)
-        siddhiAppManagerClient = dasPythonClient.getSiddhiAppManagementClient()
+        spPythonClient = SPClient(self.hostUrl)
+        siddhiAppManagerClient = spPythonClient.getSiddhiAppManagementClient()
 
         lines = []
         with open(resources_path + "/TestSiddhiApp1.siddhi", "rb") as f:

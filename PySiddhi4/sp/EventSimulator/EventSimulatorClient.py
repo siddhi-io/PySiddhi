@@ -17,14 +17,14 @@
 import json
 import logging
 
-from PySiddhi4.das.__Communication.RestClient import RestClient
-from PySiddhi4.das.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
+from PySiddhi4.sp.__Communication.RestClient import RestClient
+from PySiddhi4.sp.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
 from requests.auth import HTTPBasicAuth
 
 
 class EventSimulatorClient(RestClient):
     '''
-    Client used to access DAS Event Simulator End Points
+    Client used to access SP Event Simulator End Points
     '''
 
     def __init__(self, event_simulator_url):
@@ -36,7 +36,7 @@ class EventSimulatorClient(RestClient):
 
     def saveSimulationFeedConfiguration(self, simulationConfiguration, username, password):
         '''
-        Saves a SimulationFeedConfiguration in WSO2 DAS Event Simulator
+        Saves a SimulationFeedConfiguration in WSO2 SP Event Simulator
         :param simulationConfiguration: 
         :return: 
         '''
@@ -51,7 +51,7 @@ class EventSimulatorClient(RestClient):
 
     def runSimulationFeedConfiguration(self, simulationConfiguration, username, password):
         '''
-        Runs a SimulationFeedConfiguration in WSO2 DAS Event Simulator
+        Runs a SimulationFeedConfiguration in WSO2 SP Event Simulator
         :param simulationConfiguration: 
         :return: 
         '''
@@ -67,7 +67,7 @@ class EventSimulatorClient(RestClient):
 
     def pauseSimulationFeedConfiguration(self, simulationName, username, password):
         '''
-        Pauses a SimulationFeedConfiguration in WSO2 DAS Event Simulator
+        Pauses a SimulationFeedConfiguration in WSO2 SP Event Simulator
         :param simulationName: 
         :return: 
         '''
@@ -81,7 +81,7 @@ class EventSimulatorClient(RestClient):
 
     def resumeSimulationFeedConfiguration(self, simulationName, username, password):
         '''
-        Resumes a SimulationFeedConfiguration in WSO2 DAS Event Simulator
+        Resumes a SimulationFeedConfiguration in WSO2 SP Event Simulator
         :param simulationName: 
         :return: 
         '''
@@ -95,7 +95,7 @@ class EventSimulatorClient(RestClient):
 
     def stopSimulationFeedConfiguration(self, simulationName, username, password):
         '''
-        Stops a SimulationFeedConfiguration in WSO2 DAS Event Simulator
+        Stops a SimulationFeedConfiguration in WSO2 SP Event Simulator
         :param simulationName: 
         :return: 
         '''
@@ -111,7 +111,7 @@ class EventSimulatorClient(RestClient):
 
     def editSimulationFeedConfiguration(self, simulationName, simulationConfiguration, username, password):
         '''
-        Edits a SimulationFeedConfiguration in WSO2 DAS Event Simulator
+        Edits a SimulationFeedConfiguration in WSO2 SP Event Simulator
         :param simulationName: 
         :param simulationConfiguration: new simulationNameConfiguration
         :return: 
@@ -127,7 +127,7 @@ class EventSimulatorClient(RestClient):
 
     def deleteSimulationFeedConfiguration(self, simulationName, username, password):
         '''
-        Deletes a SimulationFeedConfiguration in WSO2 DAS Event Simulator
+        Deletes a SimulationFeedConfiguration in WSO2 SP Event Simulator
         :param simulationName: 
         :return: 
         '''
@@ -141,7 +141,7 @@ class EventSimulatorClient(RestClient):
 
     def retrieveSimulationFeedConfiguration(self, simulationName, username, password):
         '''
-        Retrieves a SimulationFeedConfiguration from WSO2 DAS Event Simulator
+        Retrieves a SimulationFeedConfiguration from WSO2 SP Event Simulator
         :param simulationName: 
         :return: 
         '''
@@ -160,7 +160,7 @@ class EventSimulatorClient(RestClient):
 
     def simulateSingleEvent(self, singleSimulationConfiguration, username, password):
         '''
-        Invokes a Single Simulation in WSO2 DAS Event Simulator
+        Invokes a Single Simulation in WSO2 SP Event Simulator
         :param singleSimulationConfiguration: 
         :return: 
         '''
@@ -181,7 +181,7 @@ class EventSimulatorClient(RestClient):
 
     def uploadCSV(self, fileName, username, password, stream=None, path=None):
         '''
-        Uploads a CSV to WSO2 DAS Event Simulator. Only one of the parameters stream or path should be given.
+        Uploads a CSV to WSO2 SP Event Simulator. Only one of the parameters stream or path should be given.
         :param fileName: fileName of file to be uploaded
         :param stream: stream of file to be uploaded
         :param path: path of file to be uploaded
@@ -203,7 +203,7 @@ class EventSimulatorClient(RestClient):
 
     def updateCSV(self, uploadedFileName, newFileName, username, password, stream=None, path=None):
         '''
-        Updates a CSV file uploaded to WSO2 DAS Event Simulator. Only one of parameters stream or path should 
+        Updates a CSV file uploaded to WSO2 SP Event Simulator. Only one of parameters stream or path should
         be provided.
         :param uploadedFileName: previous file name
         :param newFileName: new file name
@@ -227,7 +227,7 @@ class EventSimulatorClient(RestClient):
 
     def deleteCSV(self, fileName, username, password):
         '''
-        Deletes a CSV file uploaded to WSO2 DAS Event Simulator
+        Deletes a CSV file uploaded to WSO2 SP Event Simulator
         :param fileName: 
         :return: 
         '''
