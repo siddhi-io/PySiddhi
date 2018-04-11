@@ -56,7 +56,7 @@ setup(
     # metadata for upload to PyPI
     author="WSO2",
     author_email="dev@wso2.org",
-    description="Python wrapper for `Siddhi CEP 4.0.0-M53` and `WSO2 Data Analytics Server 4.0.0-M6`.",
+    description="Python wrapper for `Siddhi 4.x.x`.",
     license="Apache2",
     cmdclass={
         'install': PostInstallCommand,

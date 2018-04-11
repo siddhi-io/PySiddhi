@@ -3,6 +3,7 @@ CC = g++
 
 CFLAGS = -shared -fPIC -c
 
+# define JAVA_HOME here
 JAVAHOME = ${JAVA_HOME}
 
 LINUX_PYTHON_PATH = /usr/include/python

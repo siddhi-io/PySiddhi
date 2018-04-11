@@ -20,13 +20,13 @@ from PySiddhi4.sp.SiddhiAppManagement.SiddhiAppManagementClient import SiddhiApp
 
 class SPClient(object):
     '''
-    REST Client to work with WSO2 Data Analytics Server 4.0
+    REST Client to work with WSO2 Stream Processor 4.x.x
     '''
 
     def __init__(self, host_url):
         '''
         Instantiate REST Client
-        :param host_url: host url of SP. E.g. http://localhost:9090
+        :param host_url: host url of SP worker. E.g. http://localhost:9090
         '''
         self.host_url = host_url
 
