@@ -61,7 +61,7 @@ setup(
     cmdclass={
         'install': PostInstallCommand,
     },
-    url="https://github.com/wso2/py-siddhi",
+    url="https://github.com/wso2/PySiddhi",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
