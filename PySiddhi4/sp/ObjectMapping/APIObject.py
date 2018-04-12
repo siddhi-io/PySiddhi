@@ -17,7 +17,7 @@
 from abc import ABCMeta
 from future.utils import with_metaclass
 
-from PySiddhi4.das.__Util import decodeField, encodeField
+from PySiddhi4.sp.__Util import decodeField, encodeField
 
 
 class NotSet(object):

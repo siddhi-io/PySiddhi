@@ -19,15 +19,6 @@ import os
 from PySiddhi4 import SiddhiLoader
 
 # Download extension jars
-path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                    os.path.join("Resources", "Extensions4"))
-if os.name == "nt":  # For windows, shell=True is required
-    call(["mvn", "install"], shell=True, cwd=path)
-else:  # For linux, shell=True causes cwd to not function properly
-    call(["mvn", "install"], cwd=path)
-# Add extensions
-extensions_path = os.path.join(path,"jars/*")
-SiddhiLoader.addExtensionPath(extensions_path)
 
 import unittest
 import logging
@@ -52,6 +43,7 @@ class TestExtensions(TestCase):
 
     def testTimeSeriesSimpleLinearRegression(self):
         logging.info("Simple Regression TestCase")
+        SiddhiLoader.loadLibrary()
 
         siddhiManager = SiddhiManager()
 

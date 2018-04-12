@@ -14,15 +14,15 @@
 # specific language governing permissions and limitations
 # under the License.
 
-from PySiddhi4.das.EventSimulator.SimulationProperties import SimulationProperties
-from PySiddhi4.das.EventSimulator.SimulationSource import SimulationSource
-from PySiddhi4.das.ObjectMapping.APIObject import APIObject
-from PySiddhi4.das.ObjectMapping.FieldMapping import FieldMapping, ListFieldMapping
+from PySiddhi4.sp.EventSimulator.SimulationProperties import SimulationProperties
+from PySiddhi4.sp.EventSimulator.SimulationSource import SimulationSource
+from PySiddhi4.sp.ObjectMapping.APIObject import APIObject
+from PySiddhi4.sp.ObjectMapping.FieldMapping import FieldMapping, ListFieldMapping
 
 
 class FeedSimulationConfiguration(APIObject):
     '''
-    FeedSimulationConfiguration API Object which could be passed to WSO2 DAS Event Simulator via EventSimulatorClient.
+    FeedSimulationConfiguration API Object which could be passed to WSO2 SP Event Simulator via EventSimulatorClient.
     '''
 
     def __init__(self, simulation_name=None, properties=None):

@@ -15,6 +15,7 @@
 # under the License.
 
 import logging
+import os
 
 import sys
 
@@ -28,13 +29,14 @@ _java_method = None
 _PythonJavaClass = None
 _JavaClass = None
 
-
-def addExtensionPath(class_path):
+def addExtensionPath():
     '''
     Adds an Extension to Siddhi. Should be called prior to importing any Siddhi Libraries.
     :param class_path: Path to Jar File. Wild Card (*) directory selection is accepted
     :return: 
     '''
+    siddhi_home = os.getenv("SIDDHISDK_HOME")
+    class_path = siddhi_home.append("/lib/*")
     if "siddhi_api_configured" in globals():
         raise Exception("Cannot add extensions after loading library.")
 
@@ -70,14 +72,14 @@ _resumeLibrary()
 
 def loadLibrary():
     '''
-    Loads Siddi CEP Library
+    Loads Siddi Library
     :return: 
     '''
-
+    siddhi_home = os.getenv("SIDDHISDK_HOME")
     # Test whether Java Library is already loaded
     if "siddhi_api_configured" in globals():
         if globals()["siddhi_api_configured"] != 4:
-            raise Exception("Unable to use multiple versions of Siddhi CEP Library")
+            raise Exception("Unable to use multiple versions of Siddhi Library")
         # Resume global variables if already loaded
         _resumeLibrary()
         return
@@ -92,8 +94,7 @@ def loadLibrary():
     jnius_config.add_options('-Djava.library.path=' + PySiddhi4.root_path + "/__PySiddhi4Proxy")
 
     # Determine library class path
-    class_paths = ['.', PySiddhi4.root_path + '/__PySiddhi4Proxy/target/lib/*',
-                   PySiddhi4.root_path + '/__PySiddhi4Proxy/target/*']
+    class_paths = ['.', siddhi_home + '/lib/*']
 
     # Add Extensions
     if not "extensions" in globals():

@@ -43,7 +43,7 @@ for package in packages:
 
 setup(
     name="PySiddhi4",
-    version="1.0.0rc1",
+    version="1.0.0al",
     packages=filtered_packages,
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
     install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'3.4'"],
@@ -56,7 +56,7 @@ setup(
     # metadata for upload to PyPI
     author="WSO2",
     author_email="dev@wso2.org",
-    description="Python wrapper for `Siddhi CEP 4.0.0-M53` and `WSO2 Data Analytics Server 4.0.0-M6`.",
+    description="Python wrapper for `Siddhi 4.x.x`.",
     license="Apache2",
     cmdclass={
         'install': PostInstallCommand,
