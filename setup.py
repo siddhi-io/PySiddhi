@@ -43,7 +43,7 @@ for package in packages:
 
 setup(
     name="PySiddhi4",
-    version="1.0.0rc1",
+    version="1.0.0al",
     packages=filtered_packages,
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
     install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'3.4'"],
@@ -61,7 +61,7 @@ setup(
     cmdclass={
         'install': PostInstallCommand,
     },
-    url="https://github.com/wso2/py-siddhi",
+    url="https://github.com/wso2/PySiddhi",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',

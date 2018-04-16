@@ -36,14 +36,14 @@ def addExtensionPath():
     :return: 
     '''
     siddhi_home = os.getenv("SIDDHISDK_HOME")
-    path = os.path.join(siddhi_home, "lib", "*")
+    class_path = os.path.join(siddhi_home, "lib", "*")
     if "siddhi_api_configured" in globals():
         raise Exception("Cannot add extensions after loading library.")
 
     if not "extensions" in globals():
         globals()["extensions"] = []
 
-    globals()["extensions"].append(path)
+    globals()["extensions"].append(class_path)
 
 
 def _resumeLibrary():
