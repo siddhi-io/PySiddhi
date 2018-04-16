@@ -36,7 +36,7 @@ def addExtensionPath():
     :return: 
     '''
     siddhi_home = os.getenv("SIDDHISDK_HOME")
-    path = siddhi_home.append("/lib/*")
+    path = os.path.join(siddhi_home, "lib", "*")
     if "siddhi_api_configured" in globals():
         raise Exception("Cannot add extensions after loading library.")
 
@@ -94,7 +94,7 @@ def loadLibrary():
     jnius_config.add_options('-Djava.library.path=' + PySiddhi4.root_path + "/__PySiddhi4Proxy")
 
     # Determine library class path
-    class_paths = ['.', siddhi_home + '/lib/*']
+    class_paths = ['.', os.path.join(siddhi_home, 'lib', '*')]
 
     # Add Extensions
     if not "extensions" in globals():
