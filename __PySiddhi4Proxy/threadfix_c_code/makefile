@@ -49,7 +49,7 @@ $(TARGET_OUTPUT_NAME).so: $(TARGET_SOURCE_NAME).c $(TARGET_SOURCE_NAME).h
 	@echo "Building Target..."
 ifeq ($(OS), Darwin)
 	$(CC) $(CFLAGS) $(INCLUDES_MACOS) -o $(TARGET_OUTPUT_NAME).so $(TARGET_SOURCE_NAME).c
-else ifeq ($(OS), linux-gnu)
+else ifeq ($(OS), Linux)
 	$(CC) $(CFLAGS) $(INCLUDES_LINUX) -o $(TARGET_OUTPUT_NAME).so $(TARGET_SOURCE_NAME).c
 endif
 	@echo

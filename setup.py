@@ -43,7 +43,7 @@ for package in packages:
 
 setup(
     name="PySiddhi4",
-    version="1.0.0al",
+    version="1.0.0",
     packages=filtered_packages,
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
     install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'3.4'"],
@@ -63,7 +63,7 @@ setup(
     },
     url="https://github.com/wso2/PySiddhi",
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
