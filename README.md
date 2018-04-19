@@ -2,24 +2,25 @@
 
 The scope of this project is to develop a Python Wrapper on Siddhi Library. The Python wrapper would support Siddhi 4.x. A REST Client is also developed to interact with WSO2 Stream Processor 4.x.x.
 
-This was devoloped as a project for Google Summer of Code 2017 Program.
+This was developed as a project for Google Summer of Code 2017 Program.
 
-Project Goals
------
-1) Develop a Python Wrapper on Siddhi Java Library 4.x.
-2) Extend the wrapper to support interactions with WSO2 SP 4.x.x.
-3) Testing, Documentation and Deployment
 
-Current Progress
+Features
 -----
-- [x] Basic features of Siddhi 4.x.x
-- [x] Wrapper on Siddhi Debugger (for PySiddhi4 only)
+- [x] Basic functionalities of Siddhi 4.x.x
+- [x] Wrapper on Siddhi Debugger
 - [x] Support to Siddhi Extensions Loading
-- [x] Rest Client on WSO2 SP 4.x.x - Siddhi App Management (for PySiddhi4 only)
-- [x] Rest Client on WSO2 SP 4.x.x Event Simulator (for PySiddhi4 only)
-- [x] Unit Tests
-- [x] Wiki
+- [x] Rest Client on WSO2 SP 4.x.x - Siddhi App Management
+- [x] Rest Client on WSO2 SP 4.x.x Event Simulator
 - [x] Deployment wheels
+
+Install PySiddhi from python package manager(pip)
+----
+Install pre-requisites mentioned in Installing the Library from Source section.
+
+```
+pip install pysiddhi4
+```
 
 Installing the Library from Source
 -----
@@ -54,15 +55,17 @@ Installing the Library from Source
     - Clone the branch from GitHub Repository.
     - Navigate to project root and run `sudo pip install .`
 
-3. Use the Library using Python.
-    - For Siddhi 4.x.x
+Use the Library using Python
+-----
+* Siddhi on python
     ```python
     from PySiddhi4.core.SiddhiManager import SiddhiManager
     sm = SiddhiManager()
     ....
     sm.shutdown()
     ```
-    *Refer Tests to get more familiar with library functionality.
+
+* Refer Tests to get more familiar with library functionality.
 
 Running the Tests
 -----
@@ -75,7 +78,7 @@ Running the Tests
     - Navigate to `SP_Home/bin/` and run `sh worker.sh`(in windows run worker.bat).
 4. Run the tests cases in `PySiddhi/Tests` directory
 
-*If mvn clean install throws errors, check the paths provided for imports of Python3 Developer Headers
+* If mvn clean install throws errors, check the paths provided for imports of Python3 Developer Headers
 
 Creating deployment wheel (for Linux)
 -----
@@ -117,4 +120,28 @@ Contributors
    - Email: madhawavidanapathirana@gmail.com
    - Organization: University of Moratuwa
 
+How to Contribute
+-----   
+* Please report issues at
+     <a target="_blank" href="https://github.com/wso2/PySiddhi/issues">GitHub Issue Tracker</a>.
+
+* Send your contributions as pull requests to <a target="_blank" href="https://github.com/wso2/PySiddhi/tree/master">master branch</a>.
+
+Contact us
+-----
+
+* Post your questions with the <a target="_blank" href="http://stackoverflow.com/search?q=siddhi">"Siddhi"</a> tag in <a target="_blank" href="http://stackoverflow.com/search?q=siddhi">Stackoverflow</a>.
+
+* Siddhi developers can be contacted via the mailing lists:
+
+    Developers List   : [dev@wso2.org](mailto:dev@wso2.org)
+
+    Architecture List : [architecture@wso2.org](mailto:architecture@wso2.org)
+
+Support
+-----
+
+   * We are committed to ensuring support for this extension in production. Our unique approach ensures that all support leverages our open development methodology and is provided by the very same engineers who build the technology.
+
+   * For more details and to take advantage of this unique opportunity contact us via <a target="_blank" href="http://wso2.com/support?utm_source=gitanalytics&utm_campaign=gitanalytics_Jul17">http://wso2.com/support/</a>.
 __Developer Mail Group__: dev@wso2.org
