@@ -41,7 +41,8 @@ class EventSimulatorTests(unittest.TestCase):
         spPythonClient = SPClient(self.hostUrl)
         siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
 
-        status = siddhiAppManagementClient.retrieveStatusSiddhiApp("TestSiddhiApp")
+        status = siddhiAppManagementClient.retrieveStatusSiddhiApp("TestSiddhiApp", username="admin",
+                                                                   password="admin")
 
         self.assertEqual(status, "active")
 
@@ -51,7 +52,8 @@ class EventSimulatorTests(unittest.TestCase):
         spPythonClient = SPClient(self.hostUrl)
         siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
 
-        app = siddhiAppManagementClient.retrieveSiddhiApp("TestSiddhiApp")
+        app = siddhiAppManagementClient.retrieveSiddhiApp("TestSiddhiApp", username="admin",
+                                                          password="admin")
 
         lines = []
         with open(resources_path + "/TestSiddhiApp.siddhi", "rb") as f:
@@ -76,25 +78,30 @@ class EventSimulatorTests(unittest.TestCase):
 
         siddhiApp = "".join(lines)
 
-        result = siddhiAppManagementClient.saveSiddhiApp(siddhiApp)
+        result = siddhiAppManagementClient.saveSiddhiApp(siddhiApp, username="admin",
+                                                         password="admin")
         self.assertTrue(result)
 
         sleep(5)
 
-        apps = siddhiAppManagementClient.listSiddhiApps()
+        apps = siddhiAppManagementClient.listSiddhiApps(username="admin",
+                                                        password="admin")
         logging.info(apps)
         self.assertTrue("TestSiddhiApp1" in apps)
         logging.info(apps)
 
-        apps = siddhiAppManagementClient.listSiddhiApps(isActive=True)
+        apps = siddhiAppManagementClient.listSiddhiApps(username="admin",
+                                                        password="admin", isActive=True)
         self.assertTrue("TestSiddhiApp1" in apps)
         logging.info(apps)
 
-        apps = siddhiAppManagementClient.listSiddhiApps(isActive=False)
+        apps = siddhiAppManagementClient.listSiddhiApps(username="admin",
+                                                        password="admin", isActive=False)
         self.assertTrue("TestSiddhiApp1" not in apps)
         logging.info(apps)
 
-        result = siddhiAppManagementClient.deleteSiddhiApp("TestSiddhiApp1")
+        result = siddhiAppManagementClient.deleteSiddhiApp("TestSiddhiApp1", username="admin",
+                                                           password="admin")
         self.assertTrue(result)
 
     def testSaveAndDeleteSiddhiApp(self):
@@ -109,12 +116,14 @@ class EventSimulatorTests(unittest.TestCase):
 
         siddhiApp = "".join(lines)
 
-        result = siddhiAppManagerClient.saveSiddhiApp(siddhiApp)
+        result = siddhiAppManagerClient.saveSiddhiApp(siddhiApp, username="admin",
+                                                      password="admin")
         self.assertTrue(result)
 
         sleep(5)
 
-        result = siddhiAppManagerClient.deleteSiddhiApp("TestSiddhiApp1")
+        result = siddhiAppManagerClient.deleteSiddhiApp("TestSiddhiApp1", username="admin",
+                                                        password="admin")
         self.assertTrue(result)
 
     def testUpdateAndDeleteSiddhiApp(self):
@@ -129,17 +138,20 @@ class EventSimulatorTests(unittest.TestCase):
 
         siddhiApp = "".join(lines)
 
-        result = siddhiAppManagerClient.updateSiddhiApp(siddhiApp)
+        result = siddhiAppManagerClient.updateSiddhiApp(siddhiApp, username="admin",
+                                                        password="admin")
         self.assertTrue(result.name == UpdateAppStatusResponse.savedNew.name)
 
         sleep(5)
 
-        result = siddhiAppManagerClient.updateSiddhiApp(siddhiApp)
+        result = siddhiAppManagerClient.updateSiddhiApp(siddhiApp, username="admin",
+                                                        password="admin")
         self.assertTrue(result.name == UpdateAppStatusResponse.updated.name)
 
         sleep(5)
 
-        result = siddhiAppManagerClient.deleteSiddhiApp("TestSiddhiApp1")
+        result = siddhiAppManagerClient.deleteSiddhiApp("TestSiddhiApp1", username="admin",
+                                                        password="admin")
         self.assertTrue(result)
 
 
