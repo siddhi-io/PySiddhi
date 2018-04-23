@@ -38,7 +38,8 @@ inputHandler.send(["WSO2", 45.6, LongType(50)])
 sleep(0.1)
 
 ```
-Above example is 
+Above example is comprehensively described bellow.
+
 **Initialization** 
 
 - Initialize the Library and Imports
