@@ -1,25 +1,88 @@
 # PySiddhi
 
-The scope of this project is to develop a Python Wrapper on Siddhi Library. The Python wrapper would support Siddhi 4.x. A REST Client is also developed to interact with WSO2 Stream Processor 4.x.x.
+Siddhi is a java library that listens to events from data streams, detects complex conditions described via a ***Streaming SQL language***, and triggers actions. It performs both ***Stream Processing*** and ***Complex Event Processing***.
 
-This was devoloped as a project for Google Summer of Code 2017 Program.
 
-Project Goals
+The [Siddhi](https://wso2.github.io/siddhi/) Library is originally written in Java 8.0. ***PySiddhi*** is a Python wrapper on Siddhi Java Library.
+
+- Siddhi 4 is wrapped by PySiddhi4.
+
+PySiddhi4 includes a REST Client for WSO2 Stream Processor(SP) 4.x.x.
+
+*Note: PySiddhi API is initiated by a project for Google Summer of Code 2017 Program.*
+
+Features
 -----
-1) Develop a Python Wrapper on Siddhi Java Library 4.x.
-2) Extend the wrapper to support interactions with WSO2 SP 4.x.x.
-3) Testing, Documentation and Deployment
-
-Current Progress
------
-- [x] Basic features of Siddhi 4.x.x
-- [x] Wrapper on Siddhi Debugger (for PySiddhi4 only)
+- [x] Basic functionalities of Siddhi 4.x.x
+- [x] Wrapper on Siddhi Debugger
 - [x] Support to Siddhi Extensions Loading
-- [x] Rest Client on WSO2 SP 4.x.x - Siddhi App Management (for PySiddhi4 only)
-- [x] Rest Client on WSO2 SP 4.x.x Event Simulator (for PySiddhi4 only)
-- [x] Unit Tests
-- [x] Wiki
+- [x] Rest Client on WSO2 SP 4.x.x - Siddhi App Management
+- [x] Rest Client on WSO2 SP 4.x.x Event Simulator
 - [x] Deployment wheels
+
+## Quick Demo
+Following is a quick demo of how to use PySiddhi4. For comprehensive demo please refer to [this link](docs/Quick-Demo-(PySiddhi4).md)
+
+**Step 1** - Define filter using Siddhi Query
+
+```python
+siddhiManager = SiddhiManager()
+# Siddhi Query to filter events with volume less than 150 as output
+siddhiApp = "define stream cseEventStream (symbol string, price float, volume long); " + \
+"@info(name = 'query1') from cseEventStream[volume < 150] select symbol,price insert into outputStream;"
+
+# Generate runtime
+siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(siddhiApp)
+```
+For more details on Siddhi Query Language, refer [Siddhi Query Language Guide](https://wso2.github.io/siddhi/) in WSO2 Docs.
+
+**Step 2** - Define a listener for filtered events.
+```python
+# Add listener to capture output events
+class QueryCallbackImpl(QueryCallback):
+    def receive(self, timestamp, inEvents, outEvents):
+        PrintEvent(timestamp, inEvents, outEvents)
+siddhiAppRuntime.addCallback("query1",QueryCallbackImpl())
+```
+**Step 3** - Test filter using sample input events
+```python
+# Retrieving input handler to push events into Siddhi
+inputHandler = siddhiAppRuntime.getInputHandler("cseEventStream")
+
+# Starting event processing
+siddhiAppRuntime.start()
+
+# Sending events to Siddhi
+inputHandler.send(["IBM",700.0,LongType(100)])
+inputHandler.send(["WSO2", 60.5, LongType(200)])
+inputHandler.send(["GOOG", 50, LongType(30)])
+inputHandler.send(["IBM", 76.6, LongType(400)])
+inputHandler.send(["WSO2", 45.6, LongType(50)])
+
+# Wait for response
+sleep(0.1)
+```
+**Output**
+
+The 3 events with volume less than 150 are printed in log.
+```log
+INFO  EventPrinter - Events{ @timestamp = 1497708406678, inEvents = [Event{timestamp=1497708406678, id=-1, data=[IBM, 700.0], isExpired=false}], RemoveEvents = null }
+INFO  EventPrinter - Events{ @timestamp = 1497708406685, inEvents = [Event{timestamp=1497708406685, id=-1, data=[GOOG, 50], isExpired=false}], RemoveEvents = null }
+INFO  EventPrinter - Events{ @timestamp = 1497708406687, inEvents = [Event{timestamp=1497708406687, id=-1, data=[WSO2, 45.6], isExpired=false}], RemoveEvents = null }
+```
+
+**Clean Up** - Remember to shutdown the Siddhi Manager when your done.
+```
+siddhiManager.shutdown()
+```
+
+Install PySiddhi from python package manager(pip)
+----
+Install pre-requisites mentioned in Installing the Library from Source section.
+
+```
+pip install pysiddhi4
+```
 
 Installing the Library from Source
 -----
@@ -54,15 +117,6 @@ Installing the Library from Source
     - Clone the branch from GitHub Repository.
     - Navigate to project root and run `sudo pip install .`
 
-3. Use the Library using Python.
-    - For Siddhi 4.x.x
-    ```python
-    from PySiddhi4.core.SiddhiManager import SiddhiManager
-    sm = SiddhiManager()
-    ....
-    sm.shutdown()
-    ```
-    *Refer Tests to get more familiar with library functionality.
 
 Running the Tests
 -----
@@ -75,7 +129,7 @@ Running the Tests
     - Navigate to `SP_Home/bin/` and run `sh worker.sh`(in windows run worker.bat).
 4. Run the tests cases in `PySiddhi/Tests` directory
 
-*If mvn clean install throws errors, check the paths provided for imports of Python3 Developer Headers
+* If mvn clean install throws errors, check the paths provided for imports of Python3 Developer Headers
 
 Creating deployment wheel (for Linux)
 -----
@@ -117,4 +171,27 @@ Contributors
    - Email: madhawavidanapathirana@gmail.com
    - Organization: University of Moratuwa
 
-__Developer Mail Group__: dev@wso2.org
+How to Contribute
+-----   
+* Please report issues at
+     <a target="_blank" href="https://github.com/wso2/PySiddhi/issues">GitHub Issue Tracker</a>.
+
+* Send your contributions as pull requests to <a target="_blank" href="https://github.com/wso2/PySiddhi/tree/master">master branch</a>.
+
+Contact us
+-----
+
+* Post your questions with the <a target="_blank" href="http://stackoverflow.com/search?q=siddhi">"Siddhi"</a> tag in <a target="_blank" href="http://stackoverflow.com/search?q=siddhi">Stackoverflow</a>.
+
+* Siddhi developers can be contacted via the mailing lists:
+
+    Developers List   : [dev@wso2.org](mailto:dev@wso2.org)
+
+    Architecture List : [architecture@wso2.org](mailto:architecture@wso2.org)
+
+Support
+-----
+
+   * We are committed to ensuring support for this extension in production. Our unique approach ensures that all support leverages our open development methodology and is provided by the very same engineers who build the technology.
+
+   * For more details and to take advantage of this unique opportunity contact us via <a target="_blank" href="http://wso2.com/support?utm_source=gitanalytics&utm_campaign=gitanalytics_Jul17">http://wso2.com/support/</a>.

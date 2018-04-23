@@ -24,7 +24,7 @@
 
     <groupId>org.wso2.siddhi-python-api</groupId>
     <artifactId>siddhi-python-api-proxy-4</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1.SNAPSHOT</version>
 
     <dependencies>
         <dependency>

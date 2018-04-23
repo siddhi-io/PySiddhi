@@ -15,6 +15,7 @@
 # under the License.
 
 from enum import Enum
+from requests.auth import HTTPBasicAuth
 
 from PySiddhi4.sp.__Communication.RestClient import RestClient
 
@@ -39,13 +40,13 @@ class SiddhiAppManagementClient(RestClient):
         '''
         RestClient.__init__(self, siddhi_apps_url)
 
-    def retrieveSiddhiApp(self, siddhiAppName, auth=None):
+    def retrieveSiddhiApp(self, siddhiAppName, username, password):
         '''
         Retrieve siddhiApp stored in WSO2 SP.
         :param siddhiAppName: 
         :return: 
         '''
-        r = self._sendGetRequest("/" + siddhiAppName, auth=auth)
+        r = self._sendGetRequest("/" + siddhiAppName, auth=HTTPBasicAuth(username, password))
         if r.status_code == 200:
             result = r.json()
             if "content" in result.keys():
@@ -58,13 +59,13 @@ class SiddhiAppManagementClient(RestClient):
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def deleteSiddhiApp(self, siddhiAppName, auth=None):
+    def deleteSiddhiApp(self, siddhiAppName, username, password):
         '''
         Deletes a SiddhiApp stored in WSO2 SP.
         :param siddhiAppName: 
         :return: 
         '''
-        r = self._sendDeleteRequest("/" + siddhiAppName, auth=auth)
+        r = self._sendDeleteRequest("/" + siddhiAppName, auth=HTTPBasicAuth(username, password))
         if r.status_code == 200:
             return True
         elif r.status_code == 400:
@@ -76,13 +77,13 @@ class SiddhiAppManagementClient(RestClient):
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def retrieveStatusSiddhiApp(self, siddhiAppName, auth=None):
+    def retrieveStatusSiddhiApp(self, siddhiAppName, username, password):
         '''
         Retrieve the status of a SiddhiApp in WSO2 SP.
         :param siddhiAppName: 
         :return: 
         '''
-        r = self._sendGetRequest("/" + siddhiAppName + "/status", auth=auth)
+        r = self._sendGetRequest("/" + siddhiAppName + "/status", auth=HTTPBasicAuth(username, password))
         if r.status_code == 200:
             result = r.json()
             if "status" in result.keys():
@@ -95,7 +96,7 @@ class SiddhiAppManagementClient(RestClient):
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def listSiddhiApps(self, isActive=None, auth=None):
+    def listSiddhiApps(self,username, password, isActive=None):
         '''
         Obtains the list of Siddhi Apps in WSO2 SP.
         :param isActive: 
@@ -104,20 +105,20 @@ class SiddhiAppManagementClient(RestClient):
         params = None
         if isActive is not None:
             params = {"isActive": isActive}
-        r = self._sendGetRequest("/", params=params, auth=auth)
+        r = self._sendGetRequest("/", params=params, auth=HTTPBasicAuth(username, password))
         if r.status_code == 200:
             result = r.json()
             return result
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def updateSiddhiApp(self, siddhiApp, auth=None):
+    def updateSiddhiApp(self, siddhiApp, username, password):
         '''
         Updates a Siddhi App in WSO2 SP.
         :param siddhiApp: 
         :return: 
         '''
-        r = self._sendPutRequest("/", data=siddhiApp, auth=auth)
+        r = self._sendPutRequest("/", data=siddhiApp, auth=HTTPBasicAuth(username, password))
         if r.status_code == 200 or r.status_code == 201:
             result = r.json()
             if result["type"] == "success":
@@ -134,13 +135,13 @@ class SiddhiAppManagementClient(RestClient):
         else:
             raise Exception(str(r.status_code) + ": " + r.text)
 
-    def saveSiddhiApp(self, siddhiApp, auth=None):
+    def saveSiddhiApp(self, siddhiApp, username, password):
         '''
         Saves a Siddhi App to WSO2 SP.
         :param siddhiApp: 
         :return: 
         '''
-        r = self._sendPostRequest("/", data=siddhiApp, auth=auth)
+        r = self._sendPostRequest("/", data=siddhiApp, auth=HTTPBasicAuth(username, password))
         if r.status_code == 201:
             result = r.json()
             if result["type"] == "success":
