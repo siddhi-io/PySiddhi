@@ -12,11 +12,10 @@ extra:
 pages:
   - Welcome to PySiddhi: index.md
   - License: license.md
-  - Installation-Guide : Installation-Guide.md
-  - Demos :
-    - For Siddhi 4: Quick-Demo-(PySiddhi4).md
-    - For Stream Processor 4: Quick-Demo-(SP4).md
-  - Siddhi Java to Python Mapping: Using-Siddhi-from-Python.md
-  - Siddhi App Management using Python Client: Siddhi-App-Management-of-WSO2-SP-4.md
-  - Using Event Simulator : Event-Simulator-of-SP-4.md
+  - Installation Guide: Installation-Guide.md
+  - Run PySiddhi4: Quick-Demo-(PySiddhi4).md
+  - Advanced Concepts of PySiddhi: Using-Siddhi-from-Python.md
+  - PySiddhi Client to Manage WSO2 Stream Processor: Quick-Demo-(SP4).md
+    - Client APIs to Manage Siddhi App: Siddhi-App-Management-of-WSO2-SP-4.md
+    - Client APIs to Simulate Events: Event-Simulator-of-SP-4.md
 theme: material
