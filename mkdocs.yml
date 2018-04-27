@@ -19,4 +19,6 @@ pages:
   - Siddhi Java to Python Mapping: Using-Siddhi-from-Python.md
   - Siddhi App Management using Python Client: Siddhi-App-Management-of-WSO2-SP-4.md
   - Using Event Simulator : Event-Simulator-of-SP-4.md
+  - Debugging Siddhi Queries : Debugging-Siddhi-Queries.md
+
 theme: material

@@ -21,7 +21,7 @@ Content
 * WSO2 Stream Processor 4 REST Client
     * [Siddhi App Management using Python Client](Siddhi-App-Management-of-WSO2-DAS-4.0)
     * [Using Event Simulator](Event-Simulator-WSO2-DAS-4.0)
-* [Debugging Siddhi Queries](Debugging-Siddhi-Queries-(Siddhi-4.0)) 
+* [Debugging Siddhi Queries](Debugging-Siddhi-Queries)
 
 ## Quick Demo
 Following is a quick demo of how to use PySiddhi4. For comprehensive demo please refer to [this link](Quick-Demo-(PySiddhi4).md)
