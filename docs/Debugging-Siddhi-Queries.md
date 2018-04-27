@@ -1,10 +1,14 @@
-Siddhi Debugger is a new addition to Siddhi Library in version 4.0. The following features of Siddhi 4.0 Debugger has been exposed to Python using this API.
-* Siddhi Debugger Callbacks
-* Siddhi Breakpoints (Acquiring and Releasing)
-* Querying details on Siddhi QueryState
+# Debug PySiddhi4
+
+Siddhi Queries can be debugged at run time via PySiddhi. 
+It suppots following features with its Python APIs.
+
+* Add Siddhi Debugger Callbacks
+* Acquiring and Releasing Breakpoints in Siddhi Queries
+* Querying details about Siddhi Query State
 * Debugging Multi-threaded Siddhi Apps
 
-# Breakpoints and Siddhi Debugger Callbacks
+# Using Breakpoints and Siddhi Debugger Callbacks
 Using Siddhi Debugger, it is possible to break the query execution on occurrences of designated events (input or output events) and analyze the state of the query. Placing a breakpoint would cause Siddhi Debugger Callback to be triggered whenever a breakpoint is reached. The following code snippet demonstrates a basic usage of Siddhi Debugger.
 
 ```python

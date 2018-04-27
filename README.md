@@ -22,7 +22,7 @@ Features
 
 
 ## Quick Demo
-Following is a quick demo of how to use PySiddhi4. For comprehensive demo please refer to [this link](docs/Quick-Demo-(PySiddhi4).md)
+Following is a quick demo of how to use PySiddhi4. For comprehensive demo please refer to [this link](docs/Run-PySiddhi4.md)
 
 **Step 1** - Define filter using Siddhi Query
 

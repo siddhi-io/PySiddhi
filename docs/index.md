@@ -11,7 +11,7 @@ described via a ***Streaming SQL language***, and triggers actions. It performs 
 
 * Introduction and Quick Demo (this page)
 * [Installation Guide](Installation-Guide.md)
-* [Run PySiddhi4](Quick-Demo-(PySiddhi4).md)
+* [Run PySiddhi4](Run-PySiddhi4.md)
 * [Debug PySiddhi4](Debugging-Siddhi-Queries-(Siddhi-4.0)) 
 * [Advanced Concepts of PySiddhi](Using-Siddhi-from-Python)
 * Using PySiddhi REST Client to Manage WSO2 Stream Processor
@@ -30,7 +30,7 @@ pip install pysiddhi4
 For detail insulation and prerequisite refer section on [Installation Guide](Installation-Guide). 
 
 ## Quick Demo
-Following is a quick demo of how to use PySiddhi4. For comprehensive demo please refer [Quick-Demo-PySiddhi4](Quick-Demo-(PySiddhi4).md)
+Following is a quick demo of how to use PySiddhi4. For comprehensive demo please refer [Quick-Demo-PySiddhi4](Run-PySiddhi4.md)
 
 **Step 1** - Define filter using Siddhi Query.
 
