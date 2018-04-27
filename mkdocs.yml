@@ -10,14 +10,13 @@ extra:
     primary: teal
     accent: teal
 pages:
-- Welcome to PySiddhi:
-  - About: index.md
+  - Welcome to PySiddhi: index.md
   - License: license.md
   - Installation-Guide : Installation-Guide.md
   - Demos :
     - For Siddhi 4: Quick-Demo-(PySiddhi4).md
     - For Stream Processor 4: Quick-Demo-(SP4).md
-  - Using Siddhi from Python : Using-Siddhi-from-Python.md
+  - Siddhi Java to Python Mapping: Using-Siddhi-from-Python.md
   - Siddhi App Management using Python Client: Siddhi-App-Management-of-WSO2-SP-4.md
   - Using Event Simulator : Event-Simulator-of-SP-4.md
 theme: material
