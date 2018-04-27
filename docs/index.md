@@ -12,6 +12,7 @@ described via a ***Streaming SQL language***, and triggers actions. It performs 
 * Introduction and Quick Demo (this page)
 * [Installation Guide](Installation-Guide.md)
 * [Run PySiddhi4](Quick-Demo-(PySiddhi4).md)
+* [Debug PySiddhi4](Debugging-Siddhi-Queries-(Siddhi-4.0)) 
 * [Advanced Concepts of PySiddhi](Using-Siddhi-from-Python)
 * Using PySiddhi REST Client to Manage WSO2 Stream Processor
     * [Demo Managing Siddhi Apps on WSO2 SP](Quick-Demo-(SP4).md)

@@ -14,6 +14,7 @@ pages:
   - License: license.md
   - Installation Guide: Installation-Guide.md
   - Run PySiddhi4: Quick-Demo-(PySiddhi4).md
+  - Debug PySiddhi4 : Debugging-Siddhi-Queries.md
   - Advanced Concepts of PySiddhi: Using-Siddhi-from-Python.md
   - PySiddhi Client to Manage WSO2 Stream Processor: Quick-Demo-(SP4).md
     - Client APIs to Manage Siddhi App: Siddhi-App-Management-of-WSO2-SP-4.md
