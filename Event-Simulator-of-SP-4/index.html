@@ -1,4 +1,7 @@
 
+
+
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
@@ -7,32 +10,53 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
+        <meta name="description" content="Python Stream Processing and Complex Event Processing Engine">
       
       
+        <link rel="canonical" href="https://wso2.github.io/PySiddhi/Event-Simulator-of-SP-4/">
       
-        <link rel="shortcut icon" href="../images/favicon.ico">
       
-      <meta name="generator" content="mkdocs-0.16.3, mkdocs-material-1.10.3">
+        <meta name="author" content="WSO2">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../images/favicon.ico">
+      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.3">
     
     
       
-        <title>Using Event Simulator - PySiddhi</title>
+        <title>Client APIs to Simulate Events - PySiddhi</title>
       
     
     
-      <script src="../assets/javascripts/modernizr-e826f8942a.js"></script>
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/application-9011e2d3f8.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
       
-        <link rel="stylesheet" href="../assets/stylesheets/application-23f75ab9c7.palette.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
       
     
     
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
-        
-        
-        
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
@@ -44,30 +68,51 @@
     
   </head>
   
-  
-  
-  
-    <body data-md-color-primary="teal" data-md-color-accent="teal">
+    
+    
+    <body dir="ltr" data-md-color-primary="teal" data-md-color-accent="teal">
   
     <svg class="md-svg">
       <defs>
         
         
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <a href="#event-simulation-using-pysiddhi-client" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="PySiddhi" class="md-header-nav__button md-logo">
+        <a href="https://wso2.github.io/PySiddhi/" title="PySiddhi" class="md-header-nav__button md-logo">
           
-            
-              <img src="../images/siddhi-logo-w.svg" width="24" height="24">
-            
+            <img src="../images/siddhi-logo-w.svg" width="24" height="24">
           
         </a>
       </div>
@@ -75,31 +120,38 @@
         <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
-        <span class="md-flex__ellipsis md-header-nav__title">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
             
-              
+              <span class="md-header-nav__topic">
+                PySiddhi
+              </span>
+              <span class="md-header-nav__topic">
+                Client APIs to Simulate Events
+              </span>
             
-            Using Event Simulator
           
-        </span>
+        </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
-          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
           
+            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            
 <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner">
+  <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" required placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset">&#xE5CD;</button>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result" data-md-lang-search="" data-md-lang-tokenizer="[\s\-]+">
-          <div class="md-search-result__meta" data-md-lang-result-none="No matching documents" data-md-lang-result-one="1 matching document" data-md-lang-result-other="# matching documents">
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
             Type to start searching
           </div>
           <ol class="md-search-result__list"></ol>
@@ -108,8 +160,33 @@
     </div>
   </div>
 </div>
+          
         
       </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/wso2/PySiddhi/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      PySiddhi
+    </div>
+  </a>
+
+          </div>
+        </div>
       
     </div>
   </nav>
@@ -117,6 +194,7 @@
     
     <div class="md-container">
       
+        
       
       
       <main class="md-main">
@@ -128,15 +206,35 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="drawer">
-    <div class="md-nav__button md-logo">
+    <span class="md-nav__button md-logo">
       
-        
-          <img src="../images/siddhi-logo-w.svg">
-        
+        <img src="../images/siddhi-logo-w.svg" width="48" height="48">
       
-    </div>
+    </span>
     PySiddhi
   </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/wso2/PySiddhi/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      PySiddhi
+    </div>
+  </a>
+
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -170,68 +268,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Installation-Guide/" title="Installation-Guide" class="md-nav__link">
-      Installation-Guide
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      Demos
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        Demos
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Quick-Demo-(PySiddhi4)/" title="For Siddhi 4" class="md-nav__link">
-      For Siddhi 4
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Quick-Demo-(SP4)/" title="For Stream Processor 4" class="md-nav__link">
-      For Stream Processor 4
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../Using-Siddhi-from-Python/" title="Siddhi Java to Python Mapping" class="md-nav__link">
-      Siddhi Java to Python Mapping
+    <a href="../Installation-Guide/" title="Installation Guide" class="md-nav__link">
+      Installation Guide
     </a>
   </li>
 
@@ -242,8 +280,32 @@
 
 
   <li class="md-nav__item">
-    <a href="../Siddhi-App-Management-of-WSO2-SP-4/" title="Siddhi App Management using Python Client" class="md-nav__link">
-      Siddhi App Management using Python Client
+    <a href="../Run-PySiddhi4/" title="Run PySiddhi4" class="md-nav__link">
+      Run PySiddhi4
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Debugging-Siddhi-Queries/" title="Debug PySiddhi4" class="md-nav__link">
+      Debug PySiddhi4
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../Using-Siddhi-from-Python/" title="Advanced Concepts of PySiddhi" class="md-nav__link">
+      Advanced Concepts of PySiddhi
     </a>
   </li>
 
@@ -255,6 +317,51 @@
   
 
 
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" checked>
+    
+    <label class="md-nav__link" for="nav-7">
+      PySiddhi Client for WSO2 Stream Processor
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        PySiddhi Client for WSO2 Stream Processor
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Quick-Demo-(SP4)/" title="Run PySiddhi Client" class="md-nav__link">
+      Run PySiddhi Client
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Siddhi-App-Management-of-WSO2-SP-4/" title="Client APIs to Manage Siddhi App" class="md-nav__link">
+      Client APIs to Manage Siddhi App
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
   <li class="md-nav__item md-nav__item--active">
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
@@ -262,10 +369,71 @@
       
     
     
-    <a href="./" title="Using Event Simulator" class="md-nav__link md-nav__link--active">
-      Using Event Simulator
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Client APIs to Simulate Events
+      </label>
+    
+    <a href="./" title="Client APIs to Simulate Events" class="md-nav__link md-nav__link--active">
+      Client APIs to Simulate Events
     </a>
     
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" title="Pre-requisites" class="md-nav__link">
+    Pre-requisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-api-operations" title="Supported API operations" class="md-nav__link">
+    Supported API operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-simulations" title="Single Simulations" class="md-nav__link">
+    Single Simulations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saving-a-simulation-configuration-feed-simulation-configuration" title="Saving a Simulation Configuration (Feed Simulation Configuration)" class="md-nav__link">
+    Saving a Simulation Configuration (Feed Simulation Configuration)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -286,6 +454,49 @@
     
   
   
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" title="Pre-requisites" class="md-nav__link">
+    Pre-requisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-api-operations" title="Supported API operations" class="md-nav__link">
+    Supported API operations
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#single-simulations" title="Single Simulations" class="md-nav__link">
+    Single Simulations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saving-a-simulation-configuration-feed-simulation-configuration" title="Saving a Simulation Configuration (Feed Simulation Configuration)" class="md-nav__link">
+    Saving a Simulation Configuration (Feed Simulation Configuration)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -296,8 +507,11 @@
             <article class="md-content__inner md-typeset">
               
                 
+                  <a href="https://github.com/wso2/PySiddhi/edit/master/docs/Event-Simulator-of-SP-4.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
-                <p>Following operations are supported by WSO2 Stream Processor 4 Event Simulator Client of PySiddhi4.</p>
+                
+                <h1 id="event-simulation-using-pysiddhi-client">Event Simulation using PySiddhi Client<a class="headerlink" href="#event-simulation-using-pysiddhi-client" title="Permanent link">&para;</a></h1>
+<p>Following operations are supported by WSO2 Stream Processor 4 Event Simulator Client of PySiddhi4.</p>
 <ul>
 <li>Single Simulations</li>
 <li>Saving a simulation configuration</li>
@@ -312,7 +526,7 @@
 <li>Stopping an event simulation</li>
 </ul>
 <p>Refer <a href="https://docs.wso2.com/display/SP400/Simulating+Events">Documentation of WSO2 SP 4.0 Event simulator REST API</a> for more details.</p>
-<h1 id="pre-requisites">Pre-requisites</h1>
+<h2 id="pre-requisites">Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Install <em>PySiddhi4</em> by following <a href="../Installation-Guide">Installation Guide</a>.</li>
 <li>WSO2 SP 4.0 must be already installed and running. If not, follow the steps below.</li>
@@ -320,45 +534,48 @@
 <li>Extract <code>wso2sp-4.x.x.zip</code> to a suitable location (say <code>SP_HOME</code>).</li>
 <li>Navigate to <code>SP_Home/bin/</code> and run <code>sh worker.sh</code>.</li>
 </ol>
-<h1 id="single-simulations">Single Simulations</h1>
-<pre><code class="python">from PySiddhi4.sp.SPClient import SPClient
-from PySiddhi4.sp.EventSimulator.SingleSimulationConfiguration import SingleSimulationConfiguration
+<h2 id="supported-api-operations">Supported API operations<a class="headerlink" href="#supported-api-operations" title="Permanent link">&para;</a></h2>
+<h3 id="single-simulations">Single Simulations<a class="headerlink" href="#single-simulations" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">PySiddhi4.sp.SPClient</span> <span class="kn">import</span> <span class="n">SPClient</span>
+<span class="kn">from</span> <span class="nn">PySiddhi4.sp.EventSimulator.SingleSimulationConfiguration</span> <span class="kn">import</span> <span class="n">SingleSimulationConfiguration</span>
 
-spPythonClient = SPClient('http://localhost:9090') # host URL of SP
-eventSimulatorClient = spPythonClient.getEventSimulatorClient()
+<span class="n">spPythonClient</span> <span class="o">=</span> <span class="n">SPClient</span><span class="p">(</span><span class="s1">&#39;http://localhost:9090&#39;</span><span class="p">)</span> <span class="c1"># host URL of SP</span>
+<span class="n">eventSimulatorClient</span> <span class="o">=</span> <span class="n">spPythonClient</span><span class="o">.</span><span class="n">getEventSimulatorClient</span><span class="p">()</span>
 
-singleSimulationConfiguration = SingleSimulationConfiguration(&quot;TestSiddhiApp&quot;,&quot;FooStream&quot;,[None, 9, 45])
+<span class="n">singleSimulationConfiguration</span> <span class="o">=</span> <span class="n">SingleSimulationConfiguration</span><span class="p">(</span><span class="s2">&quot;TestSiddhiApp&quot;</span><span class="p">,</span><span class="s2">&quot;FooStream&quot;</span><span class="p">,[</span><span class="bp">None</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
 
-if eventSimulatorClient.simulateSingleEvent(singleSimulationConfiguration, username=&quot;admin&quot;, password=&quot;admin&quot;):
-    logging.info(&quot;Successfully Simulated Single Event&quot;)
-</code></pre>
+<span class="k">if</span> <span class="n">eventSimulatorClient</span><span class="o">.</span><span class="n">simulateSingleEvent</span><span class="p">(</span><span class="n">singleSimulationConfiguration</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">):</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Successfully Simulated Single Event&quot;</span><span class="p">)</span>
+</pre></div>
 
-<h1 id="saving-a-simulation-configuration-feed-simulation-configuration">Saving a Simulation Configuration (Feed Simulation Configuration)</h1>
-<pre><code class="python">from PySiddhi4.sp.SPClient import SPClient
-from PySiddhi4.sp.EventSimulator.AttributeConfiguration import AttributeConfiguration
-from PySiddhi4.sp.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
-from PySiddhi4.sp.EventSimulator.SimulationSource import SimulationSource
 
-spPythonClient = SPClient('http://localhost:9090') # host URL of SP
-eventSimulatorClient = spPythonClient.getEventSimulatorClient()
+<h3 id="saving-a-simulation-configuration-feed-simulation-configuration">Saving a Simulation Configuration (Feed Simulation Configuration)<a class="headerlink" href="#saving-a-simulation-configuration-feed-simulation-configuration" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><span class="kn">from</span> <span class="nn">PySiddhi4.sp.SPClient</span> <span class="kn">import</span> <span class="n">SPClient</span>
+<span class="kn">from</span> <span class="nn">PySiddhi4.sp.EventSimulator.AttributeConfiguration</span> <span class="kn">import</span> <span class="n">AttributeConfiguration</span>
+<span class="kn">from</span> <span class="nn">PySiddhi4.sp.EventSimulator.FeedSimulationConfiguration</span> <span class="kn">import</span> <span class="n">FeedSimulationConfiguration</span>
+<span class="kn">from</span> <span class="nn">PySiddhi4.sp.EventSimulator.SimulationSource</span> <span class="kn">import</span> <span class="n">SimulationSource</span>
 
-svr = FeedSimulationConfiguration(&quot;simulationPrimitive&quot;)
-svr.properties.timestampStartTime = 1488615136958
-svr.properties.timestampEndTime = None
-svr.properties.noOfEvents = 8
-svr.properties.timeInterval = 1000
+<span class="n">spPythonClient</span> <span class="o">=</span> <span class="n">SPClient</span><span class="p">(</span><span class="s1">&#39;http://localhost:9090&#39;</span><span class="p">)</span> <span class="c1"># host URL of SP</span>
+<span class="n">eventSimulatorClient</span> <span class="o">=</span> <span class="n">spPythonClient</span><span class="o">.</span><span class="n">getEventSimulatorClient</span><span class="p">()</span>
 
-sm1 = SimulationSource(simulationType=SimulationSource.Type.RANDOM_DATA_SIMULATION, streamName=&quot;FooStream&quot;, siddhiAppName=&quot;TestSiddhiApp&quot;, timestampInterval=5)
+<span class="n">svr</span> <span class="o">=</span> <span class="n">FeedSimulationConfiguration</span><span class="p">(</span><span class="s2">&quot;simulationPrimitive&quot;</span><span class="p">)</span>
+<span class="n">svr</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">timestampStartTime</span> <span class="o">=</span> <span class="mi">1488615136958</span>
+<span class="n">svr</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">timestampEndTime</span> <span class="o">=</span> <span class="bp">None</span>
+<span class="n">svr</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">noOfEvents</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">svr</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">timeInterval</span> <span class="o">=</span> <span class="mi">1000</span>
 
-sm1.attributeConfiguration.append(AttributeConfiguration(AttributeConfiguration.Type.PRIMITIVE_BASED, length=10))
-sm1.attributeConfiguration.append(AttributeConfiguration(AttributeConfiguration.Type.PRIMITIVE_BASED, min=35000, max=30000, precision=2))
-sm1.attributeConfiguration.append(AttributeConfiguration(AttributeConfiguration.Type.PRIMITIVE_BASED, min=150, max=300))
+<span class="n">sm1</span> <span class="o">=</span> <span class="n">SimulationSource</span><span class="p">(</span><span class="n">simulationType</span><span class="o">=</span><span class="n">SimulationSource</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">RANDOM_DATA_SIMULATION</span><span class="p">,</span> <span class="n">streamName</span><span class="o">=</span><span class="s2">&quot;FooStream&quot;</span><span class="p">,</span> <span class="n">siddhiAppName</span><span class="o">=</span><span class="s2">&quot;TestSiddhiApp&quot;</span><span class="p">,</span> <span class="n">timestampInterval</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 
-svr.sources.append(sm1)
+<span class="n">sm1</span><span class="o">.</span><span class="n">attributeConfiguration</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AttributeConfiguration</span><span class="p">(</span><span class="n">AttributeConfiguration</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">PRIMITIVE_BASED</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">sm1</span><span class="o">.</span><span class="n">attributeConfiguration</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AttributeConfiguration</span><span class="p">(</span><span class="n">AttributeConfiguration</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">PRIMITIVE_BASED</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">35000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">30000</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">sm1</span><span class="o">.</span><span class="n">attributeConfiguration</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AttributeConfiguration</span><span class="p">(</span><span class="n">AttributeConfiguration</span><span class="o">.</span><span class="n">Type</span><span class="o">.</span><span class="n">PRIMITIVE_BASED</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">300</span><span class="p">))</span>
 
-if eventSimulatorClient.saveSimulationFeedConfiguration(svr, username=&quot;admin&quot;, password=&quot;admin&quot;):
-    print(&quot;Successfully Saved Simulation Feed Configuration&quot;)
-</code></pre>
+<span class="n">svr</span><span class="o">.</span><span class="n">sources</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sm1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">eventSimulatorClient</span><span class="o">.</span><span class="n">saveSimulationFeedConfiguration</span><span class="p">(</span><span class="n">svr</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Successfully Saved Simulation Feed Configuration&quot;</span><span class="p">)</span>
+</pre></div>
+
 
 <p>For more examples on Event Simulator, refer <a href="https://github.com/wso2/PySiddhi/blob/master/Tests/SPTests/EventSimulatorTests.py">EventSimulatorTests</a>.</p>
                 
@@ -367,6 +584,8 @@ if eventSimulatorClient.saveSimulationFeedConfiguration(svr, username=&quot;admi
               
               
                 
+
+
               
             </article>
           </div>
@@ -379,7 +598,7 @@ if eventSimulatorClient.saveSimulationFeedConfiguration(svr, username=&quot;admi
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Siddhi-App-Management-of-WSO2-SP-4/" title="Siddhi App Management using Python Client" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Siddhi-App-Management-of-WSO2-SP-4/" title="Client APIs to Manage Siddhi App" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -388,7 +607,7 @@ if eventSimulatorClient.saveSimulationFeedConfiguration(svr, username=&quot;admi
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Siddhi App Management using Python Client
+                Client APIs to Manage Siddhi App
               </span>
             </div>
           </a>
@@ -401,10 +620,14 @@ if eventSimulatorClient.saveSimulationFeedConfiguration(svr, username=&quot;admi
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2011 - 2018 WSO2
+          </div>
+        
         powered by
-        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        <a href="http://www.mkdocs.org">MkDocs</a>
         and
-        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+        <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
@@ -416,12 +639,9 @@ if eventSimulatorClient.saveSimulationFeedConfiguration(svr, username=&quot;admi
       
     </div>
     
-      <script src="../assets/javascripts/application-f3ab9e5ff8.js"></script>
+      <script src="../assets/javascripts/application.b438e6c5.js"></script>
       
-      
-      <script>app.initialize({url:{base:".."}})</script>
-      
-        <script src="../javascripts/extra.js"></script>
+      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
       
     
     

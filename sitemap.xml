@@ -3,24 +3,48 @@
 
     
     <url>
-     <loc>/</loc>
-     <lastmod>2018-04-26</lastmod>
+     <loc>https://wso2.github.io/PySiddhi//</loc>
+     <lastmod>2018-04-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/license/</loc>
-     <lastmod>2018-04-26</lastmod>
+     <loc>https://wso2.github.io/PySiddhi//license/</loc>
+     <lastmod>2018-04-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
 
     
     <url>
-     <loc>/Installation-Guide/</loc>
-     <lastmod>2018-04-26</lastmod>
+     <loc>https://wso2.github.io/PySiddhi//Installation-Guide/</loc>
+     <lastmod>2018-04-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://wso2.github.io/PySiddhi//Run-PySiddhi4/</loc>
+     <lastmod>2018-04-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://wso2.github.io/PySiddhi//Debugging-Siddhi-Queries/</loc>
+     <lastmod>2018-04-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>https://wso2.github.io/PySiddhi//Using-Siddhi-from-Python/</loc>
+     <lastmod>2018-04-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -28,41 +52,23 @@
     
         
     <url>
-     <loc>/Quick-Demo-(PySiddhi4)/</loc>
-     <lastmod>2018-04-26</lastmod>
+     <loc>https://wso2.github.io/PySiddhi//Quick-Demo-(SP4)/</loc>
+     <lastmod>2018-04-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
-     <loc>/Quick-Demo-(SP4)/</loc>
-     <lastmod>2018-04-26</lastmod>
+     <loc>https://wso2.github.io/PySiddhi//Siddhi-App-Management-of-WSO2-SP-4/</loc>
+     <lastmod>2018-04-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
-    
-
-    
     <url>
-     <loc>/Using-Siddhi-from-Python/</loc>
-     <lastmod>2018-04-26</lastmod>
+     <loc>https://wso2.github.io/PySiddhi//Event-Simulator-of-SP-4/</loc>
+     <lastmod>2018-04-28</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
-    <url>
-     <loc>/Siddhi-App-Management-of-WSO2-SP-4/</loc>
-     <lastmod>2018-04-26</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>/Event-Simulator-of-SP-4/</loc>
-     <lastmod>2018-04-26</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
+        
     
 
 </urlset>
