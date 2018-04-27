@@ -1,4 +1,11 @@
-The following example demonstrates a streaming events filter to detect stock records with volume less than 150. This code is written using Siddhi 4.0 via PySiddhi4.
+# Run PySiddhi4
+
+The following is a sample demonstrating how to rung PySiddhi4. 
+
+## Sample 
+
+This sample demonstrating how to write a streaming query to detect stock records having volume less than 150. 
+This code uses Siddhi 4.0 queries with PySiddhi4.
 
 ```python
 from PySiddhi4.DataTypes.LongType import LongType
@@ -35,16 +42,20 @@ inputHandler.send(["IBM", 76.6, LongType(400)])
 inputHandler.send(["WSO2", 45.6, LongType(50)])
 
 # Wait for response
-sleep(0.1)
+sleep(10)
+
+siddhiManager.shutdown()
 
 ```
-Above example is comprehensively described bellow.
 
-**Initialization** 
+## Explanation 
 
-- Initialize the Library and Imports
+Above example is comprehensively described bellow:
 
-Add [this file](https://github.com/wso2/PySiddhi/blob/master/log4j.xml) to working directory in order to enable log4j logging. Log4j is used by PrintEvent to generate output.
+**Initialize libraries and imports**
+
+Add [this file](https://github.com/wso2/PySiddhi/blob/master/log4j.xml) to working directory in order to enable log4j 
+logging. Log4j is used by PrintEvent to generate output.
 
 ```python
 from PySiddhi4.DataTypes.LongType import LongType
@@ -54,7 +65,8 @@ from PySiddhi4.core.util.EventPrinter import PrintEvent
 from time import sleep
 ```
 
-**Step 1** - Define filter using Siddhi Query
+**Define filter using Siddhi query**
+
 ```python
 siddhiManager = SiddhiManager()
 # Siddhi Query to filter events with volume less than 150 as output
@@ -64,9 +76,10 @@ siddhiApp = "define stream cseEventStream (symbol string, price float, volume lo
 # Generate runtime
 siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(siddhiApp)
 ```
-For more details on Siddhi Query Language, refer [Siddhi Query Language Guide](https://wso2.github.io/siddhi/documentation/siddhi-4.0/) in WSO2 Docs.
+For more details on Siddhi Query Language, refer [Siddhi Query Language Guide](https://wso2.github.io/siddhi/documentation/siddhi-4.0/).
 
-**Step 2** - Define a listener for filtered events.
+**Define a listener for filtered events**
+
 ```python
 # Add listener to capture output events
 class QueryCallbackImpl(QueryCallback):
@@ -74,7 +87,8 @@ class QueryCallbackImpl(QueryCallback):
         PrintEvent(timestamp, inEvents, outEvents)
 siddhiAppRuntime.addCallback("query1",QueryCallbackImpl())
 ```
-**Step 3** - Test filter using sample input events
+**Test filter using sample input events**
+
 ```python
 # Retrieving input handler to push events into Siddhi
 inputHandler = siddhiAppRuntime.getInputHandler("cseEventStream")
@@ -92,16 +106,17 @@ inputHandler.send(["WSO2", 45.6, LongType(50)])
 # Wait for response
 sleep(0.1)
 ```
-**Output**
+**Shutdown the Siddhi Manager when processing is done**
+```
+siddhiManager.shutdown()
+```
+
+## Expected Output
 
 The 3 events with volume less than 150 are printed in log.
+
 ```log
 INFO  EventPrinter - Events{ @timestamp = 1497708406678, inEvents = [Event{timestamp=1497708406678, id=-1, data=[IBM, 700.0], isExpired=false}], RemoveEvents = null }
 INFO  EventPrinter - Events{ @timestamp = 1497708406685, inEvents = [Event{timestamp=1497708406685, id=-1, data=[GOOG, 50], isExpired=false}], RemoveEvents = null }
 INFO  EventPrinter - Events{ @timestamp = 1497708406687, inEvents = [Event{timestamp=1497708406687, id=-1, data=[WSO2, 45.6], isExpired=false}], RemoveEvents = null }
-```
-
-**Clean Up** - Remember to shutdown the Siddhi Manager when your done.
-```
-siddhiManager.shutdown()
 ```
