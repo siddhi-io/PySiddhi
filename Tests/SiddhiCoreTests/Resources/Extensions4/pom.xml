@@ -24,7 +24,7 @@
 
     <groupId>org.wso2.siddhi-python-api</groupId>
     <artifactId>siddhi-python-api-extensions-downloader-for-tests</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
     <description>Downloads extensions (JARS) used by Siddhi Python API Tests</description>
     <packaging>pom</packaging>
 
