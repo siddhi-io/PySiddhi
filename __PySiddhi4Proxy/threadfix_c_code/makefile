@@ -23,7 +23,8 @@ JAVAHOME = ${JAVA_HOME}
 
 LINUX_PYTHON_PATH = /usr/include/python
 
-MACOS_PYTHON_PATH = /usr/local/var/homebrew/linked/python/Frameworks/Python.framework/Versions/3.6/include/python3.6m
+# Please provide the python path according to the python version of the machine
+MACOS_PYTHON_PATH = /usr/local/var/homebrew/linked/python/Frameworks/Python.framework/Versions/3.7/include/python3.7m
 
 OS = ${shell uname}
 

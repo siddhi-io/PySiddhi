@@ -24,13 +24,13 @@
 
     <groupId>org.wso2.siddhi-python-api</groupId>
     <artifactId>siddhi-python-api-proxy-4</artifactId>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
 
     <dependencies>
         <dependency>
             <groupId>org.wso2.siddhi</groupId>
             <artifactId>siddhi-core</artifactId>
-            <version>4.1.17</version>
+            <version>4.3.7</version>
         </dependency>
 
 
@@ -122,6 +122,14 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>

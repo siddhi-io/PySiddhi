@@ -349,7 +349,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -372,7 +372,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -411,7 +411,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -438,7 +438,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -450,7 +450,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql://localhost:3306/Simulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/Simulation?useSSL=false",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -469,7 +469,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -481,7 +481,7 @@ class EventSimulatorTests(unittest.TestCase):
         s2 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s2.streamName = "FooStream"
         s2.siddhiAppName = "TestSiddhiApp"
-        s2.dataSourceLocation = "jdbc:mysql://localhost:3306/Simulation"
+        s2.dataSourceLocation = "jdbc:mysql://localhost:3306/Simulation?useSSL=false"
         s2.driver = "com.mysql.jdbc.Driver"
         s2.username = "root"
         s2.password = "root"
@@ -520,7 +520,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -542,7 +542,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
@@ -752,7 +752,7 @@ class EventSimulatorTests(unittest.TestCase):
                     "simulationType": "DATABASE_SIMULATION",
                     "streamName": "FooStream",
                     "siddhiAppName": "TestSiddhiApp",
-                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation",
+                    "dataSourceLocation": "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false",
                     "driver": "com.mysql.jdbc.Driver",
                     "username": "root",
                     "password": "root",
@@ -783,7 +783,7 @@ class EventSimulatorTests(unittest.TestCase):
         s1 = SimulationSource(simulationType=SimulationSource.Type.DATABASE_SIMULATION)
         s1.streamName = "FooStream"
         s1.siddhiAppName = "TestSiddhiApp"
-        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation"
+        s1.dataSourceLocation = "jdbc:mysql://localhost:3306/DatabaseFeedSimulation?useSSL=false"
         s1.driver = "com.mysql.jdbc.Driver"
         s1.username = "root"
         s1.password = "root"
