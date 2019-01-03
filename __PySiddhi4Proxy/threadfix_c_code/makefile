@@ -21,6 +21,7 @@ CFLAGS = -shared -fPIC -c
 # define JAVA_HOME here
 JAVAHOME = ${JAVA_HOME}
 
+# Please provide the python path according to the python version of the machine
 LINUX_PYTHON_PATH = /usr/include/python
 
 # Please provide the python path according to the python version of the machine
