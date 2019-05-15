@@ -23,10 +23,10 @@ import time
 from time import sleep
 from unittest.case import TestCase
 
-from PySiddhi4.core.SiddhiManager import SiddhiManager
-from PySiddhi4.core.debugger.SiddhiDebugger import SiddhiDebugger
-from PySiddhi4.core.debugger.SiddhiDebuggerCallback import SiddhiDebuggerCallback
-from PySiddhi4.core.stream.output.StreamCallback import StreamCallback
+from PySiddhi5.core.SiddhiManager import SiddhiManager
+from PySiddhi5.core.debugger.SiddhiDebugger import SiddhiDebugger
+from PySiddhi5.core.debugger.SiddhiDebuggerCallback import SiddhiDebuggerCallback
+from PySiddhi5.core.stream.output.StreamCallback import StreamCallback
 from Tests.Util.AtomicInt import AtomicInt
 
 import threading
