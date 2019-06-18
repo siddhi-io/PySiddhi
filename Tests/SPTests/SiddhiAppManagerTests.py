@@ -20,8 +20,8 @@ import unittest
 import logging
 from time import sleep
 
-from PySiddhi5.sp.SPClient import SPClient
-from PySiddhi5.sp.SiddhiAppManagement.SiddhiAppManagementClient import UpdateAppStatusResponse
+from PySiddhi.sp.SPClient import SPClient
+from PySiddhi.sp.SiddhiAppManagement.SiddhiAppManagementClient import UpdateAppStatusResponse
 
 logging.basicConfig(level=logging.INFO)
 

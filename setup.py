@@ -26,10 +26,10 @@ class PostInstallCommand(install):
     def run(self):
         # Compile JAVA Code here
         if os.name == "nt":
-            check_call("mvn clean install".split(), cwd="__PySiddhi5Proxy",
+            check_call("mvn clean install".split(), cwd="__PySiddhiProxy",
                        shell=True)  # shell=True is necessary for windows
         else:
-            check_call("mvn clean install".split(), cwd="__PySiddhi5Proxy")  # shell=True should be skipped for linux
+            check_call("mvn clean install".split(), cwd="__PySiddhiProxy")  # shell=True should be skipped for linux
 
         install.run(self)
 
@@ -42,15 +42,15 @@ for package in packages:
     filtered_packages.append(package)
 
 setup(
-    name="PySiddhi5",
-    version="1.1.0",
+    name="PySiddhi",
+    version="5.0.0",
     packages=filtered_packages,
     python_requires='>=2.7, ~=3.5',
     install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'4'"],
     package_data={
-        "PySiddhi5": ["../__PySiddhi5Proxy/target/lib/*.jar",
-                      "../__PySiddhi5Proxy/target/*.jar",
-                      "../__PySiddhi5Proxy/*.so"]
+        "PySiddhi": ["../__PySiddhiProxy/target/lib/*.jar",
+                      "../__PySiddhiProxy/target/*.jar",
+                      "../__PySiddhiProxy/*.so"]
     },
 
     # metadata for upload to PyPI

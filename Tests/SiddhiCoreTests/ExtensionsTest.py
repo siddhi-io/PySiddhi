@@ -16,7 +16,7 @@
 
 from subprocess import call
 import os
-from PySiddhi5 import SiddhiLoader
+from PySiddhi import SiddhiLoader
 
 # Download extension jars
 
@@ -24,10 +24,10 @@ import unittest
 import logging
 from time import sleep
 
-from PySiddhi5.DataTypes.LongType import LongType
-from PySiddhi5.core.SiddhiManager import SiddhiManager
-from PySiddhi5.core.query.output.callback.QueryCallback import QueryCallback
-from PySiddhi5.core.util.EventPrinter import PrintEvent
+from PySiddhi.DataTypes.LongType import LongType
+from PySiddhi.core.SiddhiManager import SiddhiManager
+from PySiddhi.core.query.output.callback.QueryCallback import QueryCallback
+from PySiddhi.core.util.EventPrinter import PrintEvent
 
 logging.basicConfig(level=logging.INFO)
 

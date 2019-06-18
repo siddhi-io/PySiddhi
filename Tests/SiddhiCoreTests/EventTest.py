@@ -19,8 +19,8 @@ import logging
 
 logging.basicConfig(level=logging.INFO)
 
-from PySiddhi5.DataTypes.LongType import LongType
-from PySiddhi5.core.event.Event import Event
+from PySiddhi.DataTypes.LongType import LongType
+from PySiddhi.core.event.Event import Event
 
 
 class BasicTests(unittest.TestCase):
