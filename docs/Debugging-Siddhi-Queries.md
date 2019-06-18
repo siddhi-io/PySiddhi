@@ -1,4 +1,4 @@
-# Debug PySiddhi4
+# Debug PySiddhi
 
 Siddhi Queries can be debugged at run time via PySiddhi. 
 It suppots following features with its Python APIs.
@@ -40,4 +40,4 @@ inputHandler.send(["WSO2", 50.0, 60])
 inputHandler.send(["WSO2", 70.0, 40])
 ```
 
-For the complete code on above example and many other examples refer [Siddhi Debugger Tests](https://github.com/wso2/PySiddhi/blob/master/Tests/SiddhiCoreTests/TestDebugger.py).
+For the complete code on above example and many other examples refer [Siddhi Debugger Tests](https://github.com/siddhi-io/PySiddhi/blob/master/Tests/SiddhiCoreTests/TestDebugger.py).

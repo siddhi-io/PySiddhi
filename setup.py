@@ -56,12 +56,12 @@ setup(
     # metadata for upload to PyPI
     author="WSO2",
     author_email="dev@wso2.org",
-    description="Python wrapper for `Siddhi 4.x.x`.",
+    description="Python wrapper for `Siddhi 5.x.x`.",
     license="Apache2",
     cmdclass={
         'install': PostInstallCommand,
     },
-    url="https://github.com/wso2/PySiddhi",
+    url="https://github.com/siddhi-io/PySiddhi",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',

@@ -1,18 +1,18 @@
 # PySiddhi
 
-***PySiddhi*** is a Python wrapper for [Siddhi](https://wso2.github.io/siddhi/). Which can listens to events from data streams, detects complex conditions
+***PySiddhi*** is a Python wrapper for [Siddhi](https://siddhi-io.github.io/siddhi/). Which can listens to events from data streams, detects complex conditions
 described via a ***Streaming SQL language***, and triggers actions. It performs both ***Stream Processing*** and 
 ***Complex Event Processing*** on streaming data. Its Siddhi core is written in Java library. 
 
-- PySiddhi4 wraps [Siddhi 4](https://wso2.github.io/siddhi/)
-- PySiddhi4 includes a REST Client for [WSO2 Stream Processor(SP) 4.x.x](https://wso2.com/analytics).
+- PySiddhi wraps [Siddhi 5](https://siddhi-io.github.io/siddhi/)
+- PySiddhi includes a REST Client for [WSO2 Stream Processor(SP) 4.x.x](https://wso2.com/analytics).
 
 ## Content
 
 * Introduction and Quick Demo (this page)
 * [Installation Guide](Installation-Guide.md)
-* [Run PySiddhi4](Run-PySiddhi4.md)
-* [Debug PySiddhi4](Debugging-Siddhi-Queries.md)
+* [Run PySiddhi](Run-PySiddhi.md)
+* [Debug PySiddhi](Debugging-Siddhi-Queries.md)
 * [Advanced Concepts of PySiddhi](Using-Siddhi-from-Python.md)
 * Using PySiddhi REST Client to Manage WSO2 Stream Processor
     * [Demo Managing Siddhi Apps on WSO2 SP](Quick-Demo-(SP4).md)
@@ -21,16 +21,16 @@ described via a ***Streaming SQL language***, and triggers actions. It performs 
 
 ## Installation
 
-PySiddhi4 can be installed using pip.
+PySiddhi can be installed using pip.
 
 ```
-pip install pysiddhi4
+pip install pysiddhi
 ```
 
 For detail insulation and prerequisite refer section on [Installation Guide](Installation-Guide). 
 
 ## Quick Demo
-Following is a quick demo of how to use PySiddhi4. For comprehensive demo please refer [Quick-Demo-PySiddhi4](Run-PySiddhi4.md)
+Following is a quick demo of how to use PySiddhi. For comprehensive demo please refer [Quick-Demo-PySiddhi](Run-PySiddhi.md)
 
 **Step 1** - Define filter using Siddhi Query.
 
@@ -46,7 +46,7 @@ siddhiApp = "define stream cseEventStream (symbol string, price float, volume lo
 # Generate runtime
 siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(siddhiApp)
 ```
-For more details on Siddhi Query Language, refer [Siddhi Query Language Guide](https://wso2.github.io/siddhi/).
+For more details on Siddhi Query Language, refer [Siddhi Query Language Guide](https://siddhi-io.github.io/siddhi/).
 
 **Step 2** - Define a listener for filtered events.
 
@@ -101,14 +101,14 @@ Email: madhawavidanapathirana@gmail.com </br>
 Organization: University of Moratuwa, Sri Lanka.
 
 ## How to Contribute
-* Report issues at <a target="_blank" href="https://github.com/wso2/PySiddhi/issues">GitHub Issue Tracker</a>.
-* Feel free to try out the <a target="_blank" href="https://github.com/wso2/PySiddhi">PySiddhi source code</a> and send your contributions as pull requests to the <a target="_blank" href="https://github.com/wso2/PySiddhi/tree/master">master branch</a>. 
+* Report issues at <a target="_blank" href="https://github.com/siddhi-io/PySiddhi/issues">GitHub Issue Tracker</a>.
+* Feel free to try out the <a target="_blank" href="https://github.com/siddhi-io/PySiddhi">PySiddhi source code</a> and send your contributions as pull requests to the <a target="_blank" href="https://github.com/siddhi-io/PySiddhi/tree/master">master branch</a>. 
  
 ## Contact us 
  * Post your questions with the <a target="_blank" href="http://stackoverflow.com/search?q=siddhi">"Siddhi"</a> tag in <a target="_blank" href="http://stackoverflow.com/search?q=siddhi">Stackoverflow</a>. 
  * For more details and support contact us via <a target="_blank" href="http://wso2.com/support?utm_source=gitanalytics&utm_campaign=gitanalytics_Jul17">http://wso2.com/support/</a>
  
 ## Support 
-* We are committed to ensuring support for [Siddhi](https://wso2.github.io/siddhi/) (with its <a target="_blank" href="https://wso2.github.io/siddhi/extensions/">extensions</a>) and <a target="_blank" href="http://wso2.com/analytics?utm_source=gitanalytics&utm_campaign=gitanalytics_Jul17">WSO2 Stream Processor</a> from development to production. 
+* We are committed to ensuring support for [Siddhi](https://siddhi-io.github.io/siddhi/) (with its <a target="_blank" href="https://siddhi-io.github.io/siddhi/extensions/">extensions</a>) and <a target="_blank" href="http://wso2.com/analytics?utm_source=gitanalytics&utm_campaign=gitanalytics_Jul17">WSO2 Stream Processor</a> from development to production. 
 * Our unique approach ensures that all support leverages our open development methodology and is provided by the very same engineers who build the technology. 
 * For more details and to take advantage of this unique opportunity, contact us via <a target="_blank" href="http://wso2.com/support?utm_source=gitanalytics&utm_campaign=gitanalytics_Jul17">http://wso2.com/support/</a>. 

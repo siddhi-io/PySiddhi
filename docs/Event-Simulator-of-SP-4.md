@@ -1,6 +1,6 @@
 # Event Simulation using PySiddhi Client
 
-Following operations are supported by WSO2 Stream Processor 4 Event Simulator Client of PySiddhi4.
+Following operations are supported by WSO2 Stream Processor 4 Event Simulator Client of PySiddhi.
 
 * Single Simulations
 * Saving a simulation configuration
@@ -17,7 +17,7 @@ Following operations are supported by WSO2 Stream Processor 4 Event Simulator Cl
 Refer [Documentation of WSO2 SP 4.0 Event simulator REST API](https://docs.wso2.com/display/SP400/Simulating+Events) for more details.
 
 ## Pre-requisites
-1. Install _PySiddhi4_ by following [Installation Guide](Installation-Guide).
+1. Install _PySiddhi_ by following [Installation Guide](Installation-Guide).
 2. WSO2 SP 4.0 must be already installed and running. If not, follow the steps below.
   - Obtain WSO2 SP 4.x.x binary distribution from https://github.com/wso2/product-sp/releases.
   - Extract `wso2sp-4.x.x.zip` to a suitable location (say `SP_HOME`).
@@ -27,8 +27,8 @@ Refer [Documentation of WSO2 SP 4.0 Event simulator REST API](https://docs.wso2.
 
 ### Single Simulations
 ```python
-from PySiddhi4.sp.SPClient import SPClient
-from PySiddhi4.sp.EventSimulator.SingleSimulationConfiguration import SingleSimulationConfiguration
+from PySiddhi.sp.SPClient import SPClient
+from PySiddhi.sp.EventSimulator.SingleSimulationConfiguration import SingleSimulationConfiguration
 
 spPythonClient = SPClient('http://localhost:9090') # host URL of SP
 eventSimulatorClient = spPythonClient.getEventSimulatorClient()
@@ -41,10 +41,10 @@ if eventSimulatorClient.simulateSingleEvent(singleSimulationConfiguration, usern
 
 ### Saving a Simulation Configuration (Feed Simulation Configuration)
 ```python
-from PySiddhi4.sp.SPClient import SPClient
-from PySiddhi4.sp.EventSimulator.AttributeConfiguration import AttributeConfiguration
-from PySiddhi4.sp.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
-from PySiddhi4.sp.EventSimulator.SimulationSource import SimulationSource
+from PySiddhi.sp.SPClient import SPClient
+from PySiddhi.sp.EventSimulator.AttributeConfiguration import AttributeConfiguration
+from PySiddhi.sp.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
+from PySiddhi.sp.EventSimulator.SimulationSource import SimulationSource
 
 spPythonClient = SPClient('http://localhost:9090') # host URL of SP
 eventSimulatorClient = spPythonClient.getEventSimulatorClient()
@@ -67,4 +67,4 @@ if eventSimulatorClient.saveSimulationFeedConfiguration(svr, username="admin", p
     print("Successfully Saved Simulation Feed Configuration")
 ```
 
-For more examples on Event Simulator, refer [EventSimulatorTests](https://github.com/wso2/PySiddhi/blob/master/Tests/SPTests/EventSimulatorTests.py).
+For more examples on Event Simulator, refer [EventSimulatorTests](https://github.com/siddhi-io/PySiddhi/blob/master/Tests/SPTests/EventSimulatorTests.py).

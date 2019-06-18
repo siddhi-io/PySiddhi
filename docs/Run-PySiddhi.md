@@ -1,17 +1,17 @@
-# Run PySiddhi4
+# Run PySiddhi
 
-The following is a sample demonstrating how to rung PySiddhi4. 
+The following is a sample demonstrating how to rung PySiddhi. 
 
 ## Sample 
 
 This sample demonstrating how to write a streaming query to detect stock records having volume less than 150. 
-This code uses Siddhi 4.0 queries with PySiddhi4.
+This code uses Siddhi 5.0 queries with PySiddhi.
 
 ```python
-from PySiddhi4.DataTypes.LongType import LongType
-from PySiddhi4.core.SiddhiManager import SiddhiManager
-from PySiddhi4.core.query.output.callback.QueryCallback import QueryCallback
-from PySiddhi4.core.util.EventPrinter import PrintEvent
+from PySiddhi.DataTypes.LongType import LongType
+from PySiddhi.core.SiddhiManager import SiddhiManager
+from PySiddhi.core.query.output.callback.QueryCallback import QueryCallback
+from PySiddhi.core.util.EventPrinter import PrintEvent
 from time import sleep
 
 siddhiManager = SiddhiManager()
@@ -54,14 +54,14 @@ Above example is comprehensively described bellow:
 
 **Initialize libraries and imports**
 
-Add [this file](https://github.com/wso2/PySiddhi/blob/master/log4j.xml) to working directory in order to enable log4j 
+Add [this file](https://github.com/siddhi-io/PySiddhi/blob/master/log4j.xml) to working directory in order to enable log4j 
 logging. Log4j is used by PrintEvent to generate output.
 
 ```python
-from PySiddhi4.DataTypes.LongType import LongType
-from PySiddhi4.core.SiddhiManager import SiddhiManager
-from PySiddhi4.core.query.output.callback.QueryCallback import QueryCallback
-from PySiddhi4.core.util.EventPrinter import PrintEvent
+from PySiddhi.DataTypes.LongType import LongType
+from PySiddhi.core.SiddhiManager import SiddhiManager
+from PySiddhi.core.query.output.callback.QueryCallback import QueryCallback
+from PySiddhi.core.util.EventPrinter import PrintEvent
 from time import sleep
 ```
 
@@ -76,7 +76,7 @@ siddhiApp = "define stream cseEventStream (symbol string, price float, volume lo
 # Generate runtime
 siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(siddhiApp)
 ```
-For more details on Siddhi Query Language, refer [Siddhi Query Language Guide](https://wso2.github.io/siddhi/documentation/siddhi-4.0/).
+For more details on Siddhi Query Language, refer [Siddhi Query Language Guide](https://siddhi-io.github.io/siddhi/documentation/siddhi-4.0/).
 
 **Define a listener for filtered events**
 

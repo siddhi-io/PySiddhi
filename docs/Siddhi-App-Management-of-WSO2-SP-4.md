@@ -1,6 +1,6 @@
 # Siddhi App Management using PySiddhi Client
 
-Using _WSO2 SP Client_ in _PySiddhi4_, following operations can be undertaken on _Siddhi App Management_ of _WSO2 SP 4.0_.
+Using _WSO2 SP Client_ in _PySiddhi_, following operations can be undertaken on _Siddhi App Management_ of _WSO2 SP 4.0_.
 * List all Siddhi Apps.
 * Retrieve Siddhi App using name.
 * Retrieve Status of Siddhi App.
@@ -9,7 +9,7 @@ Using _WSO2 SP Client_ in _PySiddhi4_, following operations can be undertaken on
 * Delete a Siddhi App stored in SP.
 
 ## Pre-requisites
-1. Install _PySiddhi4_ by following [Installation Guide](Installation-Guide.md).
+1. Install _PySiddhi_ by following [Installation Guide](Installation-Guide.md).
 2. WSO2 SP 4.0 must be already installed and running. If not, follow the steps below.
   - Obtain WSO2 SP 4.x.x binary distribution from [https://wso2.com/analytics](https://wso2.com/analytics).
   - Extract `wso2sp-4.x.x.zip` to a suitable location (say `SP_HOME`).
@@ -19,7 +19,7 @@ Using _WSO2 SP Client_ in _PySiddhi4_, following operations can be undertaken on
 
 ### List all Siddhi Apps
 ```python
-from PySiddhi4.sp.SPClient import SPClient
+from PySiddhi.sp.SPClient import SPClient
 
 spPythonClient = SPClient('http://localhost:9090') # host URL of SP
 siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
@@ -28,7 +28,7 @@ print(siddhiAppManagementClient.listSiddhiApps()) # prints a list of siddhi apps
 ```
 ### Retrieve Siddhi App using Name
 ```python
-from PySiddhi4.sp.SPClient import SPClient
+from PySiddhi.sp.SPClient import SPClient
 spPythonClient = SPClient('http://localhost:9090') # host URL of SP
 siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
 
@@ -38,7 +38,7 @@ print(app)
 
 ### Retrieve Siddhi App Status
 ```python
-from PySiddhi4.sp.SPClient import SPClient
+from PySiddhi.sp.SPClient import SPClient
 spPythonClient = SPClient('http://localhost:9090') # host URL of SP
 siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
 
@@ -48,7 +48,7 @@ print (status) # prints status of siddhi app (active)
 
 ### Save new Siddhi App
 ```python
-from PySiddhi4.sp.SPClient import SPClient
+from PySiddhi.sp.SPClient import SPClient
 
 spPythonClient = SPClient('http://localhost:9090') # host URL of SP
 siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
@@ -64,8 +64,8 @@ if siddhiAppManagementClient.saveSiddhiApp(siddhiApp, username=admin, password=a
 ```
 ### Update a saved Siddhi App
 ```python
-from PySiddhi4.sp.SPClient import SPClient
-from PySiddhi4.sp.SiddhiAppManagement.SiddhiAppManagementClient import UpdateAppStatusResponse
+from PySiddhi.sp.SPClient import SPClient
+from PySiddhi.sp.SiddhiAppManagement.SiddhiAppManagementClient import UpdateAppStatusResponse
 
 spPythonClient = SPClient('http://localhost:9090') # Host URL of SP
 siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
@@ -84,7 +84,7 @@ elif result.name == UpdateAppStatusResponse.updated.name:
 ```
 ### Delete a Siddhi App
 ```python
-from PySiddhi4.sp.SPClient import SPClient
+from PySiddhi.sp.SPClient import SPClient
 
 spPythonClient = SPClient('http://localhost:9090') # host URL of SP
 siddhiAppManagementClient = spPythonClient.getSiddhiAppManagementClient()
