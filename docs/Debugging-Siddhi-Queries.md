@@ -1,4 +1,4 @@
-# Debug PySiddhi4
+# Debug PySiddhi
 
 Siddhi Queries can be debugged at run time via PySiddhi. 
 It suppots following features with its Python APIs.
