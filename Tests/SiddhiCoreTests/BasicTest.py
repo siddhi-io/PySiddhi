@@ -18,10 +18,10 @@
 import unittest
 import logging
 from time import sleep
-from PySiddhi4.DataTypes.LongType import LongType
-from PySiddhi4.core.SiddhiManager import SiddhiManager
-from PySiddhi4.core.query.output.callback.QueryCallback import QueryCallback
-from PySiddhi4.core.util.EventPrinter import PrintEvent
+from PySiddhi.DataTypes.LongType import LongType
+from PySiddhi.core.SiddhiManager import SiddhiManager
+from PySiddhi.core.query.output.callback.QueryCallback import QueryCallback
+from PySiddhi.core.util.EventPrinter import PrintEvent
 
 logging.basicConfig(level=logging.INFO)
 
