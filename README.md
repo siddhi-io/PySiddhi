@@ -4,8 +4,8 @@
 described via a ***Streaming SQL language***, and triggers actions. It performs both ***Stream Processing*** and 
 ***Complex Event Processing*** on streaming data. Its Siddhi core is written in Java library. 
 
-- PySiddhi4 wraps [Siddhi 4](https://wso2.github.io/siddhi/)
-- PySiddhi4 includes a REST Client for [WSO2 Stream Processor(SP) 4.x.x](https://wso2.com/analytics).
+- PySiddhi wraps [Siddhi 4](https://wso2.github.io/siddhi/)
+- PySiddhi includes a REST Client for [WSO2 Stream Processor(SP) 4.x.x](https://wso2.com/analytics).
 
 ## Features
 

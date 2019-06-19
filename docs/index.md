@@ -4,15 +4,15 @@
 described via a ***Streaming SQL language***, and triggers actions. It performs both ***Stream Processing*** and 
 ***Complex Event Processing*** on streaming data. Its Siddhi core is written in Java library. 
 
-- PySiddhi4 wraps [Siddhi 4](https://wso2.github.io/siddhi/)
-- PySiddhi4 includes a REST Client for [WSO2 Stream Processor(SP) 4.x.x](https://wso2.com/analytics).
+- PySiddhi wraps [Siddhi 4](https://wso2.github.io/siddhi/)
+- PySiddhi includes a REST Client for [WSO2 Stream Processor(SP) 4.x.x](https://wso2.com/analytics).
 
 ## Content
 
 * Introduction and Quick Demo (this page)
 * [Installation Guide](Installation-Guide.md)
-* [Run PySiddhi4](Run-PySiddhi4.md)
-* [Debug PySiddhi4](Debugging-Siddhi-Queries.md)
+* [Run PySiddhi](Run-PySiddhi.md)
+* [Debug PySiddhi](Debugging-Siddhi-Queries.md)
 * [Advanced Concepts of PySiddhi](Using-Siddhi-from-Python.md)
 * Using PySiddhi REST Client to Manage WSO2 Stream Processor
     * [Demo Managing Siddhi Apps on WSO2 SP](Quick-Demo-(SP4).md)
@@ -21,16 +21,16 @@ described via a ***Streaming SQL language***, and triggers actions. It performs 
 
 ## Installation
 
-PySiddhi4 can be installed using pip.
+PySiddhi can be installed using pip.
 
 ```
-pip install pysiddhi4
+pip install pysiddhi
 ```
 
 For detail insulation and prerequisite refer section on [Installation Guide](Installation-Guide). 
 
 ## Quick Demo
-Following is a quick demo of how to use PySiddhi4. For comprehensive demo please refer [Quick-Demo-PySiddhi4](Run-PySiddhi4.md)
+Following is a quick demo of how to use PySiddhi. For comprehensive demo please refer [Quick-Demo-PySiddhi](Run-PySiddhi.md)
 
 **Step 1** - Define filter using Siddhi Query.
 

@@ -1,9 +1,9 @@
 # Installation Guide
 
 The current version is tested with Microsoft Windows and Unix/Linux based operating systems. 
-PySiddhi4 can be installed using one of the following methods.
+PySiddhi can be installed using one of the following methods.
 
-## Install PySiddhi4
+## Install PySiddhi
 
 ### Prerequisites
 
@@ -38,26 +38,26 @@ PySiddhi4 can be installed using one of the following methods.
       - Maven _(Only to build from Source)_
     
 - Download siddhi-sdk release from [here](https://github.com/wso2/siddhi-sdk/releases) and set the SIDDHISDK_HOME as an environment variable. <br/> `export SIDDHISDK_HOME="<path-to-siddhi-sdk>"`
-- Download siddhi-python-api-proxy-4-1.0.0.jar from [here](https://github.com/wso2/PySiddhi/releases) and copy to `<SIDDHISDK_HOME>/lib` directory
+- Download siddhi-python-api-proxy-4.0.0.jar from [here](https://github.com/wso2/PySiddhi/releases) and copy to `<SIDDHISDK_HOME>/lib` directory
 
-###Install PySiddhi4 via Python Package Management
+### Install PySiddhi via Python Package Management
 
-PySiddhi4 can be installed via PIP command as bellow.
+PySiddhi can be installed via PIP command as bellow.
 
 ```
-pip install pysiddhi4
+pip install pysiddhi
 ```
 
-### Install PySiddhi4 from Online Code
+### Install PySiddhi from Online Code
 
-Using the following PIP command, PySiddhi4 can be directly installed from online code available in GitHub.
+Using the following PIP command, PySiddhi can be directly installed from online code available in GitHub.
 ```
 pip install git+https://github.com/wso2/PySiddhi.git
 ```
 *Note: In case of permission errors, use `sudo`*
 
 ### Install from Downloaded Code
-Switch to the branch `master` of PySiddhi4.
+Switch to the branch `master` of PySiddhi.
 Navigate to source code root directory and execute the following PIP command.
 
 ```
@@ -65,8 +65,8 @@ pip install .
 ```
 *Note the period (.) at end of command. In case of permission errors, use `sudo`*
 
-## Uninstall PySiddhi4
+## Uninstall PySiddhi
 If the library has been installed as explained above, it could be uninstalled using the following pip command.
 ```
-pip uninstall pysiddhi4
+pip uninstall pysiddhi
 ```

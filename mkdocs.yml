@@ -22,8 +22,8 @@ pages:
   - Welcome to PySiddhi: index.md
   - License: license.md
   - Installation Guide: Installation-Guide.md
-  - Run PySiddhi4: Run-PySiddhi4.md
-  - Debug PySiddhi4: Debugging-Siddhi-Queries.md
+  - Run PySiddhi: Run-PySiddhi.md
+  - Debug PySiddhi: Debugging-Siddhi-Queries.md
   - Advanced Concepts of PySiddhi: Using-Siddhi-from-Python.md
   - PySiddhi Client for WSO2 Stream Processor:
     - Run PySiddhi Client: Quick-Demo-(SP4).md
