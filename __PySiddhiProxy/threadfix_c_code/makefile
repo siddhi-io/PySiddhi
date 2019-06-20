@@ -16,7 +16,7 @@
 # use g++ compiler
 CC = g++
 
-CFLAGS = -shared -fPIC -c
+CFLAGS = -shared -fPIC
 
 # define JAVA_HOME here
 JAVAHOME = ${JAVA_HOME}
