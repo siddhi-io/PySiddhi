@@ -45,7 +45,7 @@ setup(
     name="PySiddhi",
     version="4.0.0",
     packages=filtered_packages,
-    python_requires='>=2.7, ~=3.5',
+    python_requires='>=2.7, ~=3.7',
     install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'4'"],
     package_data={
         "PySiddhi": ["../__PySiddhiProxy/target/lib/*.jar",
