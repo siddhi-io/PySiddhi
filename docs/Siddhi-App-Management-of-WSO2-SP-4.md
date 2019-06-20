@@ -1,6 +1,6 @@
 # Siddhi App Management using PySiddhi Client
 
-Using _WSO2 SP Client_ in _PySiddhi_, following operations can be undertaken on _Siddhi App Management_ of _WSO2 SP 4.0_.
+Using _WSO2 SP Client_ in _PySiddhi_, following operations can be undertaken on _Siddhi App Management_ of _WSO2 SP 4_.
 * List all Siddhi Apps.
 * Retrieve Siddhi App using name.
 * Retrieve Status of Siddhi App.
