@@ -20,11 +20,11 @@ import logging
 import os
 from time import sleep
 
-from PySiddhi4.sp.SPClient import SPClient
-from PySiddhi4.sp.EventSimulator.AttributeConfiguration import AttributeConfiguration
-from PySiddhi4.sp.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
-from PySiddhi4.sp.EventSimulator.SimulationSource import SimulationSource
-from PySiddhi4.sp.EventSimulator.SingleSimulationConfiguration import SingleSimulationConfiguration
+from PySiddhi.sp.SPClient import SPClient
+from PySiddhi.sp.EventSimulator.AttributeConfiguration import AttributeConfiguration
+from PySiddhi.sp.EventSimulator.FeedSimulationConfiguration import FeedSimulationConfiguration
+from PySiddhi.sp.EventSimulator.SimulationSource import SimulationSource
+from PySiddhi.sp.EventSimulator.SingleSimulationConfiguration import SingleSimulationConfiguration
 
 logging.basicConfig(level=logging.INFO)
 

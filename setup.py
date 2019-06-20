@@ -26,10 +26,10 @@ class PostInstallCommand(install):
     def run(self):
         # Compile JAVA Code here
         if os.name == "nt":
-            check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy",
+            check_call("mvn clean install".split(), cwd="__PySiddhiProxy",
                        shell=True)  # shell=True is necessary for windows
         else:
-            check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy")  # shell=True should be skipped for linux
+            check_call("mvn clean install".split(), cwd="__PySiddhiProxy")  # shell=True should be skipped for linux
 
         install.run(self)
 
@@ -42,26 +42,26 @@ for package in packages:
     filtered_packages.append(package)
 
 setup(
-    name="PySiddhi4",
-    version="1.1.0",
+    name="PySiddhi",
+    version="5.0.0",
     packages=filtered_packages,
-    python_requires='>=2.7, ~=3.5',
+    python_requires='>=2.7, ~=3.7',
     install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'4'"],
     package_data={
-        "PySiddhi4": ["../__PySiddhi4Proxy/target/lib/*.jar",
-                      "../__PySiddhi4Proxy/target/*.jar",
-                      "../__PySiddhi4Proxy/*.so"]
+        "PySiddhi": ["../__PySiddhiProxy/target/lib/*.jar",
+                      "../__PySiddhiProxy/target/*.jar",
+                      "../__PySiddhiProxy/*.so"]
     },
 
     # metadata for upload to PyPI
     author="WSO2",
     author_email="dev@wso2.org",
-    description="Python wrapper for `Siddhi 4.x.x`.",
+    description="Python wrapper for `Siddhi 5.x.x`.",
     license="Apache2",
     cmdclass={
         'install': PostInstallCommand,
     },
-    url="https://github.com/wso2/PySiddhi",
+    url="https://github.com/siddhi-io/PySiddhi",
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
