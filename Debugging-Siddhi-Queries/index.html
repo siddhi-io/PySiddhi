@@ -2,7 +2,7 @@
 
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="no-js">
   <head>
     
@@ -13,10 +13,6 @@
         <meta name="description" content="Python Stream Processing and Complex Event Processing Engine">
       
       
-        <link rel="canonical" href="https://wso2.github.io/PySiddhi/Debugging-Siddhi-Queries/">
-      
-      
-        <meta name="author" content="WSO2">
       
       
         <meta name="lang:clipboard.copy" content="Copy to clipboard">
@@ -38,32 +34,66 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../images/favicon.ico">
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.7.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
     
     
       
-        <title>Debug PySiddhi4 - PySiddhi</title>
+        <title>Debug PySiddhi - PySiddhi</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.8d40d89b.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.0284f74d.css">
       
-        <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#009688">
       
     
     
-      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
     
     
-      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
     
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-103065-28", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
     
     
   </head>
@@ -76,32 +106,15 @@
       <defs>
         
         
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
-    viewBox="0 0 416 448" id="github">
-  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
-        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
-        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
-        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
-        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
-        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
-        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
-        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
-        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
-        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
-        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
-        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
-        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
-        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
-        99.5z" />
-</svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
         
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search" autocomplete="off">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#debug-pysiddhi4" tabindex="1" class="md-skip">
+      <a href="#debug-pysiddhi" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -110,40 +123,39 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://wso2.github.io/PySiddhi/" title="PySiddhi" class="md-header-nav__button md-logo">
+        <a href=".." title="PySiddhi" class="md-header-nav__button md-logo">
           
-            <img src="../images/siddhi-logo-w.svg" width="24" height="24">
+            <img src="../images/siddhi-logo.svg" width="24" height="24">
           
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
           
-            
-              <span class="md-header-nav__topic">
-                PySiddhi
-              </span>
-              <span class="md-header-nav__topic">
-                Debug PySiddhi4
-              </span>
-            
+            <span class="md-header-nav__topic">
+              PySiddhi
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Debug PySiddhi
+              
+            </span>
           
         </div>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
         
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
-            
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
+  <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="search"></label>
+      <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
       </button>
@@ -160,7 +172,6 @@
     </div>
   </div>
 </div>
-          
         
       </div>
       
@@ -171,20 +182,18 @@
 
   
 
-
-  <a href="https://github.com/wso2/PySiddhi/" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      PySiddhi
+<a href="https://github.com/siddhi-io/PySiddhi/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-
+  
+  <div class="md-source__repository">
+    PySiddhi
+  </div>
+</a>
           </div>
         </div>
       
@@ -205,12 +214,12 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="PySiddhi" class="md-nav__button md-logo">
       
-        <img src="../images/siddhi-logo-w.svg" width="48" height="48">
+        <img src="../images/siddhi-logo.svg" width="48" height="48">
       
-    </span>
+    </a>
     PySiddhi
   </label>
   
@@ -220,20 +229,18 @@
 
   
 
-
-  <a href="https://github.com/wso2/PySiddhi/" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      PySiddhi
+<a href="https://github.com/siddhi-io/PySiddhi/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
     </div>
-  </a>
-
+  
+  <div class="md-source__repository">
+    PySiddhi
+  </div>
+</a>
     </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -244,20 +251,8 @@
 
 
   <li class="md-nav__item">
-    <a href=".." title="Welcome to PySiddhi" class="md-nav__link">
-      Welcome to PySiddhi
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../license/" title="License" class="md-nav__link">
-      License
+    <a href=".." title="Information" class="md-nav__link">
+      Information
     </a>
   </li>
 
@@ -280,8 +275,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Run-PySiddhi4/" title="Run PySiddhi4" class="md-nav__link">
-      Run PySiddhi4
+    <a href="../Run-PySiddhi/" title="Run PySiddhi" class="md-nav__link">
+      Run PySiddhi
     </a>
   </li>
 
@@ -295,13 +290,13 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
       
     
     
-    <a href="./" title="Debug PySiddhi4" class="md-nav__link md-nav__link--active">
-      Debug PySiddhi4
+    <a href="./" title="Debug PySiddhi" class="md-nav__link md-nav__link--active">
+      Debug PySiddhi
     </a>
     
   </li>
@@ -313,8 +308,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../Using-Siddhi-from-Python/" title="Advanced Concepts of PySiddhi" class="md-nav__link">
-      Advanced Concepts of PySiddhi
+    <a href="../Using-Siddhi-from-Python/" title="Advanced Concepts" class="md-nav__link">
+      Advanced Concepts
     </a>
   </li>
 
@@ -324,58 +319,10 @@
       
 
 
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
-    
-    <label class="md-nav__link" for="nav-7">
-      PySiddhi Client for WSO2 Stream Processor
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-7">
-        PySiddhi Client for WSO2 Stream Processor
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
   <li class="md-nav__item">
-    <a href="../Quick-Demo-(SP4)/" title="Run PySiddhi Client" class="md-nav__link">
-      Run PySiddhi Client
+    <a href="../license/" title="License" class="md-nav__link">
+      License
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Siddhi-App-Management-of-WSO2-SP-4/" title="Client APIs to Manage Siddhi App" class="md-nav__link">
-      Client APIs to Manage Siddhi App
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../Event-Simulator-of-SP-4/" title="Client APIs to Simulate Events" class="md-nav__link">
-      Client APIs to Simulate Events
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
     
@@ -406,10 +353,10 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/wso2/PySiddhi/edit/master/docs/Debugging-Siddhi-Queries.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/siddhi-io/PySiddhi/blob/master/Debugging-Siddhi-Queries.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <h1 id="debug-pysiddhi4">Debug PySiddhi4<a class="headerlink" href="#debug-pysiddhi4" title="Permanent link">&para;</a></h1>
+                <h1 id="debug-pysiddhi">Debug PySiddhi</h1>
 <p>Siddhi Queries can be debugged at run time via PySiddhi. 
 It suppots following features with its Python APIs.</p>
 <ul>
@@ -418,37 +365,37 @@ It suppots following features with its Python APIs.</p>
 <li>Querying details about Siddhi Query State</li>
 <li>Debugging Multi-threaded Siddhi Apps</li>
 </ul>
-<h1 id="using-breakpoints-and-siddhi-debugger-callbacks">Using Breakpoints and Siddhi Debugger Callbacks<a class="headerlink" href="#using-breakpoints-and-siddhi-debugger-callbacks" title="Permanent link">&para;</a></h1>
+<h1 id="using-breakpoints-and-siddhi-debugger-callbacks">Using Breakpoints and Siddhi Debugger Callbacks</h1>
 <p>Using Siddhi Debugger, it is possible to break the query execution on occurrences of designated events (input or output events) and analyze the state of the query. Placing a breakpoint would cause Siddhi Debugger Callback to be triggered whenever a breakpoint is reached. The following code snippet demonstrates a basic usage of Siddhi Debugger.</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Obtain siddhi debugger from Siddhi App Runtime.</span>
-<span class="n">siddhiDebugger</span> <span class="o">=</span> <span class="n">siddhiAppRuntime</span><span class="o">.</span><span class="n">debug</span><span class="p">()</span>
+<pre><code class="python">
+# Obtain siddhi debugger from Siddhi App Runtime.
+siddhiDebugger = siddhiAppRuntime.debug()
 
-<span class="c1"># Place a breakpoint.</span>
-<span class="n">siddhiDebugger</span><span class="o">.</span><span class="n">acquireBreakPoint</span><span class="p">(</span><span class="s2">&quot;query 1&quot;</span><span class="p">,</span> <span class="n">SiddhiDebugger</span><span class="o">.</span><span class="n">QueryTerminal</span><span class="o">.</span><span class="n">IN</span><span class="p">)</span>
+# Place a breakpoint.
+siddhiDebugger.acquireBreakPoint(&quot;query 1&quot;, SiddhiDebugger.QueryTerminal.IN)
 
-<span class="c1"># Setup a callback to receive debug events.</span>
-<span class="k">class</span> <span class="nc">SiddhiDebuggerCallbackImpl</span><span class="p">(</span><span class="n">SiddhiDebuggerCallback</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">debugEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">,</span> <span class="n">queryName</span><span class="p">,</span><span class="n">queryTerminal</span><span class="p">,</span> <span class="n">debugger</span><span class="p">):</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Query: &quot;</span> <span class="o">+</span> <span class="n">queryName</span> <span class="o">+</span> <span class="s2">&quot;:&quot;</span> <span class="o">+</span> <span class="n">queryTerminal</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+# Setup a callback to receive debug events.
+class SiddhiDebuggerCallbackImpl(SiddhiDebuggerCallback):
+    def debugEvent(self, event, queryName,queryTerminal, debugger):
+        logging.info(&quot;Query: &quot; + queryName + &quot;:&quot; + queryTerminal.name)
+        logging.info(event)
 
-        <span class="c1"># Do assertions on event and check for special cases.</span>
+        # Do assertions on event and check for special cases.
 
-        <span class="c1"># Obtain next debuggable element of breakpoint.</span>
-        <span class="c1"># Alternatively can call debugger.play() to ignore pending</span>
-        <span class="c1"># debuggable elements and continue from breakpoint.</span>
-        <span class="n">debugger</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+        # Obtain next debuggable element of breakpoint.
+        # Alternatively can call debugger.play() to ignore pending
+        # debuggable elements and continue from breakpoint.
+        debugger.next()
 
-<span class="c1"># Assign the debugger callback</span>
-<span class="n">siddhiDebugger</span><span class="o">.</span><span class="n">setDebuggerCallback</span><span class="p">(</span><span class="n">SiddhiDebuggerCallbackImpl</span><span class="p">())</span>
+# Assign the debugger callback
+siddhiDebugger.setDebuggerCallback(SiddhiDebuggerCallbackImpl())
 
-<span class="c1"># Send test inputs using inputHandler</span>
-<span class="n">inputHandler</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="s2">&quot;WSO2&quot;</span><span class="p">,</span> <span class="mf">50.0</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>
-<span class="n">inputHandler</span><span class="o">.</span><span class="n">send</span><span class="p">([</span><span class="s2">&quot;WSO2&quot;</span><span class="p">,</span> <span class="mf">70.0</span><span class="p">,</span> <span class="mi">40</span><span class="p">])</span>
-</pre></div>
+# Send test inputs using inputHandler
+inputHandler.send([&quot;WSO2&quot;, 50.0, 60])
+inputHandler.send([&quot;WSO2&quot;, 70.0, 40])
+</code></pre>
 
-
-<p>For the complete code on above example and many other examples refer <a href="https://github.com/wso2/PySiddhi/blob/master/Tests/SiddhiCoreTests/TestDebugger.py">Siddhi Debugger Tests</a>.</p>
+<p>For the complete code on above example and many other examples refer <a href="https://github.com/siddhi-io/PySiddhi/blob/master/Tests/SiddhiCoreTests/TestDebugger.py">Siddhi Debugger Tests</a>.</p>
                 
                   
                 
@@ -469,7 +416,7 @@ It suppots following features with its Python APIs.</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../Run-PySiddhi4/" title="Run PySiddhi4" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../Run-PySiddhi/" title="Run PySiddhi" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -478,19 +425,19 @@ It suppots following features with its Python APIs.</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Run PySiddhi4
+                Run PySiddhi
               </span>
             </div>
           </a>
         
         
-          <a href="../Using-Siddhi-from-Python/" title="Advanced Concepts of PySiddhi" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../Using-Siddhi-from-Python/" title="Advanced Concepts" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Advanced Concepts of PySiddhi
+                Advanced Concepts
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -506,30 +453,40 @@ It suppots following features with its Python APIs.</p>
       <div class="md-footer-copyright">
         
           <div class="md-footer-copyright__highlight">
-            Copyright &copy; 2011 - 2018 WSO2
+            Siddhi - Documentation
           </div>
         
         powered by
-        <a href="http://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
       </div>
       
-        
-      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/siddhi-io/siddhi" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://medium.com/siddhi-io" class="md-footer-social__link fa fa-medium"></a>
+    
+      <a href="https://twitter.com/siddhi_io" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/groups/13553064" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
     </div>
   </div>
 </footer>
       
     </div>
     
-      <script src="../assets/javascripts/application.b438e6c5.js"></script>
+      <script src="../assets/javascripts/application.245445c6.js"></script>
       
-      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
-    
-    
+        <script src="../assets/javascripts/extra.js"></script>
       
     
   </body>
