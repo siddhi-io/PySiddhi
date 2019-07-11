@@ -5,7 +5,6 @@ described via a ***Streaming SQL language***, and triggers actions. It performs 
 ***Complex Event Processing*** on streaming data. Its Siddhi core is written in Java library. 
 
 - PySiddhi wraps [Siddhi 5](https://siddhi-io.github.io/siddhi/)
-- PySiddhi includes a REST Client for [WSO2 Stream Processor(SP) 4.x.x](https://wso2.com/analytics).
 
 ## Content
 
@@ -14,18 +13,12 @@ described via a ***Streaming SQL language***, and triggers actions. It performs 
 * [Run PySiddhi](Run-PySiddhi.md)
 * [Debug PySiddhi](Debugging-Siddhi-Queries.md)
 * [Advanced Concepts of PySiddhi](Using-Siddhi-from-Python.md)
-* Using PySiddhi REST Client to Manage WSO2 Stream Processor
-    * [Demo Managing Siddhi Apps on WSO2 SP](Quick-Demo-(SP4).md)
-    * [APIs to Manage Siddhi App](Siddhi-App-Management-of-WSO2-SP-4.md)
-    * [APIs to Simulate Events](Event-Simulator-of-SP-4.md)
     
 ## Features
 
 - [x] Basic functionality of Siddhi 5.x.x
 - [x] Siddhi Debugger
 - [x] Support to Siddhi Extensions Loading
-- [x] Rest Client on WSO2 SP 4.x.x - Siddhi App Management
-- [x] Rest Client on WSO2 SP 4.x.x - Event Simulation
 
 ## Installation
 
