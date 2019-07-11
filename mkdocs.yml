@@ -33,12 +33,12 @@ markdown_extensions:
 pages:
   - Information: index.md
   - Installation Guide: Installation-Guide.md
-      - Run PySiddhi: Run-PySiddhi.md
-      - Debug PySiddhi: Debugging-Siddhi-Queries.md
-      - Advanced Concepts of PySiddhi: Using-Siddhi-from-Python.md
-      - PySiddhi Client for WSO2 Stream Processor:
-          - Run PySiddhi Client: Quick-Demo-(SP4).md
-          - Client APIs to Manage Siddhi App: Siddhi-App-Management-of-WSO2-SP-4.md
-          - Client APIs to Simulate Events: Event-Simulator-of-SP-4.md
+  - Run PySiddhi: Run-PySiddhi.md
+  - Debug PySiddhi: Debugging-Siddhi-Queries.md
+  - Advanced Concepts of PySiddhi: Using-Siddhi-from-Python.md
+  - PySiddhi Client for WSO2 Stream Processor:
+    - Run PySiddhi Client: Quick-Demo-(SP4).md
+    - Client APIs to Manage Siddhi App: Siddhi-App-Management-of-WSO2-SP-4.md
+    - Client APIs to Simulate Events: Event-Simulator-of-SP-4.md
   - License: license.md
 
