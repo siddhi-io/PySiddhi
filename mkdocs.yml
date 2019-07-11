@@ -1,31 +1,44 @@
 site_name: PySiddhi
 site_description: Python Stream Processing and Complex Event Processing Engine
-site_author: WSO2
-site_url: https://siddhi-io.github.io/PySiddhi/
-extra_css:
-- stylesheets/extra.css
 repo_name: PySiddhi
-repo_url: https://github.com/siddhi-io/PySiddhi
-copyright: Copyright &copy; 2011 - 2018 WSO2
+repo_url: https://github.com/siddhi-io/PySiddhi/
+edit_uri: https://github.com/siddhi-io/PySiddhi/blob/master/
+copyright: Siddhi - Documentation
 theme:
-  logo: images/siddhi-logo-w.svg
+  name: material
+  logo: images/siddhi-logo.svg
+  favicon: images/favicon.ico
   palette:
     primary: teal
     accent: teal
-  favicon: images/favicon.ico
-  name: 'material'
+extra_css:
+  - assets/stylesheets/extra.css
+extra_javascript:
+  - assets/javascripts/extra.js
+extra:
+  social:
+    - type: github
+      link: https://github.com/siddhi-io/siddhi
+    - type: medium
+      link: https://medium.com/siddhi-io
+    - type: twitter
+      link: https://twitter.com/siddhi_io
+    - type: linkedin
+      link: https://www.linkedin.com/groups/13553064
+google_analytics:
+  - UA-103065-28
+  - auto
 markdown_extensions:
-- admonition
-- toc(permalink=true)
-- codehilite(guess_lang=false)
+  - markdown.extensions.admonition
 pages:
-  - Welcome to PySiddhi: index.md
-  - License: license.md
+  - Information: index.md
   - Installation Guide: Installation-Guide.md
-  - Run PySiddhi: Run-PySiddhi.md
-  - Debug PySiddhi: Debugging-Siddhi-Queries.md
-  - Advanced Concepts of PySiddhi: Using-Siddhi-from-Python.md
-  - PySiddhi Client for WSO2 Stream Processor:
-    - Run PySiddhi Client: Quick-Demo-(SP4).md
-    - Client APIs to Manage Siddhi App: Siddhi-App-Management-of-WSO2-SP-4.md
-    - Client APIs to Simulate Events: Event-Simulator-of-SP-4.md
+      - Run PySiddhi: Run-PySiddhi.md
+      - Debug PySiddhi: Debugging-Siddhi-Queries.md
+      - Advanced Concepts of PySiddhi: Using-Siddhi-from-Python.md
+      - PySiddhi Client for WSO2 Stream Processor:
+          - Run PySiddhi Client: Quick-Demo-(SP4).md
+          - Client APIs to Manage Siddhi App: Siddhi-App-Management-of-WSO2-SP-4.md
+          - Client APIs to Simulate Events: Event-Simulator-of-SP-4.md
+  - License: license.md
+
