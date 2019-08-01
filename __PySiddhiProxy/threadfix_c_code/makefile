@@ -16,7 +16,7 @@
 # use g++ compiler
 CC = g++
 
-CFLAGS = -shared -fPIC
+CFLAGS =-shared -fPIC -c
 
 # define JAVA_HOME here
 JAVAHOME = ${JAVA_HOME}
@@ -34,7 +34,7 @@ CP = cp
 #Find include files
 INCLUDES_LINUX = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/linux" -I "$(LINUX_PYTHON_PATH)"
 
-INCLUDES_MACOS = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/darwin" -I "$(MACOS_PYTHON_PATH)
+INCLUDES_MACOS = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/darwin" -I "$(MACOS_PYTHON_PATH)"
 
 
 
