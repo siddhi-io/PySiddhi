@@ -26,10 +26,10 @@ class PostInstallCommand(install):
     def run(self):
         # Compile JAVA Code here
         if os.name == "nt":
-            check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy",
+            check_call("mvn clean install".split(), cwd="__PySiddhiProxy",
                        shell=True)  # shell=True is necessary for windows
         else:
-            check_call("mvn clean install".split(), cwd="__PySiddhi4Proxy")  # shell=True should be skipped for linux
+            check_call("mvn clean install".split(), cwd="__PySiddhiProxy")  # shell=True should be skipped for linux
 
         install.run(self)
 
@@ -42,38 +42,40 @@ for package in packages:
     filtered_packages.append(package)
 
 setup(
-    name="PySiddhi4",
-    version="1.0.0rc1",
+    name="PySiddhi",
+    version="5.0.0",
     packages=filtered_packages,
-    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, <4',
-    install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'3.4'"],
+    python_requires='>=2.7, ~=3.7',
+    install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'4'"],
     package_data={
-        "PySiddhi4": ["../__PySiddhi4Proxy/target/lib/*.jar",
-                      "../__PySiddhi4Proxy/target/*.jar",
-                      "../__PySiddhi4Proxy/*.so"]
+        "PySiddhi": ["../__PySiddhiProxy/target/lib/*.jar",
+                      "../__PySiddhiProxy/target/*.jar",
+                      "../__PySiddhiProxy/*.so"]
     },
 
     # metadata for upload to PyPI
     author="WSO2",
     author_email="dev@wso2.org",
-    description="Python wrapper for `Siddhi CEP 4.0.0-M53` and `WSO2 Data Analytics Server 4.0.0-M6`.",
+    description="Python wrapper for `Siddhi 5.x.x`.",
     license="Apache2",
     cmdclass={
         'install': PostInstallCommand,
     },
-    url="https://github.com/wso2/PySiddhi",
+    url="https://github.com/siddhi-io/PySiddhi",
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         'Operating System :: Microsoft :: Windows',
         'Operating System :: POSIX :: Linux',
+        'Operating System :: MacOS',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Software Development :: Libraries :: Java Libraries'
     ]
 )
