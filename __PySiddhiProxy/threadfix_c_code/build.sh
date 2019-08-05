@@ -18,7 +18,7 @@ echo "Compiling C++ Code used for fixing threading issue"
 echo "Invoking G++ Compiler"
 
 if [["$OSTYPE" == "darwin"*]]; then
-    g++ -I "$JAVA_HOME/include" -I "$JAVA_HOME/include/darwin" -I "$PYTHONHOME" -shared -fPIC -o libio_siddhi_pythonapi_threadfix_pythreadfix.so io_siddhi_pythonapi_threadfix_PyThreadFix.c
+    g++ -I "$JAVA_HOME/include" -I "$JAVA_HOME/include/darwin" -I "$PYTHONHOME" -shared -flat_namespace -undefined suppress -dynamiclib -o libio_siddhi_pythonapi_threadfix_pythreadfix.so io_siddhi_pythonapi_threadfix_PyThreadFix.c
 elif [["$OSTYPE" == "linux-gnu"]]; then
     g++ -I "$JAVA_HOME/include" -I "$JAVA_HOME/include/linux" -I "$PYTHONHOME" -shared -fPIC -o libio_siddhi_pythonapi_threadfix_pythreadfix.so io_siddhi_pythonapi_threadfix_PyThreadFix.c
 fi

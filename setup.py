@@ -50,7 +50,8 @@ setup(
     package_data={
         "PySiddhi": ["../__PySiddhiProxy/target/lib/*.jar",
                       "../__PySiddhiProxy/target/*.jar",
-                      "../__PySiddhiProxy/*.so"]
+                      "../__PySiddhiProxy/*.so",
+                      "../__PySiddhiProxy/*.dylib"]
     },
 
     # metadata for upload to PyPI

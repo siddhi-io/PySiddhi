@@ -16,8 +16,6 @@
 # use g++ compiler
 CC = g++
 
-CFLAGS =-shared -fPIC -c
-
 # define JAVA_HOME here
 JAVAHOME = ${JAVA_HOME}
 
@@ -31,13 +29,15 @@ OS = ${shell uname}
 
 CP = cp
 
-#Find include files
-INCLUDES_LINUX = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/linux" -I "$(LINUX_PYTHON_PATH)"
-
-INCLUDES_MACOS = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/darwin" -I "$(MACOS_PYTHON_PATH)"
-
-
-
+ifeq ($(OS), Darwin)
+CFLAGS = -shared -flat_namespace -undefined suppress -dynamiclib
+INCLUDES = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/darwin" -I "$(MACOS_PYTHON_PATH)"
+OUT_EXT = dylib
+else
+CFLAGS = -shared -fPIC
+INCLUDES = -I "$(JAVAHOME)/include" -I "$(JAVAHOME)/include/linux" -I "$(LINUX_PYTHON_PATH)"
+OUT_EXT = so
+endif
 
 # build target details
 TARGET_SOURCE_NAME = io_siddhi_pythonapi_threadfix_PyThreadFix
@@ -47,19 +47,15 @@ TARGET = threadfix
 
 all: install
 
-$(TARGET_OUTPUT_NAME).so: $(TARGET_SOURCE_NAME).c $(TARGET_SOURCE_NAME).h
+$(TARGET_OUTPUT_NAME).$(OUT_EXT): $(TARGET_SOURCE_NAME).c $(TARGET_SOURCE_NAME).h
 	@echo "Building Target..."
-ifeq ($(OS), Darwin)
-	$(CC) $(CFLAGS) $(INCLUDES_MACOS) -o $(TARGET_OUTPUT_NAME).so $(TARGET_SOURCE_NAME).c
-else ifeq ($(OS), Linux)
-	$(CC) $(CFLAGS) $(INCLUDES_LINUX) -o $(TARGET_OUTPUT_NAME).so $(TARGET_SOURCE_NAME).c
-endif
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET_OUTPUT_NAME).$(OUT_EXT) $(TARGET_SOURCE_NAME).c
 	@echo
 
-install: $(TARGET_OUTPUT_NAME).so
+install: $(TARGET_OUTPUT_NAME).$(OUT_EXT)
 	@echo "Copying Target to Root..."
-	$(CP) $(TARGET_OUTPUT_NAME).so ../$(TARGET_INSTALL_NAME).so
+	$(CP) $(TARGET_OUTPUT_NAME).$(OUT_EXT) ../$(TARGET_INSTALL_NAME).$(OUT_EXT)
 	@echo
 
 clean:
-	$(RM) $(TARGET_OUTPUT_NAME).so
+	$(RM) $(TARGET_OUTPUT_NAME).$(OUT_EXT)
