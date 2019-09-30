@@ -24,7 +24,7 @@
 
     <groupId>io.siddhi.python.api</groupId>
     <artifactId>siddhi-python-api-extensions-downloader-for-tests</artifactId>
-    <version>5.0.0</version>
+    <version>5.1.0</version>
     <description>Downloads extensions (JARS) used by Siddhi Python API Tests</description>
     <packaging>pom</packaging>
 
@@ -32,12 +32,12 @@
         <dependency>
             <groupId>io.siddhi.extension.execution.string</groupId>
             <artifactId>siddhi-execution-string</artifactId>
-            <version>5.0.1</version>
+            <version>5.0.5</version>
         </dependency>
         <dependency>
             <groupId>io.siddhi.extension.execution.math</groupId>
             <artifactId>siddhi-execution-math</artifactId>
-            <version>5.0.0</version>
+            <version>5.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

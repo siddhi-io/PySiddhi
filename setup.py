@@ -43,7 +43,7 @@ for package in packages:
 
 setup(
     name="PySiddhi",
-    version="5.0.0",
+    version="5.1.0",
     packages=filtered_packages,
     python_requires='>=2.7, >=3.6',
     install_requires=["requests","pyjnius", "future", "enum34 ; python_version<'4'"],
