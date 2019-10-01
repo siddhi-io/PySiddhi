@@ -38,7 +38,7 @@ PySiddhi can be installed using one of the following methods.
       - Maven _(Only to build from Source)_
     
 - Download siddhi-sdk release from [here](https://github.com/siddhi-io/siddhi-sdk/releases) and set the SIDDHISDK_HOME as an environment variable. <br/> `export SIDDHISDK_HOME="<path-to-siddhi-sdk>"`
-- Download siddhi-python-api-proxy-5.0.0.jar from [here](https://github.com/siddhi-io/PySiddhi/releases) and copy to `<SIDDHISDK_HOME>/lib` directory
+- Download siddhi-python-api-proxy-5.1.0.jar from [here](https://github.com/siddhi-io/PySiddhi/releases) and copy to `<SIDDHISDK_HOME>/lib` directory
 
 ### Install PySiddhi via Python Package Management
 
