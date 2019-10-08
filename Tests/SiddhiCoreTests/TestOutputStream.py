@@ -44,8 +44,7 @@ class TestOutputStream(TestCase):
     def test_outputstram(self):
         logging.info("OutputStream Test 1: Test reception of events")
         siddhiManager = SiddhiManager()
-        cseEventStream = "@config(async = 'true') " \
-                         "define stream cseEventStream (symbol string, price float, volume int);"
+        cseEventStream = "define stream cseEventStream (symbol string, price float, volume int);"
 
         query = "@info(name = 'query 1') from cseEventStream select symbol, price, volume insert into OutputStream; "
 
@@ -58,6 +57,7 @@ class TestOutputStream(TestCase):
                 _self_shaddow.inEventCount.addAndGet(len(events))
 
         siddhiAppRuntime.addCallback("OutputStream", StreamCallbackImpl())
+        siddhiAppRuntime.start()
 
         inputHandler = siddhiAppRuntime.getInputHandler("cseEventStream")
 
